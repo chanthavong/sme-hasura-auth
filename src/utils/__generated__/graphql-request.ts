@@ -15,7 +15,9 @@ export type Scalars = {
   Int: number;
   Float: number;
   citext: any;
+  date: any;
   jsonb: any;
+  numeric: any;
   timestamptz: any;
   uuid: any;
 };
@@ -31,6 +33,19 @@ export type Boolean_Comparison_Exp = {
   _lte?: InputMaybe<Scalars['Boolean']>;
   _neq?: InputMaybe<Scalars['Boolean']>;
   _nin?: InputMaybe<Array<Scalars['Boolean']>>;
+};
+
+/** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
+export type Int_Comparison_Exp = {
+  _eq?: InputMaybe<Scalars['Int']>;
+  _gt?: InputMaybe<Scalars['Int']>;
+  _gte?: InputMaybe<Scalars['Int']>;
+  _in?: InputMaybe<Array<Scalars['Int']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _lt?: InputMaybe<Scalars['Int']>;
+  _lte?: InputMaybe<Scalars['Int']>;
+  _neq?: InputMaybe<Scalars['Int']>;
+  _nin?: InputMaybe<Array<Scalars['Int']>>;
 };
 
 /** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
@@ -1085,6 +1100,1977 @@ export enum AuthUserRoles_Update_Column {
   UserId = 'userId'
 }
 
+/** columns and relationships of "bank" */
+export type Bank = {
+  __typename?: 'bank';
+  active?: Maybe<Scalars['Boolean']>;
+  /** An array relationship */
+  bank_branches: Array<Bank_Branch>;
+  /** An aggregate relationship */
+  bank_branches_aggregate: Bank_Branch_Aggregate;
+  code?: Maybe<Scalars['String']>;
+  created_at: Scalars['timestamptz'];
+  en: Scalars['String'];
+  /** An array relationship */
+  fund_contracts: Array<Fund_Contract>;
+  /** An aggregate relationship */
+  fund_contracts_aggregate: Fund_Contract_Aggregate;
+  id: Scalars['String'];
+  lo: Scalars['String'];
+  logo?: Maybe<Scalars['String']>;
+  updated_at: Scalars['timestamptz'];
+  /** An object relationship */
+  user?: Maybe<Users>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+
+/** columns and relationships of "bank" */
+export type BankBank_BranchesArgs = {
+  distinct_on?: InputMaybe<Array<Bank_Branch_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Bank_Branch_Order_By>>;
+  where?: InputMaybe<Bank_Branch_Bool_Exp>;
+};
+
+
+/** columns and relationships of "bank" */
+export type BankBank_Branches_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Bank_Branch_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Bank_Branch_Order_By>>;
+  where?: InputMaybe<Bank_Branch_Bool_Exp>;
+};
+
+
+/** columns and relationships of "bank" */
+export type BankFund_ContractsArgs = {
+  distinct_on?: InputMaybe<Array<Fund_Contract_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Fund_Contract_Order_By>>;
+  where?: InputMaybe<Fund_Contract_Bool_Exp>;
+};
+
+
+/** columns and relationships of "bank" */
+export type BankFund_Contracts_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Fund_Contract_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Fund_Contract_Order_By>>;
+  where?: InputMaybe<Fund_Contract_Bool_Exp>;
+};
+
+/** aggregated selection of "bank" */
+export type Bank_Aggregate = {
+  __typename?: 'bank_aggregate';
+  aggregate?: Maybe<Bank_Aggregate_Fields>;
+  nodes: Array<Bank>;
+};
+
+/** aggregate fields of "bank" */
+export type Bank_Aggregate_Fields = {
+  __typename?: 'bank_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Bank_Max_Fields>;
+  min?: Maybe<Bank_Min_Fields>;
+};
+
+
+/** aggregate fields of "bank" */
+export type Bank_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Bank_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "bank" */
+export type Bank_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Bank_Max_Order_By>;
+  min?: InputMaybe<Bank_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "bank" */
+export type Bank_Arr_Rel_Insert_Input = {
+  data: Array<Bank_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Bank_On_Conflict>;
+};
+
+/** Boolean expression to filter rows from the table "bank". All fields are combined with a logical 'AND'. */
+export type Bank_Bool_Exp = {
+  _and?: InputMaybe<Array<Bank_Bool_Exp>>;
+  _not?: InputMaybe<Bank_Bool_Exp>;
+  _or?: InputMaybe<Array<Bank_Bool_Exp>>;
+  active?: InputMaybe<Boolean_Comparison_Exp>;
+  bank_branches?: InputMaybe<Bank_Branch_Bool_Exp>;
+  code?: InputMaybe<String_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  en?: InputMaybe<String_Comparison_Exp>;
+  fund_contracts?: InputMaybe<Fund_Contract_Bool_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  lo?: InputMaybe<String_Comparison_Exp>;
+  logo?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user?: InputMaybe<Users_Bool_Exp>;
+  user_id?: InputMaybe<Uuid_Comparison_Exp>;
+};
+
+/** columns and relationships of "bank_branch" */
+export type Bank_Branch = {
+  __typename?: 'bank_branch';
+  active?: Maybe<Scalars['Boolean']>;
+  address?: Maybe<Scalars['String']>;
+  /** An object relationship */
+  bank: Bank;
+  bank_id: Scalars['String'];
+  code?: Maybe<Scalars['String']>;
+  created_at: Scalars['timestamptz'];
+  id: Scalars['uuid'];
+  name: Scalars['String'];
+  updated_at: Scalars['timestamptz'];
+  user_id?: Maybe<Scalars['uuid']>;
+  /** An array relationship */
+  users: Array<Users>;
+  /** An aggregate relationship */
+  users_aggregate: Users_Aggregate;
+};
+
+
+/** columns and relationships of "bank_branch" */
+export type Bank_BranchUsersArgs = {
+  distinct_on?: InputMaybe<Array<Users_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Users_Order_By>>;
+  where?: InputMaybe<Users_Bool_Exp>;
+};
+
+
+/** columns and relationships of "bank_branch" */
+export type Bank_BranchUsers_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Users_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Users_Order_By>>;
+  where?: InputMaybe<Users_Bool_Exp>;
+};
+
+/** aggregated selection of "bank_branch" */
+export type Bank_Branch_Aggregate = {
+  __typename?: 'bank_branch_aggregate';
+  aggregate?: Maybe<Bank_Branch_Aggregate_Fields>;
+  nodes: Array<Bank_Branch>;
+};
+
+/** aggregate fields of "bank_branch" */
+export type Bank_Branch_Aggregate_Fields = {
+  __typename?: 'bank_branch_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Bank_Branch_Max_Fields>;
+  min?: Maybe<Bank_Branch_Min_Fields>;
+};
+
+
+/** aggregate fields of "bank_branch" */
+export type Bank_Branch_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Bank_Branch_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "bank_branch" */
+export type Bank_Branch_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Bank_Branch_Max_Order_By>;
+  min?: InputMaybe<Bank_Branch_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "bank_branch" */
+export type Bank_Branch_Arr_Rel_Insert_Input = {
+  data: Array<Bank_Branch_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Bank_Branch_On_Conflict>;
+};
+
+/** Boolean expression to filter rows from the table "bank_branch". All fields are combined with a logical 'AND'. */
+export type Bank_Branch_Bool_Exp = {
+  _and?: InputMaybe<Array<Bank_Branch_Bool_Exp>>;
+  _not?: InputMaybe<Bank_Branch_Bool_Exp>;
+  _or?: InputMaybe<Array<Bank_Branch_Bool_Exp>>;
+  active?: InputMaybe<Boolean_Comparison_Exp>;
+  address?: InputMaybe<String_Comparison_Exp>;
+  bank?: InputMaybe<Bank_Bool_Exp>;
+  bank_id?: InputMaybe<String_Comparison_Exp>;
+  code?: InputMaybe<String_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  id?: InputMaybe<Uuid_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user_id?: InputMaybe<Uuid_Comparison_Exp>;
+  users?: InputMaybe<Users_Bool_Exp>;
+};
+
+/** unique or primary key constraints on table "bank_branch" */
+export enum Bank_Branch_Constraint {
+  /** unique or primary key constraint */
+  BankBranchPkey = 'bank_branch_pkey'
+}
+
+/** input type for inserting data into table "bank_branch" */
+export type Bank_Branch_Insert_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  address?: InputMaybe<Scalars['String']>;
+  bank?: InputMaybe<Bank_Obj_Rel_Insert_Input>;
+  bank_id?: InputMaybe<Scalars['String']>;
+  code?: InputMaybe<Scalars['String']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+  users?: InputMaybe<Users_Arr_Rel_Insert_Input>;
+};
+
+/** aggregate max on columns */
+export type Bank_Branch_Max_Fields = {
+  __typename?: 'bank_branch_max_fields';
+  address?: Maybe<Scalars['String']>;
+  bank_id?: Maybe<Scalars['String']>;
+  code?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['uuid']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** order by max() on columns of table "bank_branch" */
+export type Bank_Branch_Max_Order_By = {
+  address?: InputMaybe<Order_By>;
+  bank_id?: InputMaybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Bank_Branch_Min_Fields = {
+  __typename?: 'bank_branch_min_fields';
+  address?: Maybe<Scalars['String']>;
+  bank_id?: Maybe<Scalars['String']>;
+  code?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['uuid']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** order by min() on columns of table "bank_branch" */
+export type Bank_Branch_Min_Order_By = {
+  address?: InputMaybe<Order_By>;
+  bank_id?: InputMaybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** response of any mutation on the table "bank_branch" */
+export type Bank_Branch_Mutation_Response = {
+  __typename?: 'bank_branch_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Bank_Branch>;
+};
+
+/** input type for inserting object relation for remote table "bank_branch" */
+export type Bank_Branch_Obj_Rel_Insert_Input = {
+  data: Bank_Branch_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Bank_Branch_On_Conflict>;
+};
+
+/** on_conflict condition type for table "bank_branch" */
+export type Bank_Branch_On_Conflict = {
+  constraint: Bank_Branch_Constraint;
+  update_columns?: Array<Bank_Branch_Update_Column>;
+  where?: InputMaybe<Bank_Branch_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "bank_branch". */
+export type Bank_Branch_Order_By = {
+  active?: InputMaybe<Order_By>;
+  address?: InputMaybe<Order_By>;
+  bank?: InputMaybe<Bank_Order_By>;
+  bank_id?: InputMaybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+  users_aggregate?: InputMaybe<Users_Aggregate_Order_By>;
+};
+
+/** primary key columns input for table: bank_branch */
+export type Bank_Branch_Pk_Columns_Input = {
+  id: Scalars['uuid'];
+};
+
+/** select columns of table "bank_branch" */
+export enum Bank_Branch_Select_Column {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  Address = 'address',
+  /** column name */
+  BankId = 'bank_id',
+  /** column name */
+  Code = 'code',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "bank_branch" */
+export type Bank_Branch_Set_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  address?: InputMaybe<Scalars['String']>;
+  bank_id?: InputMaybe<Scalars['String']>;
+  code?: InputMaybe<Scalars['String']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** update columns of table "bank_branch" */
+export enum Bank_Branch_Update_Column {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  Address = 'address',
+  /** column name */
+  BankId = 'bank_id',
+  /** column name */
+  Code = 'code',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** unique or primary key constraints on table "bank" */
+export enum Bank_Constraint {
+  /** unique or primary key constraint */
+  BankPkey = 'bank_pkey'
+}
+
+/** input type for inserting data into table "bank" */
+export type Bank_Insert_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  bank_branches?: InputMaybe<Bank_Branch_Arr_Rel_Insert_Input>;
+  code?: InputMaybe<Scalars['String']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  en?: InputMaybe<Scalars['String']>;
+  fund_contracts?: InputMaybe<Fund_Contract_Arr_Rel_Insert_Input>;
+  id?: InputMaybe<Scalars['String']>;
+  lo?: InputMaybe<Scalars['String']>;
+  logo?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user?: InputMaybe<Users_Obj_Rel_Insert_Input>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** aggregate max on columns */
+export type Bank_Max_Fields = {
+  __typename?: 'bank_max_fields';
+  code?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  en?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  lo?: Maybe<Scalars['String']>;
+  logo?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** order by max() on columns of table "bank" */
+export type Bank_Max_Order_By = {
+  code?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  en?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  lo?: InputMaybe<Order_By>;
+  logo?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Bank_Min_Fields = {
+  __typename?: 'bank_min_fields';
+  code?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  en?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  lo?: Maybe<Scalars['String']>;
+  logo?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** order by min() on columns of table "bank" */
+export type Bank_Min_Order_By = {
+  code?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  en?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  lo?: InputMaybe<Order_By>;
+  logo?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** response of any mutation on the table "bank" */
+export type Bank_Mutation_Response = {
+  __typename?: 'bank_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Bank>;
+};
+
+/** input type for inserting object relation for remote table "bank" */
+export type Bank_Obj_Rel_Insert_Input = {
+  data: Bank_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Bank_On_Conflict>;
+};
+
+/** on_conflict condition type for table "bank" */
+export type Bank_On_Conflict = {
+  constraint: Bank_Constraint;
+  update_columns?: Array<Bank_Update_Column>;
+  where?: InputMaybe<Bank_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "bank". */
+export type Bank_Order_By = {
+  active?: InputMaybe<Order_By>;
+  bank_branches_aggregate?: InputMaybe<Bank_Branch_Aggregate_Order_By>;
+  code?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  en?: InputMaybe<Order_By>;
+  fund_contracts_aggregate?: InputMaybe<Fund_Contract_Aggregate_Order_By>;
+  id?: InputMaybe<Order_By>;
+  lo?: InputMaybe<Order_By>;
+  logo?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user?: InputMaybe<Users_Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: bank */
+export type Bank_Pk_Columns_Input = {
+  id: Scalars['String'];
+};
+
+/** select columns of table "bank" */
+export enum Bank_Select_Column {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  Code = 'code',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  En = 'en',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Lo = 'lo',
+  /** column name */
+  Logo = 'logo',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "bank" */
+export type Bank_Set_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  code?: InputMaybe<Scalars['String']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  en?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  lo?: InputMaybe<Scalars['String']>;
+  logo?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** update columns of table "bank" */
+export enum Bank_Update_Column {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  Code = 'code',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  En = 'en',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Lo = 'lo',
+  /** column name */
+  Logo = 'logo',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** columns and relationships of "busines" */
+export type Busines = {
+  __typename?: 'busines';
+  address?: Maybe<Scalars['String']>;
+  /** An object relationship */
+  busines_class?: Maybe<Busines_Class>;
+  busines_class_id?: Maybe<Scalars['String']>;
+  /** An object relationship */
+  busines_sector?: Maybe<Busines_Sector>;
+  busines_sector_id?: Maybe<Scalars['String']>;
+  /** An object relationship */
+  busines_size?: Maybe<Busines_Size>;
+  busines_size_id?: Maybe<Scalars['String']>;
+  /** An object relationship */
+  busines_type?: Maybe<Busines_Type>;
+  busines_type_id?: Maybe<Scalars['String']>;
+  /** ເລກທີໃບທະບຽນວິ​ສາ​ຫະ​ກິດ [4372/ຫຈທ, 6178/ຫຈທ] */
+  certificate_no: Scalars['String'];
+  code: Scalars['String'];
+  created_at: Scalars['timestamptz'];
+  default_account_id?: Maybe<Scalars['String']>;
+  /** ກິດ​ຈະ​ກຳຂອງ​ທຸ​ລະ​ກິດ (ອະ​ທິ​ບາຍ​ລະ​ອຽດ) [ຂາຍເຄື່ອງກໍ່ສ້າງ, ພິມປະຕິທິນ(ຫ້ອຍຝາ,ຕັ້ງໂຕະ,ບັດອໍາພອນປີໃໝ່] */
+  describe?: Maybe<Scalars['String']>;
+  en: Scalars['String'];
+  gender?: Maybe<Scalars['String']>;
+  id: Scalars['uuid'];
+  is_condition?: Maybe<Scalars['Boolean']>;
+  lo: Scalars['String'];
+  /** ຈຳ​ນວນ​ຊັບ​ສິນ​​ທາງ​ທຸ​ລະ​ກິດ  (LAK) */
+  number_of_assets: Scalars['numeric'];
+  owner: Scalars['String'];
+  phone?: Maybe<Scalars['String']>;
+  phone2?: Maybe<Scalars['String']>;
+  staff: Scalars['Int'];
+  trash?: Maybe<Scalars['Boolean']>;
+  updated_at: Scalars['timestamptz'];
+  user_id?: Maybe<Scalars['uuid']>;
+  village_id?: Maybe<Scalars['String']>;
+  village_name?: Maybe<Scalars['String']>;
+};
+
+/** aggregated selection of "busines" */
+export type Busines_Aggregate = {
+  __typename?: 'busines_aggregate';
+  aggregate?: Maybe<Busines_Aggregate_Fields>;
+  nodes: Array<Busines>;
+};
+
+/** aggregate fields of "busines" */
+export type Busines_Aggregate_Fields = {
+  __typename?: 'busines_aggregate_fields';
+  avg?: Maybe<Busines_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Busines_Max_Fields>;
+  min?: Maybe<Busines_Min_Fields>;
+  stddev?: Maybe<Busines_Stddev_Fields>;
+  stddev_pop?: Maybe<Busines_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Busines_Stddev_Samp_Fields>;
+  sum?: Maybe<Busines_Sum_Fields>;
+  var_pop?: Maybe<Busines_Var_Pop_Fields>;
+  var_samp?: Maybe<Busines_Var_Samp_Fields>;
+  variance?: Maybe<Busines_Variance_Fields>;
+};
+
+
+/** aggregate fields of "busines" */
+export type Busines_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Busines_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "busines" */
+export type Busines_Aggregate_Order_By = {
+  avg?: InputMaybe<Busines_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Busines_Max_Order_By>;
+  min?: InputMaybe<Busines_Min_Order_By>;
+  stddev?: InputMaybe<Busines_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Busines_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Busines_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Busines_Sum_Order_By>;
+  var_pop?: InputMaybe<Busines_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Busines_Var_Samp_Order_By>;
+  variance?: InputMaybe<Busines_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "busines" */
+export type Busines_Arr_Rel_Insert_Input = {
+  data: Array<Busines_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Busines_On_Conflict>;
+};
+
+/** aggregate avg on columns */
+export type Busines_Avg_Fields = {
+  __typename?: 'busines_avg_fields';
+  /** ຈຳ​ນວນ​ຊັບ​ສິນ​​ທາງ​ທຸ​ລະ​ກິດ  (LAK) */
+  number_of_assets?: Maybe<Scalars['Float']>;
+  staff?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "busines" */
+export type Busines_Avg_Order_By = {
+  /** ຈຳ​ນວນ​ຊັບ​ສິນ​​ທາງ​ທຸ​ລະ​ກິດ  (LAK) */
+  number_of_assets?: InputMaybe<Order_By>;
+  staff?: InputMaybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "busines". All fields are combined with a logical 'AND'. */
+export type Busines_Bool_Exp = {
+  _and?: InputMaybe<Array<Busines_Bool_Exp>>;
+  _not?: InputMaybe<Busines_Bool_Exp>;
+  _or?: InputMaybe<Array<Busines_Bool_Exp>>;
+  address?: InputMaybe<String_Comparison_Exp>;
+  busines_class?: InputMaybe<Busines_Class_Bool_Exp>;
+  busines_class_id?: InputMaybe<String_Comparison_Exp>;
+  busines_sector?: InputMaybe<Busines_Sector_Bool_Exp>;
+  busines_sector_id?: InputMaybe<String_Comparison_Exp>;
+  busines_size?: InputMaybe<Busines_Size_Bool_Exp>;
+  busines_size_id?: InputMaybe<String_Comparison_Exp>;
+  busines_type?: InputMaybe<Busines_Type_Bool_Exp>;
+  busines_type_id?: InputMaybe<String_Comparison_Exp>;
+  certificate_no?: InputMaybe<String_Comparison_Exp>;
+  code?: InputMaybe<String_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  default_account_id?: InputMaybe<String_Comparison_Exp>;
+  describe?: InputMaybe<String_Comparison_Exp>;
+  en?: InputMaybe<String_Comparison_Exp>;
+  gender?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<Uuid_Comparison_Exp>;
+  is_condition?: InputMaybe<Boolean_Comparison_Exp>;
+  lo?: InputMaybe<String_Comparison_Exp>;
+  number_of_assets?: InputMaybe<Numeric_Comparison_Exp>;
+  owner?: InputMaybe<String_Comparison_Exp>;
+  phone?: InputMaybe<String_Comparison_Exp>;
+  phone2?: InputMaybe<String_Comparison_Exp>;
+  staff?: InputMaybe<Int_Comparison_Exp>;
+  trash?: InputMaybe<Boolean_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user_id?: InputMaybe<Uuid_Comparison_Exp>;
+  village_id?: InputMaybe<String_Comparison_Exp>;
+  village_name?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** ການຈັດປະເພດ E&S [A, B, C, D, E] */
+export type Busines_Class = {
+  __typename?: 'busines_class';
+  active?: Maybe<Scalars['Boolean']>;
+  /** An array relationship */
+  busines: Array<Busines>;
+  /** An aggregate relationship */
+  busines_aggregate: Busines_Aggregate;
+  created_at: Scalars['timestamptz'];
+  en: Scalars['String'];
+  id: Scalars['String'];
+  lo: Scalars['String'];
+  updated_at: Scalars['timestamptz'];
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+
+/** ການຈັດປະເພດ E&S [A, B, C, D, E] */
+export type Busines_ClassBusinesArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Order_By>>;
+  where?: InputMaybe<Busines_Bool_Exp>;
+};
+
+
+/** ການຈັດປະເພດ E&S [A, B, C, D, E] */
+export type Busines_ClassBusines_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Order_By>>;
+  where?: InputMaybe<Busines_Bool_Exp>;
+};
+
+/** aggregated selection of "busines_class" */
+export type Busines_Class_Aggregate = {
+  __typename?: 'busines_class_aggregate';
+  aggregate?: Maybe<Busines_Class_Aggregate_Fields>;
+  nodes: Array<Busines_Class>;
+};
+
+/** aggregate fields of "busines_class" */
+export type Busines_Class_Aggregate_Fields = {
+  __typename?: 'busines_class_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Busines_Class_Max_Fields>;
+  min?: Maybe<Busines_Class_Min_Fields>;
+};
+
+
+/** aggregate fields of "busines_class" */
+export type Busines_Class_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Busines_Class_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "busines_class". All fields are combined with a logical 'AND'. */
+export type Busines_Class_Bool_Exp = {
+  _and?: InputMaybe<Array<Busines_Class_Bool_Exp>>;
+  _not?: InputMaybe<Busines_Class_Bool_Exp>;
+  _or?: InputMaybe<Array<Busines_Class_Bool_Exp>>;
+  active?: InputMaybe<Boolean_Comparison_Exp>;
+  busines?: InputMaybe<Busines_Bool_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  en?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  lo?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user_id?: InputMaybe<Uuid_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "busines_class" */
+export enum Busines_Class_Constraint {
+  /** unique or primary key constraint */
+  BusinesClassPkey = 'busines_class_pkey'
+}
+
+/** input type for inserting data into table "busines_class" */
+export type Busines_Class_Insert_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  busines?: InputMaybe<Busines_Arr_Rel_Insert_Input>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  en?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  lo?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** aggregate max on columns */
+export type Busines_Class_Max_Fields = {
+  __typename?: 'busines_class_max_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  en?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  lo?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** aggregate min on columns */
+export type Busines_Class_Min_Fields = {
+  __typename?: 'busines_class_min_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  en?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  lo?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** response of any mutation on the table "busines_class" */
+export type Busines_Class_Mutation_Response = {
+  __typename?: 'busines_class_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Busines_Class>;
+};
+
+/** input type for inserting object relation for remote table "busines_class" */
+export type Busines_Class_Obj_Rel_Insert_Input = {
+  data: Busines_Class_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Busines_Class_On_Conflict>;
+};
+
+/** on_conflict condition type for table "busines_class" */
+export type Busines_Class_On_Conflict = {
+  constraint: Busines_Class_Constraint;
+  update_columns?: Array<Busines_Class_Update_Column>;
+  where?: InputMaybe<Busines_Class_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "busines_class". */
+export type Busines_Class_Order_By = {
+  active?: InputMaybe<Order_By>;
+  busines_aggregate?: InputMaybe<Busines_Aggregate_Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  en?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  lo?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: busines_class */
+export type Busines_Class_Pk_Columns_Input = {
+  id: Scalars['String'];
+};
+
+/** select columns of table "busines_class" */
+export enum Busines_Class_Select_Column {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  En = 'en',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Lo = 'lo',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "busines_class" */
+export type Busines_Class_Set_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  en?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  lo?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** update columns of table "busines_class" */
+export enum Busines_Class_Update_Column {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  En = 'en',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Lo = 'lo',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** unique or primary key constraints on table "busines" */
+export enum Busines_Constraint {
+  /** unique or primary key constraint */
+  BusinesPkey = 'busines_pkey'
+}
+
+/** input type for incrementing numeric columns in table "busines" */
+export type Busines_Inc_Input = {
+  /** ຈຳ​ນວນ​ຊັບ​ສິນ​​ທາງ​ທຸ​ລະ​ກິດ  (LAK) */
+  number_of_assets?: InputMaybe<Scalars['numeric']>;
+  staff?: InputMaybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "busines" */
+export type Busines_Insert_Input = {
+  address?: InputMaybe<Scalars['String']>;
+  busines_class?: InputMaybe<Busines_Class_Obj_Rel_Insert_Input>;
+  busines_class_id?: InputMaybe<Scalars['String']>;
+  busines_sector?: InputMaybe<Busines_Sector_Obj_Rel_Insert_Input>;
+  busines_sector_id?: InputMaybe<Scalars['String']>;
+  busines_size?: InputMaybe<Busines_Size_Obj_Rel_Insert_Input>;
+  busines_size_id?: InputMaybe<Scalars['String']>;
+  busines_type?: InputMaybe<Busines_Type_Obj_Rel_Insert_Input>;
+  busines_type_id?: InputMaybe<Scalars['String']>;
+  /** ເລກທີໃບທະບຽນວິ​ສາ​ຫະ​ກິດ [4372/ຫຈທ, 6178/ຫຈທ] */
+  certificate_no?: InputMaybe<Scalars['String']>;
+  code?: InputMaybe<Scalars['String']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  default_account_id?: InputMaybe<Scalars['String']>;
+  /** ກິດ​ຈະ​ກຳຂອງ​ທຸ​ລະ​ກິດ (ອະ​ທິ​ບາຍ​ລະ​ອຽດ) [ຂາຍເຄື່ອງກໍ່ສ້າງ, ພິມປະຕິທິນ(ຫ້ອຍຝາ,ຕັ້ງໂຕະ,ບັດອໍາພອນປີໃໝ່] */
+  describe?: InputMaybe<Scalars['String']>;
+  en?: InputMaybe<Scalars['String']>;
+  gender?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  is_condition?: InputMaybe<Scalars['Boolean']>;
+  lo?: InputMaybe<Scalars['String']>;
+  /** ຈຳ​ນວນ​ຊັບ​ສິນ​​ທາງ​ທຸ​ລະ​ກິດ  (LAK) */
+  number_of_assets?: InputMaybe<Scalars['numeric']>;
+  owner?: InputMaybe<Scalars['String']>;
+  phone?: InputMaybe<Scalars['String']>;
+  phone2?: InputMaybe<Scalars['String']>;
+  staff?: InputMaybe<Scalars['Int']>;
+  trash?: InputMaybe<Scalars['Boolean']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+  village_id?: InputMaybe<Scalars['String']>;
+  village_name?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Busines_Max_Fields = {
+  __typename?: 'busines_max_fields';
+  address?: Maybe<Scalars['String']>;
+  busines_class_id?: Maybe<Scalars['String']>;
+  busines_sector_id?: Maybe<Scalars['String']>;
+  busines_size_id?: Maybe<Scalars['String']>;
+  busines_type_id?: Maybe<Scalars['String']>;
+  /** ເລກທີໃບທະບຽນວິ​ສາ​ຫະ​ກິດ [4372/ຫຈທ, 6178/ຫຈທ] */
+  certificate_no?: Maybe<Scalars['String']>;
+  code?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  default_account_id?: Maybe<Scalars['String']>;
+  /** ກິດ​ຈະ​ກຳຂອງ​ທຸ​ລະ​ກິດ (ອະ​ທິ​ບາຍ​ລະ​ອຽດ) [ຂາຍເຄື່ອງກໍ່ສ້າງ, ພິມປະຕິທິນ(ຫ້ອຍຝາ,ຕັ້ງໂຕະ,ບັດອໍາພອນປີໃໝ່] */
+  describe?: Maybe<Scalars['String']>;
+  en?: Maybe<Scalars['String']>;
+  gender?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['uuid']>;
+  lo?: Maybe<Scalars['String']>;
+  /** ຈຳ​ນວນ​ຊັບ​ສິນ​​ທາງ​ທຸ​ລະ​ກິດ  (LAK) */
+  number_of_assets?: Maybe<Scalars['numeric']>;
+  owner?: Maybe<Scalars['String']>;
+  phone?: Maybe<Scalars['String']>;
+  phone2?: Maybe<Scalars['String']>;
+  staff?: Maybe<Scalars['Int']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+  village_id?: Maybe<Scalars['String']>;
+  village_name?: Maybe<Scalars['String']>;
+};
+
+/** order by max() on columns of table "busines" */
+export type Busines_Max_Order_By = {
+  address?: InputMaybe<Order_By>;
+  busines_class_id?: InputMaybe<Order_By>;
+  busines_sector_id?: InputMaybe<Order_By>;
+  busines_size_id?: InputMaybe<Order_By>;
+  busines_type_id?: InputMaybe<Order_By>;
+  /** ເລກທີໃບທະບຽນວິ​ສາ​ຫະ​ກິດ [4372/ຫຈທ, 6178/ຫຈທ] */
+  certificate_no?: InputMaybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  default_account_id?: InputMaybe<Order_By>;
+  /** ກິດ​ຈະ​ກຳຂອງ​ທຸ​ລະ​ກິດ (ອະ​ທິ​ບາຍ​ລະ​ອຽດ) [ຂາຍເຄື່ອງກໍ່ສ້າງ, ພິມປະຕິທິນ(ຫ້ອຍຝາ,ຕັ້ງໂຕະ,ບັດອໍາພອນປີໃໝ່] */
+  describe?: InputMaybe<Order_By>;
+  en?: InputMaybe<Order_By>;
+  gender?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  lo?: InputMaybe<Order_By>;
+  /** ຈຳ​ນວນ​ຊັບ​ສິນ​​ທາງ​ທຸ​ລະ​ກິດ  (LAK) */
+  number_of_assets?: InputMaybe<Order_By>;
+  owner?: InputMaybe<Order_By>;
+  phone?: InputMaybe<Order_By>;
+  phone2?: InputMaybe<Order_By>;
+  staff?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+  village_id?: InputMaybe<Order_By>;
+  village_name?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Busines_Min_Fields = {
+  __typename?: 'busines_min_fields';
+  address?: Maybe<Scalars['String']>;
+  busines_class_id?: Maybe<Scalars['String']>;
+  busines_sector_id?: Maybe<Scalars['String']>;
+  busines_size_id?: Maybe<Scalars['String']>;
+  busines_type_id?: Maybe<Scalars['String']>;
+  /** ເລກທີໃບທະບຽນວິ​ສາ​ຫະ​ກິດ [4372/ຫຈທ, 6178/ຫຈທ] */
+  certificate_no?: Maybe<Scalars['String']>;
+  code?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  default_account_id?: Maybe<Scalars['String']>;
+  /** ກິດ​ຈະ​ກຳຂອງ​ທຸ​ລະ​ກິດ (ອະ​ທິ​ບາຍ​ລະ​ອຽດ) [ຂາຍເຄື່ອງກໍ່ສ້າງ, ພິມປະຕິທິນ(ຫ້ອຍຝາ,ຕັ້ງໂຕະ,ບັດອໍາພອນປີໃໝ່] */
+  describe?: Maybe<Scalars['String']>;
+  en?: Maybe<Scalars['String']>;
+  gender?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['uuid']>;
+  lo?: Maybe<Scalars['String']>;
+  /** ຈຳ​ນວນ​ຊັບ​ສິນ​​ທາງ​ທຸ​ລະ​ກິດ  (LAK) */
+  number_of_assets?: Maybe<Scalars['numeric']>;
+  owner?: Maybe<Scalars['String']>;
+  phone?: Maybe<Scalars['String']>;
+  phone2?: Maybe<Scalars['String']>;
+  staff?: Maybe<Scalars['Int']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+  village_id?: Maybe<Scalars['String']>;
+  village_name?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "busines" */
+export type Busines_Min_Order_By = {
+  address?: InputMaybe<Order_By>;
+  busines_class_id?: InputMaybe<Order_By>;
+  busines_sector_id?: InputMaybe<Order_By>;
+  busines_size_id?: InputMaybe<Order_By>;
+  busines_type_id?: InputMaybe<Order_By>;
+  /** ເລກທີໃບທະບຽນວິ​ສາ​ຫະ​ກິດ [4372/ຫຈທ, 6178/ຫຈທ] */
+  certificate_no?: InputMaybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  default_account_id?: InputMaybe<Order_By>;
+  /** ກິດ​ຈະ​ກຳຂອງ​ທຸ​ລະ​ກິດ (ອະ​ທິ​ບາຍ​ລະ​ອຽດ) [ຂາຍເຄື່ອງກໍ່ສ້າງ, ພິມປະຕິທິນ(ຫ້ອຍຝາ,ຕັ້ງໂຕະ,ບັດອໍາພອນປີໃໝ່] */
+  describe?: InputMaybe<Order_By>;
+  en?: InputMaybe<Order_By>;
+  gender?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  lo?: InputMaybe<Order_By>;
+  /** ຈຳ​ນວນ​ຊັບ​ສິນ​​ທາງ​ທຸ​ລະ​ກິດ  (LAK) */
+  number_of_assets?: InputMaybe<Order_By>;
+  owner?: InputMaybe<Order_By>;
+  phone?: InputMaybe<Order_By>;
+  phone2?: InputMaybe<Order_By>;
+  staff?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+  village_id?: InputMaybe<Order_By>;
+  village_name?: InputMaybe<Order_By>;
+};
+
+/** response of any mutation on the table "busines" */
+export type Busines_Mutation_Response = {
+  __typename?: 'busines_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Busines>;
+};
+
+/** on_conflict condition type for table "busines" */
+export type Busines_On_Conflict = {
+  constraint: Busines_Constraint;
+  update_columns?: Array<Busines_Update_Column>;
+  where?: InputMaybe<Busines_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "busines". */
+export type Busines_Order_By = {
+  address?: InputMaybe<Order_By>;
+  busines_class?: InputMaybe<Busines_Class_Order_By>;
+  busines_class_id?: InputMaybe<Order_By>;
+  busines_sector?: InputMaybe<Busines_Sector_Order_By>;
+  busines_sector_id?: InputMaybe<Order_By>;
+  busines_size?: InputMaybe<Busines_Size_Order_By>;
+  busines_size_id?: InputMaybe<Order_By>;
+  busines_type?: InputMaybe<Busines_Type_Order_By>;
+  busines_type_id?: InputMaybe<Order_By>;
+  certificate_no?: InputMaybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  default_account_id?: InputMaybe<Order_By>;
+  describe?: InputMaybe<Order_By>;
+  en?: InputMaybe<Order_By>;
+  gender?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  is_condition?: InputMaybe<Order_By>;
+  lo?: InputMaybe<Order_By>;
+  number_of_assets?: InputMaybe<Order_By>;
+  owner?: InputMaybe<Order_By>;
+  phone?: InputMaybe<Order_By>;
+  phone2?: InputMaybe<Order_By>;
+  staff?: InputMaybe<Order_By>;
+  trash?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+  village_id?: InputMaybe<Order_By>;
+  village_name?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: busines */
+export type Busines_Pk_Columns_Input = {
+  id: Scalars['uuid'];
+};
+
+/** ຂະແໜງການ [ກະ​ສິ​ກຳ​, ການ​ຄ້າ, ບໍ​ລິ​ການ, ຫັດ​ຖະ​ກຳ, ອຸດ​​ສາ​ຫະ​ກຳ] */
+export type Busines_Sector = {
+  __typename?: 'busines_sector';
+  active?: Maybe<Scalars['Boolean']>;
+  /** An array relationship */
+  busines: Array<Busines>;
+  /** An aggregate relationship */
+  busines_aggregate: Busines_Aggregate;
+  created_at: Scalars['timestamptz'];
+  en: Scalars['String'];
+  id: Scalars['String'];
+  lo: Scalars['String'];
+  updated_at: Scalars['timestamptz'];
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+
+/** ຂະແໜງການ [ກະ​ສິ​ກຳ​, ການ​ຄ້າ, ບໍ​ລິ​ການ, ຫັດ​ຖະ​ກຳ, ອຸດ​​ສາ​ຫະ​ກຳ] */
+export type Busines_SectorBusinesArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Order_By>>;
+  where?: InputMaybe<Busines_Bool_Exp>;
+};
+
+
+/** ຂະແໜງການ [ກະ​ສິ​ກຳ​, ການ​ຄ້າ, ບໍ​ລິ​ການ, ຫັດ​ຖະ​ກຳ, ອຸດ​​ສາ​ຫະ​ກຳ] */
+export type Busines_SectorBusines_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Order_By>>;
+  where?: InputMaybe<Busines_Bool_Exp>;
+};
+
+/** aggregated selection of "busines_sector" */
+export type Busines_Sector_Aggregate = {
+  __typename?: 'busines_sector_aggregate';
+  aggregate?: Maybe<Busines_Sector_Aggregate_Fields>;
+  nodes: Array<Busines_Sector>;
+};
+
+/** aggregate fields of "busines_sector" */
+export type Busines_Sector_Aggregate_Fields = {
+  __typename?: 'busines_sector_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Busines_Sector_Max_Fields>;
+  min?: Maybe<Busines_Sector_Min_Fields>;
+};
+
+
+/** aggregate fields of "busines_sector" */
+export type Busines_Sector_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Busines_Sector_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "busines_sector". All fields are combined with a logical 'AND'. */
+export type Busines_Sector_Bool_Exp = {
+  _and?: InputMaybe<Array<Busines_Sector_Bool_Exp>>;
+  _not?: InputMaybe<Busines_Sector_Bool_Exp>;
+  _or?: InputMaybe<Array<Busines_Sector_Bool_Exp>>;
+  active?: InputMaybe<Boolean_Comparison_Exp>;
+  busines?: InputMaybe<Busines_Bool_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  en?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  lo?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user_id?: InputMaybe<Uuid_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "busines_sector" */
+export enum Busines_Sector_Constraint {
+  /** unique or primary key constraint */
+  BusinesSectorPkey = 'busines_sector_pkey'
+}
+
+/** input type for inserting data into table "busines_sector" */
+export type Busines_Sector_Insert_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  busines?: InputMaybe<Busines_Arr_Rel_Insert_Input>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  en?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  lo?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** aggregate max on columns */
+export type Busines_Sector_Max_Fields = {
+  __typename?: 'busines_sector_max_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  en?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  lo?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** aggregate min on columns */
+export type Busines_Sector_Min_Fields = {
+  __typename?: 'busines_sector_min_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  en?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  lo?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** response of any mutation on the table "busines_sector" */
+export type Busines_Sector_Mutation_Response = {
+  __typename?: 'busines_sector_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Busines_Sector>;
+};
+
+/** input type for inserting object relation for remote table "busines_sector" */
+export type Busines_Sector_Obj_Rel_Insert_Input = {
+  data: Busines_Sector_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Busines_Sector_On_Conflict>;
+};
+
+/** on_conflict condition type for table "busines_sector" */
+export type Busines_Sector_On_Conflict = {
+  constraint: Busines_Sector_Constraint;
+  update_columns?: Array<Busines_Sector_Update_Column>;
+  where?: InputMaybe<Busines_Sector_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "busines_sector". */
+export type Busines_Sector_Order_By = {
+  active?: InputMaybe<Order_By>;
+  busines_aggregate?: InputMaybe<Busines_Aggregate_Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  en?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  lo?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: busines_sector */
+export type Busines_Sector_Pk_Columns_Input = {
+  id: Scalars['String'];
+};
+
+/** select columns of table "busines_sector" */
+export enum Busines_Sector_Select_Column {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  En = 'en',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Lo = 'lo',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "busines_sector" */
+export type Busines_Sector_Set_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  en?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  lo?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** update columns of table "busines_sector" */
+export enum Busines_Sector_Update_Column {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  En = 'en',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Lo = 'lo',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** select columns of table "busines" */
+export enum Busines_Select_Column {
+  /** column name */
+  Address = 'address',
+  /** column name */
+  BusinesClassId = 'busines_class_id',
+  /** column name */
+  BusinesSectorId = 'busines_sector_id',
+  /** column name */
+  BusinesSizeId = 'busines_size_id',
+  /** column name */
+  BusinesTypeId = 'busines_type_id',
+  /** column name */
+  CertificateNo = 'certificate_no',
+  /** column name */
+  Code = 'code',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  DefaultAccountId = 'default_account_id',
+  /** column name */
+  Describe = 'describe',
+  /** column name */
+  En = 'en',
+  /** column name */
+  Gender = 'gender',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  IsCondition = 'is_condition',
+  /** column name */
+  Lo = 'lo',
+  /** column name */
+  NumberOfAssets = 'number_of_assets',
+  /** column name */
+  Owner = 'owner',
+  /** column name */
+  Phone = 'phone',
+  /** column name */
+  Phone2 = 'phone2',
+  /** column name */
+  Staff = 'staff',
+  /** column name */
+  Trash = 'trash',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id',
+  /** column name */
+  VillageId = 'village_id',
+  /** column name */
+  VillageName = 'village_name'
+}
+
+/** input type for updating data in table "busines" */
+export type Busines_Set_Input = {
+  address?: InputMaybe<Scalars['String']>;
+  busines_class_id?: InputMaybe<Scalars['String']>;
+  busines_sector_id?: InputMaybe<Scalars['String']>;
+  busines_size_id?: InputMaybe<Scalars['String']>;
+  busines_type_id?: InputMaybe<Scalars['String']>;
+  /** ເລກທີໃບທະບຽນວິ​ສາ​ຫະ​ກິດ [4372/ຫຈທ, 6178/ຫຈທ] */
+  certificate_no?: InputMaybe<Scalars['String']>;
+  code?: InputMaybe<Scalars['String']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  default_account_id?: InputMaybe<Scalars['String']>;
+  /** ກິດ​ຈະ​ກຳຂອງ​ທຸ​ລະ​ກິດ (ອະ​ທິ​ບາຍ​ລະ​ອຽດ) [ຂາຍເຄື່ອງກໍ່ສ້າງ, ພິມປະຕິທິນ(ຫ້ອຍຝາ,ຕັ້ງໂຕະ,ບັດອໍາພອນປີໃໝ່] */
+  describe?: InputMaybe<Scalars['String']>;
+  en?: InputMaybe<Scalars['String']>;
+  gender?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  is_condition?: InputMaybe<Scalars['Boolean']>;
+  lo?: InputMaybe<Scalars['String']>;
+  /** ຈຳ​ນວນ​ຊັບ​ສິນ​​ທາງ​ທຸ​ລະ​ກິດ  (LAK) */
+  number_of_assets?: InputMaybe<Scalars['numeric']>;
+  owner?: InputMaybe<Scalars['String']>;
+  phone?: InputMaybe<Scalars['String']>;
+  phone2?: InputMaybe<Scalars['String']>;
+  staff?: InputMaybe<Scalars['Int']>;
+  trash?: InputMaybe<Scalars['Boolean']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+  village_id?: InputMaybe<Scalars['String']>;
+  village_name?: InputMaybe<Scalars['String']>;
+};
+
+/** "​ຂະ​ໜາດ​ທຸ​ລະ​ກິດ [ຈຸນ​ລະ​ພາກ, ນ້ອຍ, ກາງ] "​ຂະ​ໜາດ​ທຸ​ລະ​ກິດ [ຈຸນ​ລະ​ພາກ, ນ້ອຍ, ກາງ] */
+export type Busines_Size = {
+  __typename?: 'busines_size';
+  active?: Maybe<Scalars['Boolean']>;
+  /** An array relationship */
+  busines: Array<Busines>;
+  /** An aggregate relationship */
+  busines_aggregate: Busines_Aggregate;
+  created_at: Scalars['timestamptz'];
+  en: Scalars['String'];
+  id: Scalars['String'];
+  lo: Scalars['String'];
+  updated_at: Scalars['timestamptz'];
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+
+/** "​ຂະ​ໜາດ​ທຸ​ລະ​ກິດ [ຈຸນ​ລະ​ພາກ, ນ້ອຍ, ກາງ] "​ຂະ​ໜາດ​ທຸ​ລະ​ກິດ [ຈຸນ​ລະ​ພາກ, ນ້ອຍ, ກາງ] */
+export type Busines_SizeBusinesArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Order_By>>;
+  where?: InputMaybe<Busines_Bool_Exp>;
+};
+
+
+/** "​ຂະ​ໜາດ​ທຸ​ລະ​ກິດ [ຈຸນ​ລະ​ພາກ, ນ້ອຍ, ກາງ] "​ຂະ​ໜາດ​ທຸ​ລະ​ກິດ [ຈຸນ​ລະ​ພາກ, ນ້ອຍ, ກາງ] */
+export type Busines_SizeBusines_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Order_By>>;
+  where?: InputMaybe<Busines_Bool_Exp>;
+};
+
+/** aggregated selection of "busines_size" */
+export type Busines_Size_Aggregate = {
+  __typename?: 'busines_size_aggregate';
+  aggregate?: Maybe<Busines_Size_Aggregate_Fields>;
+  nodes: Array<Busines_Size>;
+};
+
+/** aggregate fields of "busines_size" */
+export type Busines_Size_Aggregate_Fields = {
+  __typename?: 'busines_size_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Busines_Size_Max_Fields>;
+  min?: Maybe<Busines_Size_Min_Fields>;
+};
+
+
+/** aggregate fields of "busines_size" */
+export type Busines_Size_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Busines_Size_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "busines_size". All fields are combined with a logical 'AND'. */
+export type Busines_Size_Bool_Exp = {
+  _and?: InputMaybe<Array<Busines_Size_Bool_Exp>>;
+  _not?: InputMaybe<Busines_Size_Bool_Exp>;
+  _or?: InputMaybe<Array<Busines_Size_Bool_Exp>>;
+  active?: InputMaybe<Boolean_Comparison_Exp>;
+  busines?: InputMaybe<Busines_Bool_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  en?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  lo?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user_id?: InputMaybe<Uuid_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "busines_size" */
+export enum Busines_Size_Constraint {
+  /** unique or primary key constraint */
+  BusinesSizePkey = 'busines_size_pkey'
+}
+
+/** input type for inserting data into table "busines_size" */
+export type Busines_Size_Insert_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  busines?: InputMaybe<Busines_Arr_Rel_Insert_Input>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  en?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  lo?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** aggregate max on columns */
+export type Busines_Size_Max_Fields = {
+  __typename?: 'busines_size_max_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  en?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  lo?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** aggregate min on columns */
+export type Busines_Size_Min_Fields = {
+  __typename?: 'busines_size_min_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  en?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  lo?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** response of any mutation on the table "busines_size" */
+export type Busines_Size_Mutation_Response = {
+  __typename?: 'busines_size_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Busines_Size>;
+};
+
+/** input type for inserting object relation for remote table "busines_size" */
+export type Busines_Size_Obj_Rel_Insert_Input = {
+  data: Busines_Size_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Busines_Size_On_Conflict>;
+};
+
+/** on_conflict condition type for table "busines_size" */
+export type Busines_Size_On_Conflict = {
+  constraint: Busines_Size_Constraint;
+  update_columns?: Array<Busines_Size_Update_Column>;
+  where?: InputMaybe<Busines_Size_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "busines_size". */
+export type Busines_Size_Order_By = {
+  active?: InputMaybe<Order_By>;
+  busines_aggregate?: InputMaybe<Busines_Aggregate_Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  en?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  lo?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: busines_size */
+export type Busines_Size_Pk_Columns_Input = {
+  id: Scalars['String'];
+};
+
+/** select columns of table "busines_size" */
+export enum Busines_Size_Select_Column {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  En = 'en',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Lo = 'lo',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "busines_size" */
+export type Busines_Size_Set_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  en?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  lo?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** update columns of table "busines_size" */
+export enum Busines_Size_Update_Column {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  En = 'en',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Lo = 'lo',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** aggregate stddev on columns */
+export type Busines_Stddev_Fields = {
+  __typename?: 'busines_stddev_fields';
+  /** ຈຳ​ນວນ​ຊັບ​ສິນ​​ທາງ​ທຸ​ລະ​ກິດ  (LAK) */
+  number_of_assets?: Maybe<Scalars['Float']>;
+  staff?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "busines" */
+export type Busines_Stddev_Order_By = {
+  /** ຈຳ​ນວນ​ຊັບ​ສິນ​​ທາງ​ທຸ​ລະ​ກິດ  (LAK) */
+  number_of_assets?: InputMaybe<Order_By>;
+  staff?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Busines_Stddev_Pop_Fields = {
+  __typename?: 'busines_stddev_pop_fields';
+  /** ຈຳ​ນວນ​ຊັບ​ສິນ​​ທາງ​ທຸ​ລະ​ກິດ  (LAK) */
+  number_of_assets?: Maybe<Scalars['Float']>;
+  staff?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "busines" */
+export type Busines_Stddev_Pop_Order_By = {
+  /** ຈຳ​ນວນ​ຊັບ​ສິນ​​ທາງ​ທຸ​ລະ​ກິດ  (LAK) */
+  number_of_assets?: InputMaybe<Order_By>;
+  staff?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Busines_Stddev_Samp_Fields = {
+  __typename?: 'busines_stddev_samp_fields';
+  /** ຈຳ​ນວນ​ຊັບ​ສິນ​​ທາງ​ທຸ​ລະ​ກິດ  (LAK) */
+  number_of_assets?: Maybe<Scalars['Float']>;
+  staff?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "busines" */
+export type Busines_Stddev_Samp_Order_By = {
+  /** ຈຳ​ນວນ​ຊັບ​ສິນ​​ທາງ​ທຸ​ລະ​ກິດ  (LAK) */
+  number_of_assets?: InputMaybe<Order_By>;
+  staff?: InputMaybe<Order_By>;
+};
+
+/** aggregate sum on columns */
+export type Busines_Sum_Fields = {
+  __typename?: 'busines_sum_fields';
+  /** ຈຳ​ນວນ​ຊັບ​ສິນ​​ທາງ​ທຸ​ລະ​ກິດ  (LAK) */
+  number_of_assets?: Maybe<Scalars['numeric']>;
+  staff?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "busines" */
+export type Busines_Sum_Order_By = {
+  /** ຈຳ​ນວນ​ຊັບ​ສິນ​​ທາງ​ທຸ​ລະ​ກິດ  (LAK) */
+  number_of_assets?: InputMaybe<Order_By>;
+  staff?: InputMaybe<Order_By>;
+};
+
+/** ກິດ​ຈະ​ກຳຂອງ​ທຸ​ລະ​ກິດ (ແຍກ​ປະ​ເພດຈາກ​ຊື່​ທຸ​ລະ​ກິດ) [ຂາຍເຄື່ອງກໍ່ສ້າງ, ໂຮງພິມ] */
+export type Busines_Type = {
+  __typename?: 'busines_type';
+  active?: Maybe<Scalars['Boolean']>;
+  /** An array relationship */
+  busines: Array<Busines>;
+  /** An aggregate relationship */
+  busines_aggregate: Busines_Aggregate;
+  created_at: Scalars['timestamptz'];
+  en: Scalars['String'];
+  id: Scalars['String'];
+  lo: Scalars['String'];
+  updated_at: Scalars['timestamptz'];
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+
+/** ກິດ​ຈະ​ກຳຂອງ​ທຸ​ລະ​ກິດ (ແຍກ​ປະ​ເພດຈາກ​ຊື່​ທຸ​ລະ​ກິດ) [ຂາຍເຄື່ອງກໍ່ສ້າງ, ໂຮງພິມ] */
+export type Busines_TypeBusinesArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Order_By>>;
+  where?: InputMaybe<Busines_Bool_Exp>;
+};
+
+
+/** ກິດ​ຈະ​ກຳຂອງ​ທຸ​ລະ​ກິດ (ແຍກ​ປະ​ເພດຈາກ​ຊື່​ທຸ​ລະ​ກິດ) [ຂາຍເຄື່ອງກໍ່ສ້າງ, ໂຮງພິມ] */
+export type Busines_TypeBusines_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Order_By>>;
+  where?: InputMaybe<Busines_Bool_Exp>;
+};
+
+/** aggregated selection of "busines_type" */
+export type Busines_Type_Aggregate = {
+  __typename?: 'busines_type_aggregate';
+  aggregate?: Maybe<Busines_Type_Aggregate_Fields>;
+  nodes: Array<Busines_Type>;
+};
+
+/** aggregate fields of "busines_type" */
+export type Busines_Type_Aggregate_Fields = {
+  __typename?: 'busines_type_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Busines_Type_Max_Fields>;
+  min?: Maybe<Busines_Type_Min_Fields>;
+};
+
+
+/** aggregate fields of "busines_type" */
+export type Busines_Type_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Busines_Type_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "busines_type". All fields are combined with a logical 'AND'. */
+export type Busines_Type_Bool_Exp = {
+  _and?: InputMaybe<Array<Busines_Type_Bool_Exp>>;
+  _not?: InputMaybe<Busines_Type_Bool_Exp>;
+  _or?: InputMaybe<Array<Busines_Type_Bool_Exp>>;
+  active?: InputMaybe<Boolean_Comparison_Exp>;
+  busines?: InputMaybe<Busines_Bool_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  en?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  lo?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user_id?: InputMaybe<Uuid_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "busines_type" */
+export enum Busines_Type_Constraint {
+  /** unique or primary key constraint */
+  BusinesTypePkey = 'busines_type_pkey'
+}
+
+/** input type for inserting data into table "busines_type" */
+export type Busines_Type_Insert_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  busines?: InputMaybe<Busines_Arr_Rel_Insert_Input>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  en?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  lo?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** aggregate max on columns */
+export type Busines_Type_Max_Fields = {
+  __typename?: 'busines_type_max_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  en?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  lo?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** aggregate min on columns */
+export type Busines_Type_Min_Fields = {
+  __typename?: 'busines_type_min_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  en?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  lo?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** response of any mutation on the table "busines_type" */
+export type Busines_Type_Mutation_Response = {
+  __typename?: 'busines_type_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Busines_Type>;
+};
+
+/** input type for inserting object relation for remote table "busines_type" */
+export type Busines_Type_Obj_Rel_Insert_Input = {
+  data: Busines_Type_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Busines_Type_On_Conflict>;
+};
+
+/** on_conflict condition type for table "busines_type" */
+export type Busines_Type_On_Conflict = {
+  constraint: Busines_Type_Constraint;
+  update_columns?: Array<Busines_Type_Update_Column>;
+  where?: InputMaybe<Busines_Type_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "busines_type". */
+export type Busines_Type_Order_By = {
+  active?: InputMaybe<Order_By>;
+  busines_aggregate?: InputMaybe<Busines_Aggregate_Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  en?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  lo?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: busines_type */
+export type Busines_Type_Pk_Columns_Input = {
+  id: Scalars['String'];
+};
+
+/** select columns of table "busines_type" */
+export enum Busines_Type_Select_Column {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  En = 'en',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Lo = 'lo',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "busines_type" */
+export type Busines_Type_Set_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  en?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  lo?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** update columns of table "busines_type" */
+export enum Busines_Type_Update_Column {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  En = 'en',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Lo = 'lo',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** update columns of table "busines" */
+export enum Busines_Update_Column {
+  /** column name */
+  Address = 'address',
+  /** column name */
+  BusinesClassId = 'busines_class_id',
+  /** column name */
+  BusinesSectorId = 'busines_sector_id',
+  /** column name */
+  BusinesSizeId = 'busines_size_id',
+  /** column name */
+  BusinesTypeId = 'busines_type_id',
+  /** column name */
+  CertificateNo = 'certificate_no',
+  /** column name */
+  Code = 'code',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  DefaultAccountId = 'default_account_id',
+  /** column name */
+  Describe = 'describe',
+  /** column name */
+  En = 'en',
+  /** column name */
+  Gender = 'gender',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  IsCondition = 'is_condition',
+  /** column name */
+  Lo = 'lo',
+  /** column name */
+  NumberOfAssets = 'number_of_assets',
+  /** column name */
+  Owner = 'owner',
+  /** column name */
+  Phone = 'phone',
+  /** column name */
+  Phone2 = 'phone2',
+  /** column name */
+  Staff = 'staff',
+  /** column name */
+  Trash = 'trash',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id',
+  /** column name */
+  VillageId = 'village_id',
+  /** column name */
+  VillageName = 'village_name'
+}
+
+/** aggregate var_pop on columns */
+export type Busines_Var_Pop_Fields = {
+  __typename?: 'busines_var_pop_fields';
+  /** ຈຳ​ນວນ​ຊັບ​ສິນ​​ທາງ​ທຸ​ລະ​ກິດ  (LAK) */
+  number_of_assets?: Maybe<Scalars['Float']>;
+  staff?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "busines" */
+export type Busines_Var_Pop_Order_By = {
+  /** ຈຳ​ນວນ​ຊັບ​ສິນ​​ທາງ​ທຸ​ລະ​ກິດ  (LAK) */
+  number_of_assets?: InputMaybe<Order_By>;
+  staff?: InputMaybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Busines_Var_Samp_Fields = {
+  __typename?: 'busines_var_samp_fields';
+  /** ຈຳ​ນວນ​ຊັບ​ສິນ​​ທາງ​ທຸ​ລະ​ກິດ  (LAK) */
+  number_of_assets?: Maybe<Scalars['Float']>;
+  staff?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "busines" */
+export type Busines_Var_Samp_Order_By = {
+  /** ຈຳ​ນວນ​ຊັບ​ສິນ​​ທາງ​ທຸ​ລະ​ກິດ  (LAK) */
+  number_of_assets?: InputMaybe<Order_By>;
+  staff?: InputMaybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Busines_Variance_Fields = {
+  __typename?: 'busines_variance_fields';
+  /** ຈຳ​ນວນ​ຊັບ​ສິນ​​ທາງ​ທຸ​ລະ​ກິດ  (LAK) */
+  number_of_assets?: Maybe<Scalars['Float']>;
+  staff?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "busines" */
+export type Busines_Variance_Order_By = {
+  /** ຈຳ​ນວນ​ຊັບ​ສິນ​​ທາງ​ທຸ​ລະ​ກິດ  (LAK) */
+  number_of_assets?: InputMaybe<Order_By>;
+  staff?: InputMaybe<Order_By>;
+};
+
 /** Boolean expression to compare columns of type "citext". All fields are combined with logical 'AND'. */
 export type Citext_Comparison_Exp = {
   _eq?: InputMaybe<Scalars['citext']>;
@@ -1118,6 +3104,1513 @@ export type Citext_Comparison_Exp = {
   _similar?: InputMaybe<Scalars['citext']>;
 };
 
+/** Boolean expression to compare columns of type "date". All fields are combined with logical 'AND'. */
+export type Date_Comparison_Exp = {
+  _eq?: InputMaybe<Scalars['date']>;
+  _gt?: InputMaybe<Scalars['date']>;
+  _gte?: InputMaybe<Scalars['date']>;
+  _in?: InputMaybe<Array<Scalars['date']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _lt?: InputMaybe<Scalars['date']>;
+  _lte?: InputMaybe<Scalars['date']>;
+  _neq?: InputMaybe<Scalars['date']>;
+  _nin?: InputMaybe<Array<Scalars['date']>>;
+};
+
+/** columns and relationships of "fund" */
+export type Fund = {
+  __typename?: 'fund';
+  active?: Maybe<Scalars['Boolean']>;
+  balance: Scalars['numeric'];
+  budget: Scalars['numeric'];
+  code?: Maybe<Scalars['String']>;
+  created_at: Scalars['timestamptz'];
+  end_date: Scalars['date'];
+  /** An array relationship */
+  fund_contracts: Array<Fund_Contract>;
+  /** An aggregate relationship */
+  fund_contracts_aggregate: Fund_Contract_Aggregate;
+  /** An object relationship */
+  fund_src: Fund_Src;
+  fund_src_id: Scalars['String'];
+  id: Scalars['uuid'];
+  start_date: Scalars['date'];
+  title: Scalars['String'];
+  updated_at: Scalars['timestamptz'];
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+
+/** columns and relationships of "fund" */
+export type FundFund_ContractsArgs = {
+  distinct_on?: InputMaybe<Array<Fund_Contract_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Fund_Contract_Order_By>>;
+  where?: InputMaybe<Fund_Contract_Bool_Exp>;
+};
+
+
+/** columns and relationships of "fund" */
+export type FundFund_Contracts_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Fund_Contract_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Fund_Contract_Order_By>>;
+  where?: InputMaybe<Fund_Contract_Bool_Exp>;
+};
+
+/** aggregated selection of "fund" */
+export type Fund_Aggregate = {
+  __typename?: 'fund_aggregate';
+  aggregate?: Maybe<Fund_Aggregate_Fields>;
+  nodes: Array<Fund>;
+};
+
+/** aggregate fields of "fund" */
+export type Fund_Aggregate_Fields = {
+  __typename?: 'fund_aggregate_fields';
+  avg?: Maybe<Fund_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Fund_Max_Fields>;
+  min?: Maybe<Fund_Min_Fields>;
+  stddev?: Maybe<Fund_Stddev_Fields>;
+  stddev_pop?: Maybe<Fund_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Fund_Stddev_Samp_Fields>;
+  sum?: Maybe<Fund_Sum_Fields>;
+  var_pop?: Maybe<Fund_Var_Pop_Fields>;
+  var_samp?: Maybe<Fund_Var_Samp_Fields>;
+  variance?: Maybe<Fund_Variance_Fields>;
+};
+
+
+/** aggregate fields of "fund" */
+export type Fund_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Fund_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "fund" */
+export type Fund_Aggregate_Order_By = {
+  avg?: InputMaybe<Fund_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Fund_Max_Order_By>;
+  min?: InputMaybe<Fund_Min_Order_By>;
+  stddev?: InputMaybe<Fund_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Fund_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Fund_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Fund_Sum_Order_By>;
+  var_pop?: InputMaybe<Fund_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Fund_Var_Samp_Order_By>;
+  variance?: InputMaybe<Fund_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "fund" */
+export type Fund_Arr_Rel_Insert_Input = {
+  data: Array<Fund_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Fund_On_Conflict>;
+};
+
+/** aggregate avg on columns */
+export type Fund_Avg_Fields = {
+  __typename?: 'fund_avg_fields';
+  balance?: Maybe<Scalars['Float']>;
+  budget?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "fund" */
+export type Fund_Avg_Order_By = {
+  balance?: InputMaybe<Order_By>;
+  budget?: InputMaybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "fund". All fields are combined with a logical 'AND'. */
+export type Fund_Bool_Exp = {
+  _and?: InputMaybe<Array<Fund_Bool_Exp>>;
+  _not?: InputMaybe<Fund_Bool_Exp>;
+  _or?: InputMaybe<Array<Fund_Bool_Exp>>;
+  active?: InputMaybe<Boolean_Comparison_Exp>;
+  balance?: InputMaybe<Numeric_Comparison_Exp>;
+  budget?: InputMaybe<Numeric_Comparison_Exp>;
+  code?: InputMaybe<String_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  end_date?: InputMaybe<Date_Comparison_Exp>;
+  fund_contracts?: InputMaybe<Fund_Contract_Bool_Exp>;
+  fund_src?: InputMaybe<Fund_Src_Bool_Exp>;
+  fund_src_id?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<Uuid_Comparison_Exp>;
+  start_date?: InputMaybe<Date_Comparison_Exp>;
+  title?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user_id?: InputMaybe<Uuid_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "fund" */
+export enum Fund_Constraint {
+  /** unique or primary key constraint */
+  FundPkey = 'fund_pkey'
+}
+
+/** columns and relationships of "fund_contract" */
+export type Fund_Contract = {
+  __typename?: 'fund_contract';
+  /** An object relationship */
+  bank: Bank;
+  bank_id: Scalars['String'];
+  budget: Scalars['numeric'];
+  code?: Maybe<Scalars['String']>;
+  created_at: Scalars['timestamptz'];
+  end_date: Scalars['date'];
+  fees: Scalars['numeric'];
+  /** An object relationship */
+  fund: Fund;
+  /** An array relationship */
+  fund_contract_repayments: Array<Fund_Contract_Repayment>;
+  /** An aggregate relationship */
+  fund_contract_repayments_aggregate: Fund_Contract_Repayment_Aggregate;
+  fund_id: Scalars['uuid'];
+  id: Scalars['uuid'];
+  interest: Scalars['numeric'];
+  repayment?: Maybe<Scalars['numeric']>;
+  start_date: Scalars['date'];
+  title: Scalars['String'];
+  trash?: Maybe<Scalars['Boolean']>;
+  updated_at: Scalars['timestamptz'];
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+
+/** columns and relationships of "fund_contract" */
+export type Fund_ContractFund_Contract_RepaymentsArgs = {
+  distinct_on?: InputMaybe<Array<Fund_Contract_Repayment_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Fund_Contract_Repayment_Order_By>>;
+  where?: InputMaybe<Fund_Contract_Repayment_Bool_Exp>;
+};
+
+
+/** columns and relationships of "fund_contract" */
+export type Fund_ContractFund_Contract_Repayments_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Fund_Contract_Repayment_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Fund_Contract_Repayment_Order_By>>;
+  where?: InputMaybe<Fund_Contract_Repayment_Bool_Exp>;
+};
+
+/** aggregated selection of "fund_contract" */
+export type Fund_Contract_Aggregate = {
+  __typename?: 'fund_contract_aggregate';
+  aggregate?: Maybe<Fund_Contract_Aggregate_Fields>;
+  nodes: Array<Fund_Contract>;
+};
+
+/** aggregate fields of "fund_contract" */
+export type Fund_Contract_Aggregate_Fields = {
+  __typename?: 'fund_contract_aggregate_fields';
+  avg?: Maybe<Fund_Contract_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Fund_Contract_Max_Fields>;
+  min?: Maybe<Fund_Contract_Min_Fields>;
+  stddev?: Maybe<Fund_Contract_Stddev_Fields>;
+  stddev_pop?: Maybe<Fund_Contract_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Fund_Contract_Stddev_Samp_Fields>;
+  sum?: Maybe<Fund_Contract_Sum_Fields>;
+  var_pop?: Maybe<Fund_Contract_Var_Pop_Fields>;
+  var_samp?: Maybe<Fund_Contract_Var_Samp_Fields>;
+  variance?: Maybe<Fund_Contract_Variance_Fields>;
+};
+
+
+/** aggregate fields of "fund_contract" */
+export type Fund_Contract_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Fund_Contract_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "fund_contract" */
+export type Fund_Contract_Aggregate_Order_By = {
+  avg?: InputMaybe<Fund_Contract_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Fund_Contract_Max_Order_By>;
+  min?: InputMaybe<Fund_Contract_Min_Order_By>;
+  stddev?: InputMaybe<Fund_Contract_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Fund_Contract_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Fund_Contract_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Fund_Contract_Sum_Order_By>;
+  var_pop?: InputMaybe<Fund_Contract_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Fund_Contract_Var_Samp_Order_By>;
+  variance?: InputMaybe<Fund_Contract_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "fund_contract" */
+export type Fund_Contract_Arr_Rel_Insert_Input = {
+  data: Array<Fund_Contract_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Fund_Contract_On_Conflict>;
+};
+
+/** aggregate avg on columns */
+export type Fund_Contract_Avg_Fields = {
+  __typename?: 'fund_contract_avg_fields';
+  budget?: Maybe<Scalars['Float']>;
+  fees?: Maybe<Scalars['Float']>;
+  interest?: Maybe<Scalars['Float']>;
+  repayment?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "fund_contract" */
+export type Fund_Contract_Avg_Order_By = {
+  budget?: InputMaybe<Order_By>;
+  fees?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+  repayment?: InputMaybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "fund_contract". All fields are combined with a logical 'AND'. */
+export type Fund_Contract_Bool_Exp = {
+  _and?: InputMaybe<Array<Fund_Contract_Bool_Exp>>;
+  _not?: InputMaybe<Fund_Contract_Bool_Exp>;
+  _or?: InputMaybe<Array<Fund_Contract_Bool_Exp>>;
+  bank?: InputMaybe<Bank_Bool_Exp>;
+  bank_id?: InputMaybe<String_Comparison_Exp>;
+  budget?: InputMaybe<Numeric_Comparison_Exp>;
+  code?: InputMaybe<String_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  end_date?: InputMaybe<Date_Comparison_Exp>;
+  fees?: InputMaybe<Numeric_Comparison_Exp>;
+  fund?: InputMaybe<Fund_Bool_Exp>;
+  fund_contract_repayments?: InputMaybe<Fund_Contract_Repayment_Bool_Exp>;
+  fund_id?: InputMaybe<Uuid_Comparison_Exp>;
+  id?: InputMaybe<Uuid_Comparison_Exp>;
+  interest?: InputMaybe<Numeric_Comparison_Exp>;
+  repayment?: InputMaybe<Numeric_Comparison_Exp>;
+  start_date?: InputMaybe<Date_Comparison_Exp>;
+  title?: InputMaybe<String_Comparison_Exp>;
+  trash?: InputMaybe<Boolean_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user_id?: InputMaybe<Uuid_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "fund_contract" */
+export enum Fund_Contract_Constraint {
+  /** unique or primary key constraint */
+  FundContractPkey = 'fund_contract_pkey'
+}
+
+/** input type for incrementing numeric columns in table "fund_contract" */
+export type Fund_Contract_Inc_Input = {
+  budget?: InputMaybe<Scalars['numeric']>;
+  fees?: InputMaybe<Scalars['numeric']>;
+  interest?: InputMaybe<Scalars['numeric']>;
+  repayment?: InputMaybe<Scalars['numeric']>;
+};
+
+/** input type for inserting data into table "fund_contract" */
+export type Fund_Contract_Insert_Input = {
+  bank?: InputMaybe<Bank_Obj_Rel_Insert_Input>;
+  bank_id?: InputMaybe<Scalars['String']>;
+  budget?: InputMaybe<Scalars['numeric']>;
+  code?: InputMaybe<Scalars['String']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  end_date?: InputMaybe<Scalars['date']>;
+  fees?: InputMaybe<Scalars['numeric']>;
+  fund?: InputMaybe<Fund_Obj_Rel_Insert_Input>;
+  fund_contract_repayments?: InputMaybe<Fund_Contract_Repayment_Arr_Rel_Insert_Input>;
+  fund_id?: InputMaybe<Scalars['uuid']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  interest?: InputMaybe<Scalars['numeric']>;
+  repayment?: InputMaybe<Scalars['numeric']>;
+  start_date?: InputMaybe<Scalars['date']>;
+  title?: InputMaybe<Scalars['String']>;
+  trash?: InputMaybe<Scalars['Boolean']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** aggregate max on columns */
+export type Fund_Contract_Max_Fields = {
+  __typename?: 'fund_contract_max_fields';
+  bank_id?: Maybe<Scalars['String']>;
+  budget?: Maybe<Scalars['numeric']>;
+  code?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  end_date?: Maybe<Scalars['date']>;
+  fees?: Maybe<Scalars['numeric']>;
+  fund_id?: Maybe<Scalars['uuid']>;
+  id?: Maybe<Scalars['uuid']>;
+  interest?: Maybe<Scalars['numeric']>;
+  repayment?: Maybe<Scalars['numeric']>;
+  start_date?: Maybe<Scalars['date']>;
+  title?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** order by max() on columns of table "fund_contract" */
+export type Fund_Contract_Max_Order_By = {
+  bank_id?: InputMaybe<Order_By>;
+  budget?: InputMaybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  end_date?: InputMaybe<Order_By>;
+  fees?: InputMaybe<Order_By>;
+  fund_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+  repayment?: InputMaybe<Order_By>;
+  start_date?: InputMaybe<Order_By>;
+  title?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Fund_Contract_Min_Fields = {
+  __typename?: 'fund_contract_min_fields';
+  bank_id?: Maybe<Scalars['String']>;
+  budget?: Maybe<Scalars['numeric']>;
+  code?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  end_date?: Maybe<Scalars['date']>;
+  fees?: Maybe<Scalars['numeric']>;
+  fund_id?: Maybe<Scalars['uuid']>;
+  id?: Maybe<Scalars['uuid']>;
+  interest?: Maybe<Scalars['numeric']>;
+  repayment?: Maybe<Scalars['numeric']>;
+  start_date?: Maybe<Scalars['date']>;
+  title?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** order by min() on columns of table "fund_contract" */
+export type Fund_Contract_Min_Order_By = {
+  bank_id?: InputMaybe<Order_By>;
+  budget?: InputMaybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  end_date?: InputMaybe<Order_By>;
+  fees?: InputMaybe<Order_By>;
+  fund_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+  repayment?: InputMaybe<Order_By>;
+  start_date?: InputMaybe<Order_By>;
+  title?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** response of any mutation on the table "fund_contract" */
+export type Fund_Contract_Mutation_Response = {
+  __typename?: 'fund_contract_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Fund_Contract>;
+};
+
+/** input type for inserting object relation for remote table "fund_contract" */
+export type Fund_Contract_Obj_Rel_Insert_Input = {
+  data: Fund_Contract_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Fund_Contract_On_Conflict>;
+};
+
+/** on_conflict condition type for table "fund_contract" */
+export type Fund_Contract_On_Conflict = {
+  constraint: Fund_Contract_Constraint;
+  update_columns?: Array<Fund_Contract_Update_Column>;
+  where?: InputMaybe<Fund_Contract_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "fund_contract". */
+export type Fund_Contract_Order_By = {
+  bank?: InputMaybe<Bank_Order_By>;
+  bank_id?: InputMaybe<Order_By>;
+  budget?: InputMaybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  end_date?: InputMaybe<Order_By>;
+  fees?: InputMaybe<Order_By>;
+  fund?: InputMaybe<Fund_Order_By>;
+  fund_contract_repayments_aggregate?: InputMaybe<Fund_Contract_Repayment_Aggregate_Order_By>;
+  fund_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+  repayment?: InputMaybe<Order_By>;
+  start_date?: InputMaybe<Order_By>;
+  title?: InputMaybe<Order_By>;
+  trash?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: fund_contract */
+export type Fund_Contract_Pk_Columns_Input = {
+  id: Scalars['uuid'];
+};
+
+/** columns and relationships of "fund_contract_repayment" */
+export type Fund_Contract_Repayment = {
+  __typename?: 'fund_contract_repayment';
+  amount: Scalars['numeric'];
+  created_at: Scalars['timestamptz'];
+  /** An object relationship */
+  fund_contract: Fund_Contract;
+  fund_contract_id: Scalars['uuid'];
+  id: Scalars['uuid'];
+  on_date: Scalars['date'];
+  title: Scalars['String'];
+  trash?: Maybe<Scalars['Boolean']>;
+  updated_at: Scalars['timestamptz'];
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** aggregated selection of "fund_contract_repayment" */
+export type Fund_Contract_Repayment_Aggregate = {
+  __typename?: 'fund_contract_repayment_aggregate';
+  aggregate?: Maybe<Fund_Contract_Repayment_Aggregate_Fields>;
+  nodes: Array<Fund_Contract_Repayment>;
+};
+
+/** aggregate fields of "fund_contract_repayment" */
+export type Fund_Contract_Repayment_Aggregate_Fields = {
+  __typename?: 'fund_contract_repayment_aggregate_fields';
+  avg?: Maybe<Fund_Contract_Repayment_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Fund_Contract_Repayment_Max_Fields>;
+  min?: Maybe<Fund_Contract_Repayment_Min_Fields>;
+  stddev?: Maybe<Fund_Contract_Repayment_Stddev_Fields>;
+  stddev_pop?: Maybe<Fund_Contract_Repayment_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Fund_Contract_Repayment_Stddev_Samp_Fields>;
+  sum?: Maybe<Fund_Contract_Repayment_Sum_Fields>;
+  var_pop?: Maybe<Fund_Contract_Repayment_Var_Pop_Fields>;
+  var_samp?: Maybe<Fund_Contract_Repayment_Var_Samp_Fields>;
+  variance?: Maybe<Fund_Contract_Repayment_Variance_Fields>;
+};
+
+
+/** aggregate fields of "fund_contract_repayment" */
+export type Fund_Contract_Repayment_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Fund_Contract_Repayment_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "fund_contract_repayment" */
+export type Fund_Contract_Repayment_Aggregate_Order_By = {
+  avg?: InputMaybe<Fund_Contract_Repayment_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Fund_Contract_Repayment_Max_Order_By>;
+  min?: InputMaybe<Fund_Contract_Repayment_Min_Order_By>;
+  stddev?: InputMaybe<Fund_Contract_Repayment_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Fund_Contract_Repayment_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Fund_Contract_Repayment_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Fund_Contract_Repayment_Sum_Order_By>;
+  var_pop?: InputMaybe<Fund_Contract_Repayment_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Fund_Contract_Repayment_Var_Samp_Order_By>;
+  variance?: InputMaybe<Fund_Contract_Repayment_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "fund_contract_repayment" */
+export type Fund_Contract_Repayment_Arr_Rel_Insert_Input = {
+  data: Array<Fund_Contract_Repayment_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Fund_Contract_Repayment_On_Conflict>;
+};
+
+/** aggregate avg on columns */
+export type Fund_Contract_Repayment_Avg_Fields = {
+  __typename?: 'fund_contract_repayment_avg_fields';
+  amount?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "fund_contract_repayment" */
+export type Fund_Contract_Repayment_Avg_Order_By = {
+  amount?: InputMaybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "fund_contract_repayment". All fields are combined with a logical 'AND'. */
+export type Fund_Contract_Repayment_Bool_Exp = {
+  _and?: InputMaybe<Array<Fund_Contract_Repayment_Bool_Exp>>;
+  _not?: InputMaybe<Fund_Contract_Repayment_Bool_Exp>;
+  _or?: InputMaybe<Array<Fund_Contract_Repayment_Bool_Exp>>;
+  amount?: InputMaybe<Numeric_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  fund_contract?: InputMaybe<Fund_Contract_Bool_Exp>;
+  fund_contract_id?: InputMaybe<Uuid_Comparison_Exp>;
+  id?: InputMaybe<Uuid_Comparison_Exp>;
+  on_date?: InputMaybe<Date_Comparison_Exp>;
+  title?: InputMaybe<String_Comparison_Exp>;
+  trash?: InputMaybe<Boolean_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user_id?: InputMaybe<Uuid_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "fund_contract_repayment" */
+export enum Fund_Contract_Repayment_Constraint {
+  /** unique or primary key constraint */
+  FundContractRepaymentPkey = 'fund_contract_repayment_pkey'
+}
+
+/** input type for incrementing numeric columns in table "fund_contract_repayment" */
+export type Fund_Contract_Repayment_Inc_Input = {
+  amount?: InputMaybe<Scalars['numeric']>;
+};
+
+/** input type for inserting data into table "fund_contract_repayment" */
+export type Fund_Contract_Repayment_Insert_Input = {
+  amount?: InputMaybe<Scalars['numeric']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  fund_contract?: InputMaybe<Fund_Contract_Obj_Rel_Insert_Input>;
+  fund_contract_id?: InputMaybe<Scalars['uuid']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  on_date?: InputMaybe<Scalars['date']>;
+  title?: InputMaybe<Scalars['String']>;
+  trash?: InputMaybe<Scalars['Boolean']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** aggregate max on columns */
+export type Fund_Contract_Repayment_Max_Fields = {
+  __typename?: 'fund_contract_repayment_max_fields';
+  amount?: Maybe<Scalars['numeric']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  fund_contract_id?: Maybe<Scalars['uuid']>;
+  id?: Maybe<Scalars['uuid']>;
+  on_date?: Maybe<Scalars['date']>;
+  title?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** order by max() on columns of table "fund_contract_repayment" */
+export type Fund_Contract_Repayment_Max_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  fund_contract_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  on_date?: InputMaybe<Order_By>;
+  title?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Fund_Contract_Repayment_Min_Fields = {
+  __typename?: 'fund_contract_repayment_min_fields';
+  amount?: Maybe<Scalars['numeric']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  fund_contract_id?: Maybe<Scalars['uuid']>;
+  id?: Maybe<Scalars['uuid']>;
+  on_date?: Maybe<Scalars['date']>;
+  title?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** order by min() on columns of table "fund_contract_repayment" */
+export type Fund_Contract_Repayment_Min_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  fund_contract_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  on_date?: InputMaybe<Order_By>;
+  title?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** response of any mutation on the table "fund_contract_repayment" */
+export type Fund_Contract_Repayment_Mutation_Response = {
+  __typename?: 'fund_contract_repayment_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Fund_Contract_Repayment>;
+};
+
+/** on_conflict condition type for table "fund_contract_repayment" */
+export type Fund_Contract_Repayment_On_Conflict = {
+  constraint: Fund_Contract_Repayment_Constraint;
+  update_columns?: Array<Fund_Contract_Repayment_Update_Column>;
+  where?: InputMaybe<Fund_Contract_Repayment_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "fund_contract_repayment". */
+export type Fund_Contract_Repayment_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  fund_contract?: InputMaybe<Fund_Contract_Order_By>;
+  fund_contract_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  on_date?: InputMaybe<Order_By>;
+  title?: InputMaybe<Order_By>;
+  trash?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: fund_contract_repayment */
+export type Fund_Contract_Repayment_Pk_Columns_Input = {
+  id: Scalars['uuid'];
+};
+
+/** select columns of table "fund_contract_repayment" */
+export enum Fund_Contract_Repayment_Select_Column {
+  /** column name */
+  Amount = 'amount',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  FundContractId = 'fund_contract_id',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  OnDate = 'on_date',
+  /** column name */
+  Title = 'title',
+  /** column name */
+  Trash = 'trash',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "fund_contract_repayment" */
+export type Fund_Contract_Repayment_Set_Input = {
+  amount?: InputMaybe<Scalars['numeric']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  fund_contract_id?: InputMaybe<Scalars['uuid']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  on_date?: InputMaybe<Scalars['date']>;
+  title?: InputMaybe<Scalars['String']>;
+  trash?: InputMaybe<Scalars['Boolean']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** aggregate stddev on columns */
+export type Fund_Contract_Repayment_Stddev_Fields = {
+  __typename?: 'fund_contract_repayment_stddev_fields';
+  amount?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "fund_contract_repayment" */
+export type Fund_Contract_Repayment_Stddev_Order_By = {
+  amount?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Fund_Contract_Repayment_Stddev_Pop_Fields = {
+  __typename?: 'fund_contract_repayment_stddev_pop_fields';
+  amount?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "fund_contract_repayment" */
+export type Fund_Contract_Repayment_Stddev_Pop_Order_By = {
+  amount?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Fund_Contract_Repayment_Stddev_Samp_Fields = {
+  __typename?: 'fund_contract_repayment_stddev_samp_fields';
+  amount?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "fund_contract_repayment" */
+export type Fund_Contract_Repayment_Stddev_Samp_Order_By = {
+  amount?: InputMaybe<Order_By>;
+};
+
+/** aggregate sum on columns */
+export type Fund_Contract_Repayment_Sum_Fields = {
+  __typename?: 'fund_contract_repayment_sum_fields';
+  amount?: Maybe<Scalars['numeric']>;
+};
+
+/** order by sum() on columns of table "fund_contract_repayment" */
+export type Fund_Contract_Repayment_Sum_Order_By = {
+  amount?: InputMaybe<Order_By>;
+};
+
+/** update columns of table "fund_contract_repayment" */
+export enum Fund_Contract_Repayment_Update_Column {
+  /** column name */
+  Amount = 'amount',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  FundContractId = 'fund_contract_id',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  OnDate = 'on_date',
+  /** column name */
+  Title = 'title',
+  /** column name */
+  Trash = 'trash',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** aggregate var_pop on columns */
+export type Fund_Contract_Repayment_Var_Pop_Fields = {
+  __typename?: 'fund_contract_repayment_var_pop_fields';
+  amount?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "fund_contract_repayment" */
+export type Fund_Contract_Repayment_Var_Pop_Order_By = {
+  amount?: InputMaybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Fund_Contract_Repayment_Var_Samp_Fields = {
+  __typename?: 'fund_contract_repayment_var_samp_fields';
+  amount?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "fund_contract_repayment" */
+export type Fund_Contract_Repayment_Var_Samp_Order_By = {
+  amount?: InputMaybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Fund_Contract_Repayment_Variance_Fields = {
+  __typename?: 'fund_contract_repayment_variance_fields';
+  amount?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "fund_contract_repayment" */
+export type Fund_Contract_Repayment_Variance_Order_By = {
+  amount?: InputMaybe<Order_By>;
+};
+
+/** select columns of table "fund_contract" */
+export enum Fund_Contract_Select_Column {
+  /** column name */
+  BankId = 'bank_id',
+  /** column name */
+  Budget = 'budget',
+  /** column name */
+  Code = 'code',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  EndDate = 'end_date',
+  /** column name */
+  Fees = 'fees',
+  /** column name */
+  FundId = 'fund_id',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Interest = 'interest',
+  /** column name */
+  Repayment = 'repayment',
+  /** column name */
+  StartDate = 'start_date',
+  /** column name */
+  Title = 'title',
+  /** column name */
+  Trash = 'trash',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "fund_contract" */
+export type Fund_Contract_Set_Input = {
+  bank_id?: InputMaybe<Scalars['String']>;
+  budget?: InputMaybe<Scalars['numeric']>;
+  code?: InputMaybe<Scalars['String']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  end_date?: InputMaybe<Scalars['date']>;
+  fees?: InputMaybe<Scalars['numeric']>;
+  fund_id?: InputMaybe<Scalars['uuid']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  interest?: InputMaybe<Scalars['numeric']>;
+  repayment?: InputMaybe<Scalars['numeric']>;
+  start_date?: InputMaybe<Scalars['date']>;
+  title?: InputMaybe<Scalars['String']>;
+  trash?: InputMaybe<Scalars['Boolean']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** aggregate stddev on columns */
+export type Fund_Contract_Stddev_Fields = {
+  __typename?: 'fund_contract_stddev_fields';
+  budget?: Maybe<Scalars['Float']>;
+  fees?: Maybe<Scalars['Float']>;
+  interest?: Maybe<Scalars['Float']>;
+  repayment?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "fund_contract" */
+export type Fund_Contract_Stddev_Order_By = {
+  budget?: InputMaybe<Order_By>;
+  fees?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+  repayment?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Fund_Contract_Stddev_Pop_Fields = {
+  __typename?: 'fund_contract_stddev_pop_fields';
+  budget?: Maybe<Scalars['Float']>;
+  fees?: Maybe<Scalars['Float']>;
+  interest?: Maybe<Scalars['Float']>;
+  repayment?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "fund_contract" */
+export type Fund_Contract_Stddev_Pop_Order_By = {
+  budget?: InputMaybe<Order_By>;
+  fees?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+  repayment?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Fund_Contract_Stddev_Samp_Fields = {
+  __typename?: 'fund_contract_stddev_samp_fields';
+  budget?: Maybe<Scalars['Float']>;
+  fees?: Maybe<Scalars['Float']>;
+  interest?: Maybe<Scalars['Float']>;
+  repayment?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "fund_contract" */
+export type Fund_Contract_Stddev_Samp_Order_By = {
+  budget?: InputMaybe<Order_By>;
+  fees?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+  repayment?: InputMaybe<Order_By>;
+};
+
+/** aggregate sum on columns */
+export type Fund_Contract_Sum_Fields = {
+  __typename?: 'fund_contract_sum_fields';
+  budget?: Maybe<Scalars['numeric']>;
+  fees?: Maybe<Scalars['numeric']>;
+  interest?: Maybe<Scalars['numeric']>;
+  repayment?: Maybe<Scalars['numeric']>;
+};
+
+/** order by sum() on columns of table "fund_contract" */
+export type Fund_Contract_Sum_Order_By = {
+  budget?: InputMaybe<Order_By>;
+  fees?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+  repayment?: InputMaybe<Order_By>;
+};
+
+/** update columns of table "fund_contract" */
+export enum Fund_Contract_Update_Column {
+  /** column name */
+  BankId = 'bank_id',
+  /** column name */
+  Budget = 'budget',
+  /** column name */
+  Code = 'code',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  EndDate = 'end_date',
+  /** column name */
+  Fees = 'fees',
+  /** column name */
+  FundId = 'fund_id',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Interest = 'interest',
+  /** column name */
+  Repayment = 'repayment',
+  /** column name */
+  StartDate = 'start_date',
+  /** column name */
+  Title = 'title',
+  /** column name */
+  Trash = 'trash',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** aggregate var_pop on columns */
+export type Fund_Contract_Var_Pop_Fields = {
+  __typename?: 'fund_contract_var_pop_fields';
+  budget?: Maybe<Scalars['Float']>;
+  fees?: Maybe<Scalars['Float']>;
+  interest?: Maybe<Scalars['Float']>;
+  repayment?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "fund_contract" */
+export type Fund_Contract_Var_Pop_Order_By = {
+  budget?: InputMaybe<Order_By>;
+  fees?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+  repayment?: InputMaybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Fund_Contract_Var_Samp_Fields = {
+  __typename?: 'fund_contract_var_samp_fields';
+  budget?: Maybe<Scalars['Float']>;
+  fees?: Maybe<Scalars['Float']>;
+  interest?: Maybe<Scalars['Float']>;
+  repayment?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "fund_contract" */
+export type Fund_Contract_Var_Samp_Order_By = {
+  budget?: InputMaybe<Order_By>;
+  fees?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+  repayment?: InputMaybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Fund_Contract_Variance_Fields = {
+  __typename?: 'fund_contract_variance_fields';
+  budget?: Maybe<Scalars['Float']>;
+  fees?: Maybe<Scalars['Float']>;
+  interest?: Maybe<Scalars['Float']>;
+  repayment?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "fund_contract" */
+export type Fund_Contract_Variance_Order_By = {
+  budget?: InputMaybe<Order_By>;
+  fees?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+  repayment?: InputMaybe<Order_By>;
+};
+
+/** input type for incrementing numeric columns in table "fund" */
+export type Fund_Inc_Input = {
+  balance?: InputMaybe<Scalars['numeric']>;
+  budget?: InputMaybe<Scalars['numeric']>;
+};
+
+/** input type for inserting data into table "fund" */
+export type Fund_Insert_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  balance?: InputMaybe<Scalars['numeric']>;
+  budget?: InputMaybe<Scalars['numeric']>;
+  code?: InputMaybe<Scalars['String']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  end_date?: InputMaybe<Scalars['date']>;
+  fund_contracts?: InputMaybe<Fund_Contract_Arr_Rel_Insert_Input>;
+  fund_src?: InputMaybe<Fund_Src_Obj_Rel_Insert_Input>;
+  fund_src_id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  start_date?: InputMaybe<Scalars['date']>;
+  title?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** aggregate max on columns */
+export type Fund_Max_Fields = {
+  __typename?: 'fund_max_fields';
+  balance?: Maybe<Scalars['numeric']>;
+  budget?: Maybe<Scalars['numeric']>;
+  code?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  end_date?: Maybe<Scalars['date']>;
+  fund_src_id?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['uuid']>;
+  start_date?: Maybe<Scalars['date']>;
+  title?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** order by max() on columns of table "fund" */
+export type Fund_Max_Order_By = {
+  balance?: InputMaybe<Order_By>;
+  budget?: InputMaybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  end_date?: InputMaybe<Order_By>;
+  fund_src_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  start_date?: InputMaybe<Order_By>;
+  title?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Fund_Min_Fields = {
+  __typename?: 'fund_min_fields';
+  balance?: Maybe<Scalars['numeric']>;
+  budget?: Maybe<Scalars['numeric']>;
+  code?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  end_date?: Maybe<Scalars['date']>;
+  fund_src_id?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['uuid']>;
+  start_date?: Maybe<Scalars['date']>;
+  title?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** order by min() on columns of table "fund" */
+export type Fund_Min_Order_By = {
+  balance?: InputMaybe<Order_By>;
+  budget?: InputMaybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  end_date?: InputMaybe<Order_By>;
+  fund_src_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  start_date?: InputMaybe<Order_By>;
+  title?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** response of any mutation on the table "fund" */
+export type Fund_Mutation_Response = {
+  __typename?: 'fund_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Fund>;
+};
+
+/** input type for inserting object relation for remote table "fund" */
+export type Fund_Obj_Rel_Insert_Input = {
+  data: Fund_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Fund_On_Conflict>;
+};
+
+/** on_conflict condition type for table "fund" */
+export type Fund_On_Conflict = {
+  constraint: Fund_Constraint;
+  update_columns?: Array<Fund_Update_Column>;
+  where?: InputMaybe<Fund_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "fund". */
+export type Fund_Order_By = {
+  active?: InputMaybe<Order_By>;
+  balance?: InputMaybe<Order_By>;
+  budget?: InputMaybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  end_date?: InputMaybe<Order_By>;
+  fund_contracts_aggregate?: InputMaybe<Fund_Contract_Aggregate_Order_By>;
+  fund_src?: InputMaybe<Fund_Src_Order_By>;
+  fund_src_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  start_date?: InputMaybe<Order_By>;
+  title?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: fund */
+export type Fund_Pk_Columns_Input = {
+  id: Scalars['uuid'];
+};
+
+/** select columns of table "fund" */
+export enum Fund_Select_Column {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  Balance = 'balance',
+  /** column name */
+  Budget = 'budget',
+  /** column name */
+  Code = 'code',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  EndDate = 'end_date',
+  /** column name */
+  FundSrcId = 'fund_src_id',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  StartDate = 'start_date',
+  /** column name */
+  Title = 'title',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "fund" */
+export type Fund_Set_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  balance?: InputMaybe<Scalars['numeric']>;
+  budget?: InputMaybe<Scalars['numeric']>;
+  code?: InputMaybe<Scalars['String']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  end_date?: InputMaybe<Scalars['date']>;
+  fund_src_id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  start_date?: InputMaybe<Scalars['date']>;
+  title?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** The fund source table */
+export type Fund_Src = {
+  __typename?: 'fund_src';
+  active?: Maybe<Scalars['Boolean']>;
+  created_at: Scalars['timestamptz'];
+  en?: Maybe<Scalars['String']>;
+  /** An array relationship */
+  funds: Array<Fund>;
+  /** An aggregate relationship */
+  funds_aggregate: Fund_Aggregate;
+  id: Scalars['String'];
+  /** The fund source name */
+  lo: Scalars['String'];
+  logo?: Maybe<Scalars['String']>;
+  updated_at: Scalars['timestamptz'];
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+
+/** The fund source table */
+export type Fund_SrcFundsArgs = {
+  distinct_on?: InputMaybe<Array<Fund_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Fund_Order_By>>;
+  where?: InputMaybe<Fund_Bool_Exp>;
+};
+
+
+/** The fund source table */
+export type Fund_SrcFunds_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Fund_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Fund_Order_By>>;
+  where?: InputMaybe<Fund_Bool_Exp>;
+};
+
+/** aggregated selection of "fund_src" */
+export type Fund_Src_Aggregate = {
+  __typename?: 'fund_src_aggregate';
+  aggregate?: Maybe<Fund_Src_Aggregate_Fields>;
+  nodes: Array<Fund_Src>;
+};
+
+/** aggregate fields of "fund_src" */
+export type Fund_Src_Aggregate_Fields = {
+  __typename?: 'fund_src_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Fund_Src_Max_Fields>;
+  min?: Maybe<Fund_Src_Min_Fields>;
+};
+
+
+/** aggregate fields of "fund_src" */
+export type Fund_Src_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Fund_Src_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "fund_src". All fields are combined with a logical 'AND'. */
+export type Fund_Src_Bool_Exp = {
+  _and?: InputMaybe<Array<Fund_Src_Bool_Exp>>;
+  _not?: InputMaybe<Fund_Src_Bool_Exp>;
+  _or?: InputMaybe<Array<Fund_Src_Bool_Exp>>;
+  active?: InputMaybe<Boolean_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  en?: InputMaybe<String_Comparison_Exp>;
+  funds?: InputMaybe<Fund_Bool_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  lo?: InputMaybe<String_Comparison_Exp>;
+  logo?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user_id?: InputMaybe<Uuid_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "fund_src" */
+export enum Fund_Src_Constraint {
+  /** unique or primary key constraint */
+  FundSrcPkey = 'fund_src_pkey'
+}
+
+/** input type for inserting data into table "fund_src" */
+export type Fund_Src_Insert_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  en?: InputMaybe<Scalars['String']>;
+  funds?: InputMaybe<Fund_Arr_Rel_Insert_Input>;
+  id?: InputMaybe<Scalars['String']>;
+  /** The fund source name */
+  lo?: InputMaybe<Scalars['String']>;
+  logo?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** aggregate max on columns */
+export type Fund_Src_Max_Fields = {
+  __typename?: 'fund_src_max_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  en?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  /** The fund source name */
+  lo?: Maybe<Scalars['String']>;
+  logo?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** aggregate min on columns */
+export type Fund_Src_Min_Fields = {
+  __typename?: 'fund_src_min_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  en?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  /** The fund source name */
+  lo?: Maybe<Scalars['String']>;
+  logo?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** response of any mutation on the table "fund_src" */
+export type Fund_Src_Mutation_Response = {
+  __typename?: 'fund_src_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Fund_Src>;
+};
+
+/** input type for inserting object relation for remote table "fund_src" */
+export type Fund_Src_Obj_Rel_Insert_Input = {
+  data: Fund_Src_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Fund_Src_On_Conflict>;
+};
+
+/** on_conflict condition type for table "fund_src" */
+export type Fund_Src_On_Conflict = {
+  constraint: Fund_Src_Constraint;
+  update_columns?: Array<Fund_Src_Update_Column>;
+  where?: InputMaybe<Fund_Src_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "fund_src". */
+export type Fund_Src_Order_By = {
+  active?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  en?: InputMaybe<Order_By>;
+  funds_aggregate?: InputMaybe<Fund_Aggregate_Order_By>;
+  id?: InputMaybe<Order_By>;
+  lo?: InputMaybe<Order_By>;
+  logo?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: fund_src */
+export type Fund_Src_Pk_Columns_Input = {
+  id: Scalars['String'];
+};
+
+/** select columns of table "fund_src" */
+export enum Fund_Src_Select_Column {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  En = 'en',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Lo = 'lo',
+  /** column name */
+  Logo = 'logo',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "fund_src" */
+export type Fund_Src_Set_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  en?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  /** The fund source name */
+  lo?: InputMaybe<Scalars['String']>;
+  logo?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** update columns of table "fund_src" */
+export enum Fund_Src_Update_Column {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  En = 'en',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Lo = 'lo',
+  /** column name */
+  Logo = 'logo',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** aggregate stddev on columns */
+export type Fund_Stddev_Fields = {
+  __typename?: 'fund_stddev_fields';
+  balance?: Maybe<Scalars['Float']>;
+  budget?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "fund" */
+export type Fund_Stddev_Order_By = {
+  balance?: InputMaybe<Order_By>;
+  budget?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Fund_Stddev_Pop_Fields = {
+  __typename?: 'fund_stddev_pop_fields';
+  balance?: Maybe<Scalars['Float']>;
+  budget?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "fund" */
+export type Fund_Stddev_Pop_Order_By = {
+  balance?: InputMaybe<Order_By>;
+  budget?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Fund_Stddev_Samp_Fields = {
+  __typename?: 'fund_stddev_samp_fields';
+  balance?: Maybe<Scalars['Float']>;
+  budget?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "fund" */
+export type Fund_Stddev_Samp_Order_By = {
+  balance?: InputMaybe<Order_By>;
+  budget?: InputMaybe<Order_By>;
+};
+
+/** aggregate sum on columns */
+export type Fund_Sum_Fields = {
+  __typename?: 'fund_sum_fields';
+  balance?: Maybe<Scalars['numeric']>;
+  budget?: Maybe<Scalars['numeric']>;
+};
+
+/** order by sum() on columns of table "fund" */
+export type Fund_Sum_Order_By = {
+  balance?: InputMaybe<Order_By>;
+  budget?: InputMaybe<Order_By>;
+};
+
+/** update columns of table "fund" */
+export enum Fund_Update_Column {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  Balance = 'balance',
+  /** column name */
+  Budget = 'budget',
+  /** column name */
+  Code = 'code',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  EndDate = 'end_date',
+  /** column name */
+  FundSrcId = 'fund_src_id',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  StartDate = 'start_date',
+  /** column name */
+  Title = 'title',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** aggregate var_pop on columns */
+export type Fund_Var_Pop_Fields = {
+  __typename?: 'fund_var_pop_fields';
+  balance?: Maybe<Scalars['Float']>;
+  budget?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "fund" */
+export type Fund_Var_Pop_Order_By = {
+  balance?: InputMaybe<Order_By>;
+  budget?: InputMaybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Fund_Var_Samp_Fields = {
+  __typename?: 'fund_var_samp_fields';
+  balance?: Maybe<Scalars['Float']>;
+  budget?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "fund" */
+export type Fund_Var_Samp_Order_By = {
+  balance?: InputMaybe<Order_By>;
+  budget?: InputMaybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Fund_Variance_Fields = {
+  __typename?: 'fund_variance_fields';
+  balance?: Maybe<Scalars['Float']>;
+  budget?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "fund" */
+export type Fund_Variance_Order_By = {
+  balance?: InputMaybe<Order_By>;
+  budget?: InputMaybe<Order_By>;
+};
+
 export type Jsonb_Cast_Exp = {
   String?: InputMaybe<String_Comparison_Exp>;
 };
@@ -1144,6 +4637,2438 @@ export type Jsonb_Comparison_Exp = {
   _lte?: InputMaybe<Scalars['jsonb']>;
   _neq?: InputMaybe<Scalars['jsonb']>;
   _nin?: InputMaybe<Array<Scalars['jsonb']>>;
+};
+
+/** columns and relationships of "loan" */
+export type Loan = {
+  __typename?: 'loan';
+  account_number: Scalars['String'];
+  amount: Scalars['numeric'];
+  bank_branch_id: Scalars['uuid'];
+  close_date?: Maybe<Scalars['date']>;
+  closed?: Maybe<Scalars['Boolean']>;
+  code?: Maybe<Scalars['String']>;
+  collateral: Scalars['String'];
+  contract_date: Scalars['date'];
+  contract_end: Scalars['date'];
+  contract_no: Scalars['String'];
+  covid_affected?: Maybe<Scalars['Boolean']>;
+  created_at: Scalars['timestamptz'];
+  grade?: Maybe<Scalars['String']>;
+  id: Scalars['uuid'];
+  inital_free_cost?: Maybe<Scalars['date']>;
+  interest: Scalars['numeric'];
+  is_free_cost?: Maybe<Scalars['Boolean']>;
+  last_free_cost?: Maybe<Scalars['date']>;
+  loan_amount_approved: Scalars['numeric'];
+  /** An object relationship */
+  loan_collateral: Loan_Collateral;
+  loan_collateral_id: Scalars['String'];
+  /** An array relationship */
+  loan_disburseds: Array<Loan_Disbursed>;
+  /** An aggregate relationship */
+  loan_disburseds_aggregate: Loan_Disbursed_Aggregate;
+  /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
+  loan_fees: Scalars['numeric'];
+  /** An object relationship */
+  loan_purpose: Loan_Purpose;
+  loan_purpose_id: Scalars['String'];
+  /** An array relationship */
+  loan_repayments: Array<Loan_Repayment>;
+  /** An aggregate relationship */
+  loan_repayments_aggregate: Loan_Repayment_Aggregate;
+  /** An object relationship */
+  loan_status: Loan_Status;
+  loan_status_id: Scalars['String'];
+  /** An object relationship */
+  loan_type: Loan_Type;
+  loan_type_id: Scalars['String'];
+  /** ເປົ້າໝາຍເງິນກູ້​​(ອະ​ທິ​ບາຍ​ລະ​ອຽດ) */
+  purpose: Scalars['String'];
+  remark?: Maybe<Scalars['String']>;
+  repayment?: Maybe<Scalars['numeric']>;
+  responsible_staff?: Maybe<Scalars['String']>;
+  skip_no: Scalars['Int'];
+  staff?: Maybe<Scalars['Int']>;
+  title: Scalars['String'];
+  total_of_collateral: Scalars['numeric'];
+  trash?: Maybe<Scalars['Boolean']>;
+  updated_at: Scalars['timestamptz'];
+  user_id: Scalars['uuid'];
+};
+
+
+/** columns and relationships of "loan" */
+export type LoanLoan_DisbursedsArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Disbursed_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Disbursed_Order_By>>;
+  where?: InputMaybe<Loan_Disbursed_Bool_Exp>;
+};
+
+
+/** columns and relationships of "loan" */
+export type LoanLoan_Disburseds_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Disbursed_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Disbursed_Order_By>>;
+  where?: InputMaybe<Loan_Disbursed_Bool_Exp>;
+};
+
+
+/** columns and relationships of "loan" */
+export type LoanLoan_RepaymentsArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Repayment_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Repayment_Order_By>>;
+  where?: InputMaybe<Loan_Repayment_Bool_Exp>;
+};
+
+
+/** columns and relationships of "loan" */
+export type LoanLoan_Repayments_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Repayment_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Repayment_Order_By>>;
+  where?: InputMaybe<Loan_Repayment_Bool_Exp>;
+};
+
+/** aggregated selection of "loan" */
+export type Loan_Aggregate = {
+  __typename?: 'loan_aggregate';
+  aggregate?: Maybe<Loan_Aggregate_Fields>;
+  nodes: Array<Loan>;
+};
+
+/** aggregate fields of "loan" */
+export type Loan_Aggregate_Fields = {
+  __typename?: 'loan_aggregate_fields';
+  avg?: Maybe<Loan_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Loan_Max_Fields>;
+  min?: Maybe<Loan_Min_Fields>;
+  stddev?: Maybe<Loan_Stddev_Fields>;
+  stddev_pop?: Maybe<Loan_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Loan_Stddev_Samp_Fields>;
+  sum?: Maybe<Loan_Sum_Fields>;
+  var_pop?: Maybe<Loan_Var_Pop_Fields>;
+  var_samp?: Maybe<Loan_Var_Samp_Fields>;
+  variance?: Maybe<Loan_Variance_Fields>;
+};
+
+
+/** aggregate fields of "loan" */
+export type Loan_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Loan_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "loan" */
+export type Loan_Aggregate_Order_By = {
+  avg?: InputMaybe<Loan_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Loan_Max_Order_By>;
+  min?: InputMaybe<Loan_Min_Order_By>;
+  stddev?: InputMaybe<Loan_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Loan_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Loan_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Loan_Sum_Order_By>;
+  var_pop?: InputMaybe<Loan_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Loan_Var_Samp_Order_By>;
+  variance?: InputMaybe<Loan_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "loan" */
+export type Loan_Arr_Rel_Insert_Input = {
+  data: Array<Loan_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Loan_On_Conflict>;
+};
+
+/** aggregate avg on columns */
+export type Loan_Avg_Fields = {
+  __typename?: 'loan_avg_fields';
+  amount?: Maybe<Scalars['Float']>;
+  interest?: Maybe<Scalars['Float']>;
+  loan_amount_approved?: Maybe<Scalars['Float']>;
+  /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
+  loan_fees?: Maybe<Scalars['Float']>;
+  repayment?: Maybe<Scalars['Float']>;
+  skip_no?: Maybe<Scalars['Float']>;
+  staff?: Maybe<Scalars['Float']>;
+  total_of_collateral?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "loan" */
+export type Loan_Avg_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+  loan_amount_approved?: InputMaybe<Order_By>;
+  /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
+  loan_fees?: InputMaybe<Order_By>;
+  repayment?: InputMaybe<Order_By>;
+  skip_no?: InputMaybe<Order_By>;
+  staff?: InputMaybe<Order_By>;
+  total_of_collateral?: InputMaybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "loan". All fields are combined with a logical 'AND'. */
+export type Loan_Bool_Exp = {
+  _and?: InputMaybe<Array<Loan_Bool_Exp>>;
+  _not?: InputMaybe<Loan_Bool_Exp>;
+  _or?: InputMaybe<Array<Loan_Bool_Exp>>;
+  account_number?: InputMaybe<String_Comparison_Exp>;
+  amount?: InputMaybe<Numeric_Comparison_Exp>;
+  bank_branch_id?: InputMaybe<Uuid_Comparison_Exp>;
+  close_date?: InputMaybe<Date_Comparison_Exp>;
+  closed?: InputMaybe<Boolean_Comparison_Exp>;
+  code?: InputMaybe<String_Comparison_Exp>;
+  collateral?: InputMaybe<String_Comparison_Exp>;
+  contract_date?: InputMaybe<Date_Comparison_Exp>;
+  contract_end?: InputMaybe<Date_Comparison_Exp>;
+  contract_no?: InputMaybe<String_Comparison_Exp>;
+  covid_affected?: InputMaybe<Boolean_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  grade?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<Uuid_Comparison_Exp>;
+  inital_free_cost?: InputMaybe<Date_Comparison_Exp>;
+  interest?: InputMaybe<Numeric_Comparison_Exp>;
+  is_free_cost?: InputMaybe<Boolean_Comparison_Exp>;
+  last_free_cost?: InputMaybe<Date_Comparison_Exp>;
+  loan_amount_approved?: InputMaybe<Numeric_Comparison_Exp>;
+  loan_collateral?: InputMaybe<Loan_Collateral_Bool_Exp>;
+  loan_collateral_id?: InputMaybe<String_Comparison_Exp>;
+  loan_disburseds?: InputMaybe<Loan_Disbursed_Bool_Exp>;
+  loan_fees?: InputMaybe<Numeric_Comparison_Exp>;
+  loan_purpose?: InputMaybe<Loan_Purpose_Bool_Exp>;
+  loan_purpose_id?: InputMaybe<String_Comparison_Exp>;
+  loan_repayments?: InputMaybe<Loan_Repayment_Bool_Exp>;
+  loan_status?: InputMaybe<Loan_Status_Bool_Exp>;
+  loan_status_id?: InputMaybe<String_Comparison_Exp>;
+  loan_type?: InputMaybe<Loan_Type_Bool_Exp>;
+  loan_type_id?: InputMaybe<String_Comparison_Exp>;
+  purpose?: InputMaybe<String_Comparison_Exp>;
+  remark?: InputMaybe<String_Comparison_Exp>;
+  repayment?: InputMaybe<Numeric_Comparison_Exp>;
+  responsible_staff?: InputMaybe<String_Comparison_Exp>;
+  skip_no?: InputMaybe<Int_Comparison_Exp>;
+  staff?: InputMaybe<Int_Comparison_Exp>;
+  title?: InputMaybe<String_Comparison_Exp>;
+  total_of_collateral?: InputMaybe<Numeric_Comparison_Exp>;
+  trash?: InputMaybe<Boolean_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user_id?: InputMaybe<Uuid_Comparison_Exp>;
+};
+
+/** ປະເພດຂອງຫຼັກຊັບ(ຈັດປະເພດ)(ດິນ, ອາຄານ, ທີ່ດິນ + ອາຄານ, ພາຫະນະ, ເງິນຝາກ, ແລະອື່ນໆ) */
+export type Loan_Collateral = {
+  __typename?: 'loan_collateral';
+  active?: Maybe<Scalars['Boolean']>;
+  created_at: Scalars['timestamptz'];
+  en: Scalars['String'];
+  id: Scalars['String'];
+  lo: Scalars['String'];
+  /** An array relationship */
+  loans: Array<Loan>;
+  /** An aggregate relationship */
+  loans_aggregate: Loan_Aggregate;
+  updated_at: Scalars['timestamptz'];
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+
+/** ປະເພດຂອງຫຼັກຊັບ(ຈັດປະເພດ)(ດິນ, ອາຄານ, ທີ່ດິນ + ອາຄານ, ພາຫະນະ, ເງິນຝາກ, ແລະອື່ນໆ) */
+export type Loan_CollateralLoansArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Order_By>>;
+  where?: InputMaybe<Loan_Bool_Exp>;
+};
+
+
+/** ປະເພດຂອງຫຼັກຊັບ(ຈັດປະເພດ)(ດິນ, ອາຄານ, ທີ່ດິນ + ອາຄານ, ພາຫະນະ, ເງິນຝາກ, ແລະອື່ນໆ) */
+export type Loan_CollateralLoans_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Order_By>>;
+  where?: InputMaybe<Loan_Bool_Exp>;
+};
+
+/** aggregated selection of "loan_collateral" */
+export type Loan_Collateral_Aggregate = {
+  __typename?: 'loan_collateral_aggregate';
+  aggregate?: Maybe<Loan_Collateral_Aggregate_Fields>;
+  nodes: Array<Loan_Collateral>;
+};
+
+/** aggregate fields of "loan_collateral" */
+export type Loan_Collateral_Aggregate_Fields = {
+  __typename?: 'loan_collateral_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Loan_Collateral_Max_Fields>;
+  min?: Maybe<Loan_Collateral_Min_Fields>;
+};
+
+
+/** aggregate fields of "loan_collateral" */
+export type Loan_Collateral_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Loan_Collateral_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "loan_collateral". All fields are combined with a logical 'AND'. */
+export type Loan_Collateral_Bool_Exp = {
+  _and?: InputMaybe<Array<Loan_Collateral_Bool_Exp>>;
+  _not?: InputMaybe<Loan_Collateral_Bool_Exp>;
+  _or?: InputMaybe<Array<Loan_Collateral_Bool_Exp>>;
+  active?: InputMaybe<Boolean_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  en?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  lo?: InputMaybe<String_Comparison_Exp>;
+  loans?: InputMaybe<Loan_Bool_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user_id?: InputMaybe<Uuid_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "loan_collateral" */
+export enum Loan_Collateral_Constraint {
+  /** unique or primary key constraint */
+  LoanCollateralPkey = 'loan_collateral_pkey'
+}
+
+/** input type for inserting data into table "loan_collateral" */
+export type Loan_Collateral_Insert_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  en?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  lo?: InputMaybe<Scalars['String']>;
+  loans?: InputMaybe<Loan_Arr_Rel_Insert_Input>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** aggregate max on columns */
+export type Loan_Collateral_Max_Fields = {
+  __typename?: 'loan_collateral_max_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  en?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  lo?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** aggregate min on columns */
+export type Loan_Collateral_Min_Fields = {
+  __typename?: 'loan_collateral_min_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  en?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  lo?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** response of any mutation on the table "loan_collateral" */
+export type Loan_Collateral_Mutation_Response = {
+  __typename?: 'loan_collateral_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Loan_Collateral>;
+};
+
+/** input type for inserting object relation for remote table "loan_collateral" */
+export type Loan_Collateral_Obj_Rel_Insert_Input = {
+  data: Loan_Collateral_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Loan_Collateral_On_Conflict>;
+};
+
+/** on_conflict condition type for table "loan_collateral" */
+export type Loan_Collateral_On_Conflict = {
+  constraint: Loan_Collateral_Constraint;
+  update_columns?: Array<Loan_Collateral_Update_Column>;
+  where?: InputMaybe<Loan_Collateral_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "loan_collateral". */
+export type Loan_Collateral_Order_By = {
+  active?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  en?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  lo?: InputMaybe<Order_By>;
+  loans_aggregate?: InputMaybe<Loan_Aggregate_Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: loan_collateral */
+export type Loan_Collateral_Pk_Columns_Input = {
+  id: Scalars['String'];
+};
+
+/** select columns of table "loan_collateral" */
+export enum Loan_Collateral_Select_Column {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  En = 'en',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Lo = 'lo',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "loan_collateral" */
+export type Loan_Collateral_Set_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  en?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  lo?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** update columns of table "loan_collateral" */
+export enum Loan_Collateral_Update_Column {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  En = 'en',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Lo = 'lo',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** unique or primary key constraints on table "loan" */
+export enum Loan_Constraint {
+  /** unique or primary key constraint */
+  LoanPkey = 'loan_pkey'
+}
+
+/** columns and relationships of "loan_disbursed" */
+export type Loan_Disbursed = {
+  __typename?: 'loan_disbursed';
+  amount: Scalars['numeric'];
+  created_at: Scalars['timestamptz'];
+  fee: Scalars['numeric'];
+  id: Scalars['uuid'];
+  /** An object relationship */
+  loan: Loan;
+  loan_id: Scalars['uuid'];
+  note?: Maybe<Scalars['String']>;
+  on_date: Scalars['date'];
+  responsible_staff?: Maybe<Scalars['String']>;
+  trash?: Maybe<Scalars['Boolean']>;
+  updated_at: Scalars['timestamptz'];
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** aggregated selection of "loan_disbursed" */
+export type Loan_Disbursed_Aggregate = {
+  __typename?: 'loan_disbursed_aggregate';
+  aggregate?: Maybe<Loan_Disbursed_Aggregate_Fields>;
+  nodes: Array<Loan_Disbursed>;
+};
+
+/** aggregate fields of "loan_disbursed" */
+export type Loan_Disbursed_Aggregate_Fields = {
+  __typename?: 'loan_disbursed_aggregate_fields';
+  avg?: Maybe<Loan_Disbursed_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Loan_Disbursed_Max_Fields>;
+  min?: Maybe<Loan_Disbursed_Min_Fields>;
+  stddev?: Maybe<Loan_Disbursed_Stddev_Fields>;
+  stddev_pop?: Maybe<Loan_Disbursed_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Loan_Disbursed_Stddev_Samp_Fields>;
+  sum?: Maybe<Loan_Disbursed_Sum_Fields>;
+  var_pop?: Maybe<Loan_Disbursed_Var_Pop_Fields>;
+  var_samp?: Maybe<Loan_Disbursed_Var_Samp_Fields>;
+  variance?: Maybe<Loan_Disbursed_Variance_Fields>;
+};
+
+
+/** aggregate fields of "loan_disbursed" */
+export type Loan_Disbursed_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Loan_Disbursed_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "loan_disbursed" */
+export type Loan_Disbursed_Aggregate_Order_By = {
+  avg?: InputMaybe<Loan_Disbursed_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Loan_Disbursed_Max_Order_By>;
+  min?: InputMaybe<Loan_Disbursed_Min_Order_By>;
+  stddev?: InputMaybe<Loan_Disbursed_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Loan_Disbursed_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Loan_Disbursed_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Loan_Disbursed_Sum_Order_By>;
+  var_pop?: InputMaybe<Loan_Disbursed_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Loan_Disbursed_Var_Samp_Order_By>;
+  variance?: InputMaybe<Loan_Disbursed_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "loan_disbursed" */
+export type Loan_Disbursed_Arr_Rel_Insert_Input = {
+  data: Array<Loan_Disbursed_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Loan_Disbursed_On_Conflict>;
+};
+
+/** aggregate avg on columns */
+export type Loan_Disbursed_Avg_Fields = {
+  __typename?: 'loan_disbursed_avg_fields';
+  amount?: Maybe<Scalars['Float']>;
+  fee?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "loan_disbursed" */
+export type Loan_Disbursed_Avg_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  fee?: InputMaybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "loan_disbursed". All fields are combined with a logical 'AND'. */
+export type Loan_Disbursed_Bool_Exp = {
+  _and?: InputMaybe<Array<Loan_Disbursed_Bool_Exp>>;
+  _not?: InputMaybe<Loan_Disbursed_Bool_Exp>;
+  _or?: InputMaybe<Array<Loan_Disbursed_Bool_Exp>>;
+  amount?: InputMaybe<Numeric_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  fee?: InputMaybe<Numeric_Comparison_Exp>;
+  id?: InputMaybe<Uuid_Comparison_Exp>;
+  loan?: InputMaybe<Loan_Bool_Exp>;
+  loan_id?: InputMaybe<Uuid_Comparison_Exp>;
+  note?: InputMaybe<String_Comparison_Exp>;
+  on_date?: InputMaybe<Date_Comparison_Exp>;
+  responsible_staff?: InputMaybe<String_Comparison_Exp>;
+  trash?: InputMaybe<Boolean_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user_id?: InputMaybe<Uuid_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "loan_disbursed" */
+export enum Loan_Disbursed_Constraint {
+  /** unique or primary key constraint */
+  LoanDisbursedPkey = 'loan_disbursed_pkey'
+}
+
+/** input type for incrementing numeric columns in table "loan_disbursed" */
+export type Loan_Disbursed_Inc_Input = {
+  amount?: InputMaybe<Scalars['numeric']>;
+  fee?: InputMaybe<Scalars['numeric']>;
+};
+
+/** input type for inserting data into table "loan_disbursed" */
+export type Loan_Disbursed_Insert_Input = {
+  amount?: InputMaybe<Scalars['numeric']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  fee?: InputMaybe<Scalars['numeric']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  loan?: InputMaybe<Loan_Obj_Rel_Insert_Input>;
+  loan_id?: InputMaybe<Scalars['uuid']>;
+  note?: InputMaybe<Scalars['String']>;
+  on_date?: InputMaybe<Scalars['date']>;
+  responsible_staff?: InputMaybe<Scalars['String']>;
+  trash?: InputMaybe<Scalars['Boolean']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** aggregate max on columns */
+export type Loan_Disbursed_Max_Fields = {
+  __typename?: 'loan_disbursed_max_fields';
+  amount?: Maybe<Scalars['numeric']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  fee?: Maybe<Scalars['numeric']>;
+  id?: Maybe<Scalars['uuid']>;
+  loan_id?: Maybe<Scalars['uuid']>;
+  note?: Maybe<Scalars['String']>;
+  on_date?: Maybe<Scalars['date']>;
+  responsible_staff?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** order by max() on columns of table "loan_disbursed" */
+export type Loan_Disbursed_Max_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  fee?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  loan_id?: InputMaybe<Order_By>;
+  note?: InputMaybe<Order_By>;
+  on_date?: InputMaybe<Order_By>;
+  responsible_staff?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Loan_Disbursed_Min_Fields = {
+  __typename?: 'loan_disbursed_min_fields';
+  amount?: Maybe<Scalars['numeric']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  fee?: Maybe<Scalars['numeric']>;
+  id?: Maybe<Scalars['uuid']>;
+  loan_id?: Maybe<Scalars['uuid']>;
+  note?: Maybe<Scalars['String']>;
+  on_date?: Maybe<Scalars['date']>;
+  responsible_staff?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** order by min() on columns of table "loan_disbursed" */
+export type Loan_Disbursed_Min_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  fee?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  loan_id?: InputMaybe<Order_By>;
+  note?: InputMaybe<Order_By>;
+  on_date?: InputMaybe<Order_By>;
+  responsible_staff?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** response of any mutation on the table "loan_disbursed" */
+export type Loan_Disbursed_Mutation_Response = {
+  __typename?: 'loan_disbursed_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Loan_Disbursed>;
+};
+
+/** on_conflict condition type for table "loan_disbursed" */
+export type Loan_Disbursed_On_Conflict = {
+  constraint: Loan_Disbursed_Constraint;
+  update_columns?: Array<Loan_Disbursed_Update_Column>;
+  where?: InputMaybe<Loan_Disbursed_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "loan_disbursed". */
+export type Loan_Disbursed_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  fee?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  loan?: InputMaybe<Loan_Order_By>;
+  loan_id?: InputMaybe<Order_By>;
+  note?: InputMaybe<Order_By>;
+  on_date?: InputMaybe<Order_By>;
+  responsible_staff?: InputMaybe<Order_By>;
+  trash?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: loan_disbursed */
+export type Loan_Disbursed_Pk_Columns_Input = {
+  id: Scalars['uuid'];
+};
+
+/** select columns of table "loan_disbursed" */
+export enum Loan_Disbursed_Select_Column {
+  /** column name */
+  Amount = 'amount',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Fee = 'fee',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  LoanId = 'loan_id',
+  /** column name */
+  Note = 'note',
+  /** column name */
+  OnDate = 'on_date',
+  /** column name */
+  ResponsibleStaff = 'responsible_staff',
+  /** column name */
+  Trash = 'trash',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "loan_disbursed" */
+export type Loan_Disbursed_Set_Input = {
+  amount?: InputMaybe<Scalars['numeric']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  fee?: InputMaybe<Scalars['numeric']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  loan_id?: InputMaybe<Scalars['uuid']>;
+  note?: InputMaybe<Scalars['String']>;
+  on_date?: InputMaybe<Scalars['date']>;
+  responsible_staff?: InputMaybe<Scalars['String']>;
+  trash?: InputMaybe<Scalars['Boolean']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** aggregate stddev on columns */
+export type Loan_Disbursed_Stddev_Fields = {
+  __typename?: 'loan_disbursed_stddev_fields';
+  amount?: Maybe<Scalars['Float']>;
+  fee?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "loan_disbursed" */
+export type Loan_Disbursed_Stddev_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  fee?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Loan_Disbursed_Stddev_Pop_Fields = {
+  __typename?: 'loan_disbursed_stddev_pop_fields';
+  amount?: Maybe<Scalars['Float']>;
+  fee?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "loan_disbursed" */
+export type Loan_Disbursed_Stddev_Pop_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  fee?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Loan_Disbursed_Stddev_Samp_Fields = {
+  __typename?: 'loan_disbursed_stddev_samp_fields';
+  amount?: Maybe<Scalars['Float']>;
+  fee?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "loan_disbursed" */
+export type Loan_Disbursed_Stddev_Samp_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  fee?: InputMaybe<Order_By>;
+};
+
+/** aggregate sum on columns */
+export type Loan_Disbursed_Sum_Fields = {
+  __typename?: 'loan_disbursed_sum_fields';
+  amount?: Maybe<Scalars['numeric']>;
+  fee?: Maybe<Scalars['numeric']>;
+};
+
+/** order by sum() on columns of table "loan_disbursed" */
+export type Loan_Disbursed_Sum_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  fee?: InputMaybe<Order_By>;
+};
+
+/** update columns of table "loan_disbursed" */
+export enum Loan_Disbursed_Update_Column {
+  /** column name */
+  Amount = 'amount',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Fee = 'fee',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  LoanId = 'loan_id',
+  /** column name */
+  Note = 'note',
+  /** column name */
+  OnDate = 'on_date',
+  /** column name */
+  ResponsibleStaff = 'responsible_staff',
+  /** column name */
+  Trash = 'trash',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** aggregate var_pop on columns */
+export type Loan_Disbursed_Var_Pop_Fields = {
+  __typename?: 'loan_disbursed_var_pop_fields';
+  amount?: Maybe<Scalars['Float']>;
+  fee?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "loan_disbursed" */
+export type Loan_Disbursed_Var_Pop_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  fee?: InputMaybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Loan_Disbursed_Var_Samp_Fields = {
+  __typename?: 'loan_disbursed_var_samp_fields';
+  amount?: Maybe<Scalars['Float']>;
+  fee?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "loan_disbursed" */
+export type Loan_Disbursed_Var_Samp_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  fee?: InputMaybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Loan_Disbursed_Variance_Fields = {
+  __typename?: 'loan_disbursed_variance_fields';
+  amount?: Maybe<Scalars['Float']>;
+  fee?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "loan_disbursed" */
+export type Loan_Disbursed_Variance_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  fee?: InputMaybe<Order_By>;
+};
+
+/** input type for incrementing numeric columns in table "loan" */
+export type Loan_Inc_Input = {
+  amount?: InputMaybe<Scalars['numeric']>;
+  interest?: InputMaybe<Scalars['numeric']>;
+  loan_amount_approved?: InputMaybe<Scalars['numeric']>;
+  /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
+  loan_fees?: InputMaybe<Scalars['numeric']>;
+  repayment?: InputMaybe<Scalars['numeric']>;
+  skip_no?: InputMaybe<Scalars['Int']>;
+  staff?: InputMaybe<Scalars['Int']>;
+  total_of_collateral?: InputMaybe<Scalars['numeric']>;
+};
+
+/** input type for inserting data into table "loan" */
+export type Loan_Insert_Input = {
+  account_number?: InputMaybe<Scalars['String']>;
+  amount?: InputMaybe<Scalars['numeric']>;
+  bank_branch_id?: InputMaybe<Scalars['uuid']>;
+  close_date?: InputMaybe<Scalars['date']>;
+  closed?: InputMaybe<Scalars['Boolean']>;
+  code?: InputMaybe<Scalars['String']>;
+  collateral?: InputMaybe<Scalars['String']>;
+  contract_date?: InputMaybe<Scalars['date']>;
+  contract_end?: InputMaybe<Scalars['date']>;
+  contract_no?: InputMaybe<Scalars['String']>;
+  covid_affected?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  grade?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  inital_free_cost?: InputMaybe<Scalars['date']>;
+  interest?: InputMaybe<Scalars['numeric']>;
+  is_free_cost?: InputMaybe<Scalars['Boolean']>;
+  last_free_cost?: InputMaybe<Scalars['date']>;
+  loan_amount_approved?: InputMaybe<Scalars['numeric']>;
+  loan_collateral?: InputMaybe<Loan_Collateral_Obj_Rel_Insert_Input>;
+  loan_collateral_id?: InputMaybe<Scalars['String']>;
+  loan_disburseds?: InputMaybe<Loan_Disbursed_Arr_Rel_Insert_Input>;
+  /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
+  loan_fees?: InputMaybe<Scalars['numeric']>;
+  loan_purpose?: InputMaybe<Loan_Purpose_Obj_Rel_Insert_Input>;
+  loan_purpose_id?: InputMaybe<Scalars['String']>;
+  loan_repayments?: InputMaybe<Loan_Repayment_Arr_Rel_Insert_Input>;
+  loan_status?: InputMaybe<Loan_Status_Obj_Rel_Insert_Input>;
+  loan_status_id?: InputMaybe<Scalars['String']>;
+  loan_type?: InputMaybe<Loan_Type_Obj_Rel_Insert_Input>;
+  loan_type_id?: InputMaybe<Scalars['String']>;
+  /** ເປົ້າໝາຍເງິນກູ້​​(ອະ​ທິ​ບາຍ​ລະ​ອຽດ) */
+  purpose?: InputMaybe<Scalars['String']>;
+  remark?: InputMaybe<Scalars['String']>;
+  repayment?: InputMaybe<Scalars['numeric']>;
+  responsible_staff?: InputMaybe<Scalars['String']>;
+  skip_no?: InputMaybe<Scalars['Int']>;
+  staff?: InputMaybe<Scalars['Int']>;
+  title?: InputMaybe<Scalars['String']>;
+  total_of_collateral?: InputMaybe<Scalars['numeric']>;
+  trash?: InputMaybe<Scalars['Boolean']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** aggregate max on columns */
+export type Loan_Max_Fields = {
+  __typename?: 'loan_max_fields';
+  account_number?: Maybe<Scalars['String']>;
+  amount?: Maybe<Scalars['numeric']>;
+  bank_branch_id?: Maybe<Scalars['uuid']>;
+  close_date?: Maybe<Scalars['date']>;
+  code?: Maybe<Scalars['String']>;
+  collateral?: Maybe<Scalars['String']>;
+  contract_date?: Maybe<Scalars['date']>;
+  contract_end?: Maybe<Scalars['date']>;
+  contract_no?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  grade?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['uuid']>;
+  inital_free_cost?: Maybe<Scalars['date']>;
+  interest?: Maybe<Scalars['numeric']>;
+  last_free_cost?: Maybe<Scalars['date']>;
+  loan_amount_approved?: Maybe<Scalars['numeric']>;
+  loan_collateral_id?: Maybe<Scalars['String']>;
+  /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
+  loan_fees?: Maybe<Scalars['numeric']>;
+  loan_purpose_id?: Maybe<Scalars['String']>;
+  loan_status_id?: Maybe<Scalars['String']>;
+  loan_type_id?: Maybe<Scalars['String']>;
+  /** ເປົ້າໝາຍເງິນກູ້​​(ອະ​ທິ​ບາຍ​ລະ​ອຽດ) */
+  purpose?: Maybe<Scalars['String']>;
+  remark?: Maybe<Scalars['String']>;
+  repayment?: Maybe<Scalars['numeric']>;
+  responsible_staff?: Maybe<Scalars['String']>;
+  skip_no?: Maybe<Scalars['Int']>;
+  staff?: Maybe<Scalars['Int']>;
+  title?: Maybe<Scalars['String']>;
+  total_of_collateral?: Maybe<Scalars['numeric']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** order by max() on columns of table "loan" */
+export type Loan_Max_Order_By = {
+  account_number?: InputMaybe<Order_By>;
+  amount?: InputMaybe<Order_By>;
+  bank_branch_id?: InputMaybe<Order_By>;
+  close_date?: InputMaybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  collateral?: InputMaybe<Order_By>;
+  contract_date?: InputMaybe<Order_By>;
+  contract_end?: InputMaybe<Order_By>;
+  contract_no?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  grade?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  inital_free_cost?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+  last_free_cost?: InputMaybe<Order_By>;
+  loan_amount_approved?: InputMaybe<Order_By>;
+  loan_collateral_id?: InputMaybe<Order_By>;
+  /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
+  loan_fees?: InputMaybe<Order_By>;
+  loan_purpose_id?: InputMaybe<Order_By>;
+  loan_status_id?: InputMaybe<Order_By>;
+  loan_type_id?: InputMaybe<Order_By>;
+  /** ເປົ້າໝາຍເງິນກູ້​​(ອະ​ທິ​ບາຍ​ລະ​ອຽດ) */
+  purpose?: InputMaybe<Order_By>;
+  remark?: InputMaybe<Order_By>;
+  repayment?: InputMaybe<Order_By>;
+  responsible_staff?: InputMaybe<Order_By>;
+  skip_no?: InputMaybe<Order_By>;
+  staff?: InputMaybe<Order_By>;
+  title?: InputMaybe<Order_By>;
+  total_of_collateral?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Loan_Min_Fields = {
+  __typename?: 'loan_min_fields';
+  account_number?: Maybe<Scalars['String']>;
+  amount?: Maybe<Scalars['numeric']>;
+  bank_branch_id?: Maybe<Scalars['uuid']>;
+  close_date?: Maybe<Scalars['date']>;
+  code?: Maybe<Scalars['String']>;
+  collateral?: Maybe<Scalars['String']>;
+  contract_date?: Maybe<Scalars['date']>;
+  contract_end?: Maybe<Scalars['date']>;
+  contract_no?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  grade?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['uuid']>;
+  inital_free_cost?: Maybe<Scalars['date']>;
+  interest?: Maybe<Scalars['numeric']>;
+  last_free_cost?: Maybe<Scalars['date']>;
+  loan_amount_approved?: Maybe<Scalars['numeric']>;
+  loan_collateral_id?: Maybe<Scalars['String']>;
+  /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
+  loan_fees?: Maybe<Scalars['numeric']>;
+  loan_purpose_id?: Maybe<Scalars['String']>;
+  loan_status_id?: Maybe<Scalars['String']>;
+  loan_type_id?: Maybe<Scalars['String']>;
+  /** ເປົ້າໝາຍເງິນກູ້​​(ອະ​ທິ​ບາຍ​ລະ​ອຽດ) */
+  purpose?: Maybe<Scalars['String']>;
+  remark?: Maybe<Scalars['String']>;
+  repayment?: Maybe<Scalars['numeric']>;
+  responsible_staff?: Maybe<Scalars['String']>;
+  skip_no?: Maybe<Scalars['Int']>;
+  staff?: Maybe<Scalars['Int']>;
+  title?: Maybe<Scalars['String']>;
+  total_of_collateral?: Maybe<Scalars['numeric']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** order by min() on columns of table "loan" */
+export type Loan_Min_Order_By = {
+  account_number?: InputMaybe<Order_By>;
+  amount?: InputMaybe<Order_By>;
+  bank_branch_id?: InputMaybe<Order_By>;
+  close_date?: InputMaybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  collateral?: InputMaybe<Order_By>;
+  contract_date?: InputMaybe<Order_By>;
+  contract_end?: InputMaybe<Order_By>;
+  contract_no?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  grade?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  inital_free_cost?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+  last_free_cost?: InputMaybe<Order_By>;
+  loan_amount_approved?: InputMaybe<Order_By>;
+  loan_collateral_id?: InputMaybe<Order_By>;
+  /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
+  loan_fees?: InputMaybe<Order_By>;
+  loan_purpose_id?: InputMaybe<Order_By>;
+  loan_status_id?: InputMaybe<Order_By>;
+  loan_type_id?: InputMaybe<Order_By>;
+  /** ເປົ້າໝາຍເງິນກູ້​​(ອະ​ທິ​ບາຍ​ລະ​ອຽດ) */
+  purpose?: InputMaybe<Order_By>;
+  remark?: InputMaybe<Order_By>;
+  repayment?: InputMaybe<Order_By>;
+  responsible_staff?: InputMaybe<Order_By>;
+  skip_no?: InputMaybe<Order_By>;
+  staff?: InputMaybe<Order_By>;
+  title?: InputMaybe<Order_By>;
+  total_of_collateral?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** response of any mutation on the table "loan" */
+export type Loan_Mutation_Response = {
+  __typename?: 'loan_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Loan>;
+};
+
+/** input type for inserting object relation for remote table "loan" */
+export type Loan_Obj_Rel_Insert_Input = {
+  data: Loan_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Loan_On_Conflict>;
+};
+
+/** on_conflict condition type for table "loan" */
+export type Loan_On_Conflict = {
+  constraint: Loan_Constraint;
+  update_columns?: Array<Loan_Update_Column>;
+  where?: InputMaybe<Loan_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "loan". */
+export type Loan_Order_By = {
+  account_number?: InputMaybe<Order_By>;
+  amount?: InputMaybe<Order_By>;
+  bank_branch_id?: InputMaybe<Order_By>;
+  close_date?: InputMaybe<Order_By>;
+  closed?: InputMaybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  collateral?: InputMaybe<Order_By>;
+  contract_date?: InputMaybe<Order_By>;
+  contract_end?: InputMaybe<Order_By>;
+  contract_no?: InputMaybe<Order_By>;
+  covid_affected?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  grade?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  inital_free_cost?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+  is_free_cost?: InputMaybe<Order_By>;
+  last_free_cost?: InputMaybe<Order_By>;
+  loan_amount_approved?: InputMaybe<Order_By>;
+  loan_collateral?: InputMaybe<Loan_Collateral_Order_By>;
+  loan_collateral_id?: InputMaybe<Order_By>;
+  loan_disburseds_aggregate?: InputMaybe<Loan_Disbursed_Aggregate_Order_By>;
+  loan_fees?: InputMaybe<Order_By>;
+  loan_purpose?: InputMaybe<Loan_Purpose_Order_By>;
+  loan_purpose_id?: InputMaybe<Order_By>;
+  loan_repayments_aggregate?: InputMaybe<Loan_Repayment_Aggregate_Order_By>;
+  loan_status?: InputMaybe<Loan_Status_Order_By>;
+  loan_status_id?: InputMaybe<Order_By>;
+  loan_type?: InputMaybe<Loan_Type_Order_By>;
+  loan_type_id?: InputMaybe<Order_By>;
+  purpose?: InputMaybe<Order_By>;
+  remark?: InputMaybe<Order_By>;
+  repayment?: InputMaybe<Order_By>;
+  responsible_staff?: InputMaybe<Order_By>;
+  skip_no?: InputMaybe<Order_By>;
+  staff?: InputMaybe<Order_By>;
+  title?: InputMaybe<Order_By>;
+  total_of_collateral?: InputMaybe<Order_By>;
+  trash?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: loan */
+export type Loan_Pk_Columns_Input = {
+  id: Scalars['uuid'];
+};
+
+/** ເປົ້າໝາຍເງິນກູ້(ແຍກ​ປະ​ເພດ) [ຊື້ສິນຄ້າເພື່ອຂາຍ, ຊື້ເຄື່ອງຈັກ] */
+export type Loan_Purpose = {
+  __typename?: 'loan_purpose';
+  active?: Maybe<Scalars['Boolean']>;
+  created_at: Scalars['timestamptz'];
+  en: Scalars['String'];
+  id: Scalars['String'];
+  lo: Scalars['String'];
+  /** An array relationship */
+  loans: Array<Loan>;
+  /** An aggregate relationship */
+  loans_aggregate: Loan_Aggregate;
+  updated_at: Scalars['timestamptz'];
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+
+/** ເປົ້າໝາຍເງິນກູ້(ແຍກ​ປະ​ເພດ) [ຊື້ສິນຄ້າເພື່ອຂາຍ, ຊື້ເຄື່ອງຈັກ] */
+export type Loan_PurposeLoansArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Order_By>>;
+  where?: InputMaybe<Loan_Bool_Exp>;
+};
+
+
+/** ເປົ້າໝາຍເງິນກູ້(ແຍກ​ປະ​ເພດ) [ຊື້ສິນຄ້າເພື່ອຂາຍ, ຊື້ເຄື່ອງຈັກ] */
+export type Loan_PurposeLoans_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Order_By>>;
+  where?: InputMaybe<Loan_Bool_Exp>;
+};
+
+/** aggregated selection of "loan_purpose" */
+export type Loan_Purpose_Aggregate = {
+  __typename?: 'loan_purpose_aggregate';
+  aggregate?: Maybe<Loan_Purpose_Aggregate_Fields>;
+  nodes: Array<Loan_Purpose>;
+};
+
+/** aggregate fields of "loan_purpose" */
+export type Loan_Purpose_Aggregate_Fields = {
+  __typename?: 'loan_purpose_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Loan_Purpose_Max_Fields>;
+  min?: Maybe<Loan_Purpose_Min_Fields>;
+};
+
+
+/** aggregate fields of "loan_purpose" */
+export type Loan_Purpose_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Loan_Purpose_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "loan_purpose". All fields are combined with a logical 'AND'. */
+export type Loan_Purpose_Bool_Exp = {
+  _and?: InputMaybe<Array<Loan_Purpose_Bool_Exp>>;
+  _not?: InputMaybe<Loan_Purpose_Bool_Exp>;
+  _or?: InputMaybe<Array<Loan_Purpose_Bool_Exp>>;
+  active?: InputMaybe<Boolean_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  en?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  lo?: InputMaybe<String_Comparison_Exp>;
+  loans?: InputMaybe<Loan_Bool_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user_id?: InputMaybe<Uuid_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "loan_purpose" */
+export enum Loan_Purpose_Constraint {
+  /** unique or primary key constraint */
+  LoanPurposePkey = 'loan_purpose_pkey'
+}
+
+/** input type for inserting data into table "loan_purpose" */
+export type Loan_Purpose_Insert_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  en?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  lo?: InputMaybe<Scalars['String']>;
+  loans?: InputMaybe<Loan_Arr_Rel_Insert_Input>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** aggregate max on columns */
+export type Loan_Purpose_Max_Fields = {
+  __typename?: 'loan_purpose_max_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  en?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  lo?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** aggregate min on columns */
+export type Loan_Purpose_Min_Fields = {
+  __typename?: 'loan_purpose_min_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  en?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  lo?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** response of any mutation on the table "loan_purpose" */
+export type Loan_Purpose_Mutation_Response = {
+  __typename?: 'loan_purpose_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Loan_Purpose>;
+};
+
+/** input type for inserting object relation for remote table "loan_purpose" */
+export type Loan_Purpose_Obj_Rel_Insert_Input = {
+  data: Loan_Purpose_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Loan_Purpose_On_Conflict>;
+};
+
+/** on_conflict condition type for table "loan_purpose" */
+export type Loan_Purpose_On_Conflict = {
+  constraint: Loan_Purpose_Constraint;
+  update_columns?: Array<Loan_Purpose_Update_Column>;
+  where?: InputMaybe<Loan_Purpose_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "loan_purpose". */
+export type Loan_Purpose_Order_By = {
+  active?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  en?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  lo?: InputMaybe<Order_By>;
+  loans_aggregate?: InputMaybe<Loan_Aggregate_Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: loan_purpose */
+export type Loan_Purpose_Pk_Columns_Input = {
+  id: Scalars['String'];
+};
+
+/** select columns of table "loan_purpose" */
+export enum Loan_Purpose_Select_Column {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  En = 'en',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Lo = 'lo',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "loan_purpose" */
+export type Loan_Purpose_Set_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  en?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  lo?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** update columns of table "loan_purpose" */
+export enum Loan_Purpose_Update_Column {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  En = 'en',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Lo = 'lo',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** columns and relationships of "loan_repayment" */
+export type Loan_Repayment = {
+  __typename?: 'loan_repayment';
+  amount: Scalars['numeric'];
+  created_at: Scalars['timestamptz'];
+  id: Scalars['uuid'];
+  interest: Scalars['numeric'];
+  /** An object relationship */
+  loan: Loan;
+  loan_id: Scalars['uuid'];
+  on_date: Scalars['date'];
+  trash?: Maybe<Scalars['Boolean']>;
+  updated_at: Scalars['timestamptz'];
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** aggregated selection of "loan_repayment" */
+export type Loan_Repayment_Aggregate = {
+  __typename?: 'loan_repayment_aggregate';
+  aggregate?: Maybe<Loan_Repayment_Aggregate_Fields>;
+  nodes: Array<Loan_Repayment>;
+};
+
+/** aggregate fields of "loan_repayment" */
+export type Loan_Repayment_Aggregate_Fields = {
+  __typename?: 'loan_repayment_aggregate_fields';
+  avg?: Maybe<Loan_Repayment_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Loan_Repayment_Max_Fields>;
+  min?: Maybe<Loan_Repayment_Min_Fields>;
+  stddev?: Maybe<Loan_Repayment_Stddev_Fields>;
+  stddev_pop?: Maybe<Loan_Repayment_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Loan_Repayment_Stddev_Samp_Fields>;
+  sum?: Maybe<Loan_Repayment_Sum_Fields>;
+  var_pop?: Maybe<Loan_Repayment_Var_Pop_Fields>;
+  var_samp?: Maybe<Loan_Repayment_Var_Samp_Fields>;
+  variance?: Maybe<Loan_Repayment_Variance_Fields>;
+};
+
+
+/** aggregate fields of "loan_repayment" */
+export type Loan_Repayment_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Loan_Repayment_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "loan_repayment" */
+export type Loan_Repayment_Aggregate_Order_By = {
+  avg?: InputMaybe<Loan_Repayment_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Loan_Repayment_Max_Order_By>;
+  min?: InputMaybe<Loan_Repayment_Min_Order_By>;
+  stddev?: InputMaybe<Loan_Repayment_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Loan_Repayment_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Loan_Repayment_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Loan_Repayment_Sum_Order_By>;
+  var_pop?: InputMaybe<Loan_Repayment_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Loan_Repayment_Var_Samp_Order_By>;
+  variance?: InputMaybe<Loan_Repayment_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "loan_repayment" */
+export type Loan_Repayment_Arr_Rel_Insert_Input = {
+  data: Array<Loan_Repayment_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Loan_Repayment_On_Conflict>;
+};
+
+/** aggregate avg on columns */
+export type Loan_Repayment_Avg_Fields = {
+  __typename?: 'loan_repayment_avg_fields';
+  amount?: Maybe<Scalars['Float']>;
+  interest?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "loan_repayment" */
+export type Loan_Repayment_Avg_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "loan_repayment". All fields are combined with a logical 'AND'. */
+export type Loan_Repayment_Bool_Exp = {
+  _and?: InputMaybe<Array<Loan_Repayment_Bool_Exp>>;
+  _not?: InputMaybe<Loan_Repayment_Bool_Exp>;
+  _or?: InputMaybe<Array<Loan_Repayment_Bool_Exp>>;
+  amount?: InputMaybe<Numeric_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  id?: InputMaybe<Uuid_Comparison_Exp>;
+  interest?: InputMaybe<Numeric_Comparison_Exp>;
+  loan?: InputMaybe<Loan_Bool_Exp>;
+  loan_id?: InputMaybe<Uuid_Comparison_Exp>;
+  on_date?: InputMaybe<Date_Comparison_Exp>;
+  trash?: InputMaybe<Boolean_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user_id?: InputMaybe<Uuid_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "loan_repayment" */
+export enum Loan_Repayment_Constraint {
+  /** unique or primary key constraint */
+  LoanRepaymentPkey = 'loan_repayment_pkey'
+}
+
+/** input type for incrementing numeric columns in table "loan_repayment" */
+export type Loan_Repayment_Inc_Input = {
+  amount?: InputMaybe<Scalars['numeric']>;
+  interest?: InputMaybe<Scalars['numeric']>;
+};
+
+/** input type for inserting data into table "loan_repayment" */
+export type Loan_Repayment_Insert_Input = {
+  amount?: InputMaybe<Scalars['numeric']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  interest?: InputMaybe<Scalars['numeric']>;
+  loan?: InputMaybe<Loan_Obj_Rel_Insert_Input>;
+  loan_id?: InputMaybe<Scalars['uuid']>;
+  on_date?: InputMaybe<Scalars['date']>;
+  trash?: InputMaybe<Scalars['Boolean']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** aggregate max on columns */
+export type Loan_Repayment_Max_Fields = {
+  __typename?: 'loan_repayment_max_fields';
+  amount?: Maybe<Scalars['numeric']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['uuid']>;
+  interest?: Maybe<Scalars['numeric']>;
+  loan_id?: Maybe<Scalars['uuid']>;
+  on_date?: Maybe<Scalars['date']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** order by max() on columns of table "loan_repayment" */
+export type Loan_Repayment_Max_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+  loan_id?: InputMaybe<Order_By>;
+  on_date?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Loan_Repayment_Min_Fields = {
+  __typename?: 'loan_repayment_min_fields';
+  amount?: Maybe<Scalars['numeric']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['uuid']>;
+  interest?: Maybe<Scalars['numeric']>;
+  loan_id?: Maybe<Scalars['uuid']>;
+  on_date?: Maybe<Scalars['date']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** order by min() on columns of table "loan_repayment" */
+export type Loan_Repayment_Min_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+  loan_id?: InputMaybe<Order_By>;
+  on_date?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** response of any mutation on the table "loan_repayment" */
+export type Loan_Repayment_Mutation_Response = {
+  __typename?: 'loan_repayment_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Loan_Repayment>;
+};
+
+/** on_conflict condition type for table "loan_repayment" */
+export type Loan_Repayment_On_Conflict = {
+  constraint: Loan_Repayment_Constraint;
+  update_columns?: Array<Loan_Repayment_Update_Column>;
+  where?: InputMaybe<Loan_Repayment_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "loan_repayment". */
+export type Loan_Repayment_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+  loan?: InputMaybe<Loan_Order_By>;
+  loan_id?: InputMaybe<Order_By>;
+  on_date?: InputMaybe<Order_By>;
+  trash?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: loan_repayment */
+export type Loan_Repayment_Pk_Columns_Input = {
+  id: Scalars['uuid'];
+};
+
+/** select columns of table "loan_repayment" */
+export enum Loan_Repayment_Select_Column {
+  /** column name */
+  Amount = 'amount',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Interest = 'interest',
+  /** column name */
+  LoanId = 'loan_id',
+  /** column name */
+  OnDate = 'on_date',
+  /** column name */
+  Trash = 'trash',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "loan_repayment" */
+export type Loan_Repayment_Set_Input = {
+  amount?: InputMaybe<Scalars['numeric']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  interest?: InputMaybe<Scalars['numeric']>;
+  loan_id?: InputMaybe<Scalars['uuid']>;
+  on_date?: InputMaybe<Scalars['date']>;
+  trash?: InputMaybe<Scalars['Boolean']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** aggregate stddev on columns */
+export type Loan_Repayment_Stddev_Fields = {
+  __typename?: 'loan_repayment_stddev_fields';
+  amount?: Maybe<Scalars['Float']>;
+  interest?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "loan_repayment" */
+export type Loan_Repayment_Stddev_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Loan_Repayment_Stddev_Pop_Fields = {
+  __typename?: 'loan_repayment_stddev_pop_fields';
+  amount?: Maybe<Scalars['Float']>;
+  interest?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "loan_repayment" */
+export type Loan_Repayment_Stddev_Pop_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Loan_Repayment_Stddev_Samp_Fields = {
+  __typename?: 'loan_repayment_stddev_samp_fields';
+  amount?: Maybe<Scalars['Float']>;
+  interest?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "loan_repayment" */
+export type Loan_Repayment_Stddev_Samp_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+};
+
+/** aggregate sum on columns */
+export type Loan_Repayment_Sum_Fields = {
+  __typename?: 'loan_repayment_sum_fields';
+  amount?: Maybe<Scalars['numeric']>;
+  interest?: Maybe<Scalars['numeric']>;
+};
+
+/** order by sum() on columns of table "loan_repayment" */
+export type Loan_Repayment_Sum_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+};
+
+/** update columns of table "loan_repayment" */
+export enum Loan_Repayment_Update_Column {
+  /** column name */
+  Amount = 'amount',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Interest = 'interest',
+  /** column name */
+  LoanId = 'loan_id',
+  /** column name */
+  OnDate = 'on_date',
+  /** column name */
+  Trash = 'trash',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** aggregate var_pop on columns */
+export type Loan_Repayment_Var_Pop_Fields = {
+  __typename?: 'loan_repayment_var_pop_fields';
+  amount?: Maybe<Scalars['Float']>;
+  interest?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "loan_repayment" */
+export type Loan_Repayment_Var_Pop_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Loan_Repayment_Var_Samp_Fields = {
+  __typename?: 'loan_repayment_var_samp_fields';
+  amount?: Maybe<Scalars['Float']>;
+  interest?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "loan_repayment" */
+export type Loan_Repayment_Var_Samp_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Loan_Repayment_Variance_Fields = {
+  __typename?: 'loan_repayment_variance_fields';
+  amount?: Maybe<Scalars['Float']>;
+  interest?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "loan_repayment" */
+export type Loan_Repayment_Variance_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+};
+
+/** select columns of table "loan" */
+export enum Loan_Select_Column {
+  /** column name */
+  AccountNumber = 'account_number',
+  /** column name */
+  Amount = 'amount',
+  /** column name */
+  BankBranchId = 'bank_branch_id',
+  /** column name */
+  CloseDate = 'close_date',
+  /** column name */
+  Closed = 'closed',
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Collateral = 'collateral',
+  /** column name */
+  ContractDate = 'contract_date',
+  /** column name */
+  ContractEnd = 'contract_end',
+  /** column name */
+  ContractNo = 'contract_no',
+  /** column name */
+  CovidAffected = 'covid_affected',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Grade = 'grade',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  InitalFreeCost = 'inital_free_cost',
+  /** column name */
+  Interest = 'interest',
+  /** column name */
+  IsFreeCost = 'is_free_cost',
+  /** column name */
+  LastFreeCost = 'last_free_cost',
+  /** column name */
+  LoanAmountApproved = 'loan_amount_approved',
+  /** column name */
+  LoanCollateralId = 'loan_collateral_id',
+  /** column name */
+  LoanFees = 'loan_fees',
+  /** column name */
+  LoanPurposeId = 'loan_purpose_id',
+  /** column name */
+  LoanStatusId = 'loan_status_id',
+  /** column name */
+  LoanTypeId = 'loan_type_id',
+  /** column name */
+  Purpose = 'purpose',
+  /** column name */
+  Remark = 'remark',
+  /** column name */
+  Repayment = 'repayment',
+  /** column name */
+  ResponsibleStaff = 'responsible_staff',
+  /** column name */
+  SkipNo = 'skip_no',
+  /** column name */
+  Staff = 'staff',
+  /** column name */
+  Title = 'title',
+  /** column name */
+  TotalOfCollateral = 'total_of_collateral',
+  /** column name */
+  Trash = 'trash',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "loan" */
+export type Loan_Set_Input = {
+  account_number?: InputMaybe<Scalars['String']>;
+  amount?: InputMaybe<Scalars['numeric']>;
+  bank_branch_id?: InputMaybe<Scalars['uuid']>;
+  close_date?: InputMaybe<Scalars['date']>;
+  closed?: InputMaybe<Scalars['Boolean']>;
+  code?: InputMaybe<Scalars['String']>;
+  collateral?: InputMaybe<Scalars['String']>;
+  contract_date?: InputMaybe<Scalars['date']>;
+  contract_end?: InputMaybe<Scalars['date']>;
+  contract_no?: InputMaybe<Scalars['String']>;
+  covid_affected?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  grade?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  inital_free_cost?: InputMaybe<Scalars['date']>;
+  interest?: InputMaybe<Scalars['numeric']>;
+  is_free_cost?: InputMaybe<Scalars['Boolean']>;
+  last_free_cost?: InputMaybe<Scalars['date']>;
+  loan_amount_approved?: InputMaybe<Scalars['numeric']>;
+  loan_collateral_id?: InputMaybe<Scalars['String']>;
+  /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
+  loan_fees?: InputMaybe<Scalars['numeric']>;
+  loan_purpose_id?: InputMaybe<Scalars['String']>;
+  loan_status_id?: InputMaybe<Scalars['String']>;
+  loan_type_id?: InputMaybe<Scalars['String']>;
+  /** ເປົ້າໝາຍເງິນກູ້​​(ອະ​ທິ​ບາຍ​ລະ​ອຽດ) */
+  purpose?: InputMaybe<Scalars['String']>;
+  remark?: InputMaybe<Scalars['String']>;
+  repayment?: InputMaybe<Scalars['numeric']>;
+  responsible_staff?: InputMaybe<Scalars['String']>;
+  skip_no?: InputMaybe<Scalars['Int']>;
+  staff?: InputMaybe<Scalars['Int']>;
+  title?: InputMaybe<Scalars['String']>;
+  total_of_collateral?: InputMaybe<Scalars['numeric']>;
+  trash?: InputMaybe<Scalars['Boolean']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** ສະ​ຖາ​ນະ​ຂອງ​ເງິນກູ້ "ສະ​ຖາ​ນະ​ຂອງ​ເງິນ​ກູ້ ​*ປ່ຽນແປງຕາມແຕ່ລະເດືອນ[ປິດ, ປະ​ຈຸ​ບັນ​, NPL-​ຊຳ​ລະ​ໝົດ, -NPL-ຍັງ​ຄ້າງ​​ຊຳ​ລະ]-[Status of Loan: ended, current, NPL-ended, NPL-not ended] */
+export type Loan_Status = {
+  __typename?: 'loan_status';
+  active?: Maybe<Scalars['Boolean']>;
+  created_at: Scalars['timestamptz'];
+  en: Scalars['String'];
+  id: Scalars['String'];
+  lo: Scalars['String'];
+  /** An array relationship */
+  loans: Array<Loan>;
+  /** An aggregate relationship */
+  loans_aggregate: Loan_Aggregate;
+  updated_at: Scalars['timestamptz'];
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+
+/** ສະ​ຖາ​ນະ​ຂອງ​ເງິນກູ້ "ສະ​ຖາ​ນະ​ຂອງ​ເງິນ​ກູ້ ​*ປ່ຽນແປງຕາມແຕ່ລະເດືອນ[ປິດ, ປະ​ຈຸ​ບັນ​, NPL-​ຊຳ​ລະ​ໝົດ, -NPL-ຍັງ​ຄ້າງ​​ຊຳ​ລະ]-[Status of Loan: ended, current, NPL-ended, NPL-not ended] */
+export type Loan_StatusLoansArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Order_By>>;
+  where?: InputMaybe<Loan_Bool_Exp>;
+};
+
+
+/** ສະ​ຖາ​ນະ​ຂອງ​ເງິນກູ້ "ສະ​ຖາ​ນະ​ຂອງ​ເງິນ​ກູ້ ​*ປ່ຽນແປງຕາມແຕ່ລະເດືອນ[ປິດ, ປະ​ຈຸ​ບັນ​, NPL-​ຊຳ​ລະ​ໝົດ, -NPL-ຍັງ​ຄ້າງ​​ຊຳ​ລະ]-[Status of Loan: ended, current, NPL-ended, NPL-not ended] */
+export type Loan_StatusLoans_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Order_By>>;
+  where?: InputMaybe<Loan_Bool_Exp>;
+};
+
+/** aggregated selection of "loan_status" */
+export type Loan_Status_Aggregate = {
+  __typename?: 'loan_status_aggregate';
+  aggregate?: Maybe<Loan_Status_Aggregate_Fields>;
+  nodes: Array<Loan_Status>;
+};
+
+/** aggregate fields of "loan_status" */
+export type Loan_Status_Aggregate_Fields = {
+  __typename?: 'loan_status_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Loan_Status_Max_Fields>;
+  min?: Maybe<Loan_Status_Min_Fields>;
+};
+
+
+/** aggregate fields of "loan_status" */
+export type Loan_Status_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Loan_Status_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "loan_status". All fields are combined with a logical 'AND'. */
+export type Loan_Status_Bool_Exp = {
+  _and?: InputMaybe<Array<Loan_Status_Bool_Exp>>;
+  _not?: InputMaybe<Loan_Status_Bool_Exp>;
+  _or?: InputMaybe<Array<Loan_Status_Bool_Exp>>;
+  active?: InputMaybe<Boolean_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  en?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  lo?: InputMaybe<String_Comparison_Exp>;
+  loans?: InputMaybe<Loan_Bool_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user_id?: InputMaybe<Uuid_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "loan_status" */
+export enum Loan_Status_Constraint {
+  /** unique or primary key constraint */
+  LoanStatusPkey = 'loan_status_pkey'
+}
+
+/** input type for inserting data into table "loan_status" */
+export type Loan_Status_Insert_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  en?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  lo?: InputMaybe<Scalars['String']>;
+  loans?: InputMaybe<Loan_Arr_Rel_Insert_Input>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** aggregate max on columns */
+export type Loan_Status_Max_Fields = {
+  __typename?: 'loan_status_max_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  en?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  lo?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** aggregate min on columns */
+export type Loan_Status_Min_Fields = {
+  __typename?: 'loan_status_min_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  en?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  lo?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** response of any mutation on the table "loan_status" */
+export type Loan_Status_Mutation_Response = {
+  __typename?: 'loan_status_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Loan_Status>;
+};
+
+/** input type for inserting object relation for remote table "loan_status" */
+export type Loan_Status_Obj_Rel_Insert_Input = {
+  data: Loan_Status_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Loan_Status_On_Conflict>;
+};
+
+/** on_conflict condition type for table "loan_status" */
+export type Loan_Status_On_Conflict = {
+  constraint: Loan_Status_Constraint;
+  update_columns?: Array<Loan_Status_Update_Column>;
+  where?: InputMaybe<Loan_Status_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "loan_status". */
+export type Loan_Status_Order_By = {
+  active?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  en?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  lo?: InputMaybe<Order_By>;
+  loans_aggregate?: InputMaybe<Loan_Aggregate_Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: loan_status */
+export type Loan_Status_Pk_Columns_Input = {
+  id: Scalars['String'];
+};
+
+/** select columns of table "loan_status" */
+export enum Loan_Status_Select_Column {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  En = 'en',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Lo = 'lo',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "loan_status" */
+export type Loan_Status_Set_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  en?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  lo?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** update columns of table "loan_status" */
+export enum Loan_Status_Update_Column {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  En = 'en',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Lo = 'lo',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** aggregate stddev on columns */
+export type Loan_Stddev_Fields = {
+  __typename?: 'loan_stddev_fields';
+  amount?: Maybe<Scalars['Float']>;
+  interest?: Maybe<Scalars['Float']>;
+  loan_amount_approved?: Maybe<Scalars['Float']>;
+  /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
+  loan_fees?: Maybe<Scalars['Float']>;
+  repayment?: Maybe<Scalars['Float']>;
+  skip_no?: Maybe<Scalars['Float']>;
+  staff?: Maybe<Scalars['Float']>;
+  total_of_collateral?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "loan" */
+export type Loan_Stddev_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+  loan_amount_approved?: InputMaybe<Order_By>;
+  /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
+  loan_fees?: InputMaybe<Order_By>;
+  repayment?: InputMaybe<Order_By>;
+  skip_no?: InputMaybe<Order_By>;
+  staff?: InputMaybe<Order_By>;
+  total_of_collateral?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Loan_Stddev_Pop_Fields = {
+  __typename?: 'loan_stddev_pop_fields';
+  amount?: Maybe<Scalars['Float']>;
+  interest?: Maybe<Scalars['Float']>;
+  loan_amount_approved?: Maybe<Scalars['Float']>;
+  /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
+  loan_fees?: Maybe<Scalars['Float']>;
+  repayment?: Maybe<Scalars['Float']>;
+  skip_no?: Maybe<Scalars['Float']>;
+  staff?: Maybe<Scalars['Float']>;
+  total_of_collateral?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "loan" */
+export type Loan_Stddev_Pop_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+  loan_amount_approved?: InputMaybe<Order_By>;
+  /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
+  loan_fees?: InputMaybe<Order_By>;
+  repayment?: InputMaybe<Order_By>;
+  skip_no?: InputMaybe<Order_By>;
+  staff?: InputMaybe<Order_By>;
+  total_of_collateral?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Loan_Stddev_Samp_Fields = {
+  __typename?: 'loan_stddev_samp_fields';
+  amount?: Maybe<Scalars['Float']>;
+  interest?: Maybe<Scalars['Float']>;
+  loan_amount_approved?: Maybe<Scalars['Float']>;
+  /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
+  loan_fees?: Maybe<Scalars['Float']>;
+  repayment?: Maybe<Scalars['Float']>;
+  skip_no?: Maybe<Scalars['Float']>;
+  staff?: Maybe<Scalars['Float']>;
+  total_of_collateral?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "loan" */
+export type Loan_Stddev_Samp_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+  loan_amount_approved?: InputMaybe<Order_By>;
+  /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
+  loan_fees?: InputMaybe<Order_By>;
+  repayment?: InputMaybe<Order_By>;
+  skip_no?: InputMaybe<Order_By>;
+  staff?: InputMaybe<Order_By>;
+  total_of_collateral?: InputMaybe<Order_By>;
+};
+
+/** aggregate sum on columns */
+export type Loan_Sum_Fields = {
+  __typename?: 'loan_sum_fields';
+  amount?: Maybe<Scalars['numeric']>;
+  interest?: Maybe<Scalars['numeric']>;
+  loan_amount_approved?: Maybe<Scalars['numeric']>;
+  /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
+  loan_fees?: Maybe<Scalars['numeric']>;
+  repayment?: Maybe<Scalars['numeric']>;
+  skip_no?: Maybe<Scalars['Int']>;
+  staff?: Maybe<Scalars['Int']>;
+  total_of_collateral?: Maybe<Scalars['numeric']>;
+};
+
+/** order by sum() on columns of table "loan" */
+export type Loan_Sum_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+  loan_amount_approved?: InputMaybe<Order_By>;
+  /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
+  loan_fees?: InputMaybe<Order_By>;
+  repayment?: InputMaybe<Order_By>;
+  skip_no?: InputMaybe<Order_By>;
+  staff?: InputMaybe<Order_By>;
+  total_of_collateral?: InputMaybe<Order_By>;
+};
+
+/** ປະ​ເພດ​ເປົ້າ​ຫມາຍ​ເງິນ​ກູ້ [​​ທຶນ​ຫມູນ​ວຽນ, ທຶນ​ຄົງ​ທີ່] **ຈາກ​ທະ​ນາ​ຄານ */
+export type Loan_Type = {
+  __typename?: 'loan_type';
+  active?: Maybe<Scalars['Boolean']>;
+  created_at: Scalars['timestamptz'];
+  en: Scalars['String'];
+  id: Scalars['String'];
+  lo: Scalars['String'];
+  /** An array relationship */
+  loans: Array<Loan>;
+  /** An aggregate relationship */
+  loans_aggregate: Loan_Aggregate;
+  updated_at: Scalars['timestamptz'];
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+
+/** ປະ​ເພດ​ເປົ້າ​ຫມາຍ​ເງິນ​ກູ້ [​​ທຶນ​ຫມູນ​ວຽນ, ທຶນ​ຄົງ​ທີ່] **ຈາກ​ທະ​ນາ​ຄານ */
+export type Loan_TypeLoansArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Order_By>>;
+  where?: InputMaybe<Loan_Bool_Exp>;
+};
+
+
+/** ປະ​ເພດ​ເປົ້າ​ຫມາຍ​ເງິນ​ກູ້ [​​ທຶນ​ຫມູນ​ວຽນ, ທຶນ​ຄົງ​ທີ່] **ຈາກ​ທະ​ນາ​ຄານ */
+export type Loan_TypeLoans_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Order_By>>;
+  where?: InputMaybe<Loan_Bool_Exp>;
+};
+
+/** aggregated selection of "loan_type" */
+export type Loan_Type_Aggregate = {
+  __typename?: 'loan_type_aggregate';
+  aggregate?: Maybe<Loan_Type_Aggregate_Fields>;
+  nodes: Array<Loan_Type>;
+};
+
+/** aggregate fields of "loan_type" */
+export type Loan_Type_Aggregate_Fields = {
+  __typename?: 'loan_type_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Loan_Type_Max_Fields>;
+  min?: Maybe<Loan_Type_Min_Fields>;
+};
+
+
+/** aggregate fields of "loan_type" */
+export type Loan_Type_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Loan_Type_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "loan_type". All fields are combined with a logical 'AND'. */
+export type Loan_Type_Bool_Exp = {
+  _and?: InputMaybe<Array<Loan_Type_Bool_Exp>>;
+  _not?: InputMaybe<Loan_Type_Bool_Exp>;
+  _or?: InputMaybe<Array<Loan_Type_Bool_Exp>>;
+  active?: InputMaybe<Boolean_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  en?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  lo?: InputMaybe<String_Comparison_Exp>;
+  loans?: InputMaybe<Loan_Bool_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user_id?: InputMaybe<Uuid_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "loan_type" */
+export enum Loan_Type_Constraint {
+  /** unique or primary key constraint */
+  LoanTypePkey = 'loan_type_pkey'
+}
+
+/** input type for inserting data into table "loan_type" */
+export type Loan_Type_Insert_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  en?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  lo?: InputMaybe<Scalars['String']>;
+  loans?: InputMaybe<Loan_Arr_Rel_Insert_Input>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** aggregate max on columns */
+export type Loan_Type_Max_Fields = {
+  __typename?: 'loan_type_max_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  en?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  lo?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** aggregate min on columns */
+export type Loan_Type_Min_Fields = {
+  __typename?: 'loan_type_min_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  en?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  lo?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** response of any mutation on the table "loan_type" */
+export type Loan_Type_Mutation_Response = {
+  __typename?: 'loan_type_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Loan_Type>;
+};
+
+/** input type for inserting object relation for remote table "loan_type" */
+export type Loan_Type_Obj_Rel_Insert_Input = {
+  data: Loan_Type_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Loan_Type_On_Conflict>;
+};
+
+/** on_conflict condition type for table "loan_type" */
+export type Loan_Type_On_Conflict = {
+  constraint: Loan_Type_Constraint;
+  update_columns?: Array<Loan_Type_Update_Column>;
+  where?: InputMaybe<Loan_Type_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "loan_type". */
+export type Loan_Type_Order_By = {
+  active?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  en?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  lo?: InputMaybe<Order_By>;
+  loans_aggregate?: InputMaybe<Loan_Aggregate_Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: loan_type */
+export type Loan_Type_Pk_Columns_Input = {
+  id: Scalars['String'];
+};
+
+/** select columns of table "loan_type" */
+export enum Loan_Type_Select_Column {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  En = 'en',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Lo = 'lo',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "loan_type" */
+export type Loan_Type_Set_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  en?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  lo?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** update columns of table "loan_type" */
+export enum Loan_Type_Update_Column {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  En = 'en',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Lo = 'lo',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** update columns of table "loan" */
+export enum Loan_Update_Column {
+  /** column name */
+  AccountNumber = 'account_number',
+  /** column name */
+  Amount = 'amount',
+  /** column name */
+  BankBranchId = 'bank_branch_id',
+  /** column name */
+  CloseDate = 'close_date',
+  /** column name */
+  Closed = 'closed',
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Collateral = 'collateral',
+  /** column name */
+  ContractDate = 'contract_date',
+  /** column name */
+  ContractEnd = 'contract_end',
+  /** column name */
+  ContractNo = 'contract_no',
+  /** column name */
+  CovidAffected = 'covid_affected',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Grade = 'grade',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  InitalFreeCost = 'inital_free_cost',
+  /** column name */
+  Interest = 'interest',
+  /** column name */
+  IsFreeCost = 'is_free_cost',
+  /** column name */
+  LastFreeCost = 'last_free_cost',
+  /** column name */
+  LoanAmountApproved = 'loan_amount_approved',
+  /** column name */
+  LoanCollateralId = 'loan_collateral_id',
+  /** column name */
+  LoanFees = 'loan_fees',
+  /** column name */
+  LoanPurposeId = 'loan_purpose_id',
+  /** column name */
+  LoanStatusId = 'loan_status_id',
+  /** column name */
+  LoanTypeId = 'loan_type_id',
+  /** column name */
+  Purpose = 'purpose',
+  /** column name */
+  Remark = 'remark',
+  /** column name */
+  Repayment = 'repayment',
+  /** column name */
+  ResponsibleStaff = 'responsible_staff',
+  /** column name */
+  SkipNo = 'skip_no',
+  /** column name */
+  Staff = 'staff',
+  /** column name */
+  Title = 'title',
+  /** column name */
+  TotalOfCollateral = 'total_of_collateral',
+  /** column name */
+  Trash = 'trash',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** aggregate var_pop on columns */
+export type Loan_Var_Pop_Fields = {
+  __typename?: 'loan_var_pop_fields';
+  amount?: Maybe<Scalars['Float']>;
+  interest?: Maybe<Scalars['Float']>;
+  loan_amount_approved?: Maybe<Scalars['Float']>;
+  /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
+  loan_fees?: Maybe<Scalars['Float']>;
+  repayment?: Maybe<Scalars['Float']>;
+  skip_no?: Maybe<Scalars['Float']>;
+  staff?: Maybe<Scalars['Float']>;
+  total_of_collateral?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "loan" */
+export type Loan_Var_Pop_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+  loan_amount_approved?: InputMaybe<Order_By>;
+  /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
+  loan_fees?: InputMaybe<Order_By>;
+  repayment?: InputMaybe<Order_By>;
+  skip_no?: InputMaybe<Order_By>;
+  staff?: InputMaybe<Order_By>;
+  total_of_collateral?: InputMaybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Loan_Var_Samp_Fields = {
+  __typename?: 'loan_var_samp_fields';
+  amount?: Maybe<Scalars['Float']>;
+  interest?: Maybe<Scalars['Float']>;
+  loan_amount_approved?: Maybe<Scalars['Float']>;
+  /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
+  loan_fees?: Maybe<Scalars['Float']>;
+  repayment?: Maybe<Scalars['Float']>;
+  skip_no?: Maybe<Scalars['Float']>;
+  staff?: Maybe<Scalars['Float']>;
+  total_of_collateral?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "loan" */
+export type Loan_Var_Samp_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+  loan_amount_approved?: InputMaybe<Order_By>;
+  /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
+  loan_fees?: InputMaybe<Order_By>;
+  repayment?: InputMaybe<Order_By>;
+  skip_no?: InputMaybe<Order_By>;
+  staff?: InputMaybe<Order_By>;
+  total_of_collateral?: InputMaybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Loan_Variance_Fields = {
+  __typename?: 'loan_variance_fields';
+  amount?: Maybe<Scalars['Float']>;
+  interest?: Maybe<Scalars['Float']>;
+  loan_amount_approved?: Maybe<Scalars['Float']>;
+  /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
+  loan_fees?: Maybe<Scalars['Float']>;
+  repayment?: Maybe<Scalars['Float']>;
+  skip_no?: Maybe<Scalars['Float']>;
+  staff?: Maybe<Scalars['Float']>;
+  total_of_collateral?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "loan" */
+export type Loan_Variance_Order_By = {
+  amount?: InputMaybe<Order_By>;
+  interest?: InputMaybe<Order_By>;
+  loan_amount_approved?: InputMaybe<Order_By>;
+  /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
+  loan_fees?: InputMaybe<Order_By>;
+  repayment?: InputMaybe<Order_By>;
+  skip_no?: InputMaybe<Order_By>;
+  staff?: InputMaybe<Order_By>;
+  total_of_collateral?: InputMaybe<Order_By>;
 };
 
 /** mutation root */
@@ -1177,6 +7102,78 @@ export type Mutation_Root = {
   deleteUser?: Maybe<Users>;
   /** delete data from the table: "auth.users" */
   deleteUsers?: Maybe<Users_Mutation_Response>;
+  /** delete data from the table: "bank" */
+  delete_bank?: Maybe<Bank_Mutation_Response>;
+  /** delete data from the table: "bank_branch" */
+  delete_bank_branch?: Maybe<Bank_Branch_Mutation_Response>;
+  /** delete single row from the table: "bank_branch" */
+  delete_bank_branch_by_pk?: Maybe<Bank_Branch>;
+  /** delete single row from the table: "bank" */
+  delete_bank_by_pk?: Maybe<Bank>;
+  /** delete data from the table: "busines" */
+  delete_busines?: Maybe<Busines_Mutation_Response>;
+  /** delete single row from the table: "busines" */
+  delete_busines_by_pk?: Maybe<Busines>;
+  /** delete data from the table: "busines_class" */
+  delete_busines_class?: Maybe<Busines_Class_Mutation_Response>;
+  /** delete single row from the table: "busines_class" */
+  delete_busines_class_by_pk?: Maybe<Busines_Class>;
+  /** delete data from the table: "busines_sector" */
+  delete_busines_sector?: Maybe<Busines_Sector_Mutation_Response>;
+  /** delete single row from the table: "busines_sector" */
+  delete_busines_sector_by_pk?: Maybe<Busines_Sector>;
+  /** delete data from the table: "busines_size" */
+  delete_busines_size?: Maybe<Busines_Size_Mutation_Response>;
+  /** delete single row from the table: "busines_size" */
+  delete_busines_size_by_pk?: Maybe<Busines_Size>;
+  /** delete data from the table: "busines_type" */
+  delete_busines_type?: Maybe<Busines_Type_Mutation_Response>;
+  /** delete single row from the table: "busines_type" */
+  delete_busines_type_by_pk?: Maybe<Busines_Type>;
+  /** delete data from the table: "fund" */
+  delete_fund?: Maybe<Fund_Mutation_Response>;
+  /** delete single row from the table: "fund" */
+  delete_fund_by_pk?: Maybe<Fund>;
+  /** delete data from the table: "fund_contract" */
+  delete_fund_contract?: Maybe<Fund_Contract_Mutation_Response>;
+  /** delete single row from the table: "fund_contract" */
+  delete_fund_contract_by_pk?: Maybe<Fund_Contract>;
+  /** delete data from the table: "fund_contract_repayment" */
+  delete_fund_contract_repayment?: Maybe<Fund_Contract_Repayment_Mutation_Response>;
+  /** delete single row from the table: "fund_contract_repayment" */
+  delete_fund_contract_repayment_by_pk?: Maybe<Fund_Contract_Repayment>;
+  /** delete data from the table: "fund_src" */
+  delete_fund_src?: Maybe<Fund_Src_Mutation_Response>;
+  /** delete single row from the table: "fund_src" */
+  delete_fund_src_by_pk?: Maybe<Fund_Src>;
+  /** delete data from the table: "loan" */
+  delete_loan?: Maybe<Loan_Mutation_Response>;
+  /** delete single row from the table: "loan" */
+  delete_loan_by_pk?: Maybe<Loan>;
+  /** delete data from the table: "loan_collateral" */
+  delete_loan_collateral?: Maybe<Loan_Collateral_Mutation_Response>;
+  /** delete single row from the table: "loan_collateral" */
+  delete_loan_collateral_by_pk?: Maybe<Loan_Collateral>;
+  /** delete data from the table: "loan_disbursed" */
+  delete_loan_disbursed?: Maybe<Loan_Disbursed_Mutation_Response>;
+  /** delete single row from the table: "loan_disbursed" */
+  delete_loan_disbursed_by_pk?: Maybe<Loan_Disbursed>;
+  /** delete data from the table: "loan_purpose" */
+  delete_loan_purpose?: Maybe<Loan_Purpose_Mutation_Response>;
+  /** delete single row from the table: "loan_purpose" */
+  delete_loan_purpose_by_pk?: Maybe<Loan_Purpose>;
+  /** delete data from the table: "loan_repayment" */
+  delete_loan_repayment?: Maybe<Loan_Repayment_Mutation_Response>;
+  /** delete single row from the table: "loan_repayment" */
+  delete_loan_repayment_by_pk?: Maybe<Loan_Repayment>;
+  /** delete data from the table: "loan_status" */
+  delete_loan_status?: Maybe<Loan_Status_Mutation_Response>;
+  /** delete single row from the table: "loan_status" */
+  delete_loan_status_by_pk?: Maybe<Loan_Status>;
+  /** delete data from the table: "loan_type" */
+  delete_loan_type?: Maybe<Loan_Type_Mutation_Response>;
+  /** delete single row from the table: "loan_type" */
+  delete_loan_type_by_pk?: Maybe<Loan_Type>;
   /** insert a single row into the table: "auth.providers" */
   insertAuthProvider?: Maybe<AuthProviders>;
   /** insert a single row into the table: "auth.provider_requests" */
@@ -1205,6 +7202,78 @@ export type Mutation_Root = {
   insertUser?: Maybe<Users>;
   /** insert data into the table: "auth.users" */
   insertUsers?: Maybe<Users_Mutation_Response>;
+  /** insert data into the table: "bank" */
+  insert_bank?: Maybe<Bank_Mutation_Response>;
+  /** insert data into the table: "bank_branch" */
+  insert_bank_branch?: Maybe<Bank_Branch_Mutation_Response>;
+  /** insert a single row into the table: "bank_branch" */
+  insert_bank_branch_one?: Maybe<Bank_Branch>;
+  /** insert a single row into the table: "bank" */
+  insert_bank_one?: Maybe<Bank>;
+  /** insert data into the table: "busines" */
+  insert_busines?: Maybe<Busines_Mutation_Response>;
+  /** insert data into the table: "busines_class" */
+  insert_busines_class?: Maybe<Busines_Class_Mutation_Response>;
+  /** insert a single row into the table: "busines_class" */
+  insert_busines_class_one?: Maybe<Busines_Class>;
+  /** insert a single row into the table: "busines" */
+  insert_busines_one?: Maybe<Busines>;
+  /** insert data into the table: "busines_sector" */
+  insert_busines_sector?: Maybe<Busines_Sector_Mutation_Response>;
+  /** insert a single row into the table: "busines_sector" */
+  insert_busines_sector_one?: Maybe<Busines_Sector>;
+  /** insert data into the table: "busines_size" */
+  insert_busines_size?: Maybe<Busines_Size_Mutation_Response>;
+  /** insert a single row into the table: "busines_size" */
+  insert_busines_size_one?: Maybe<Busines_Size>;
+  /** insert data into the table: "busines_type" */
+  insert_busines_type?: Maybe<Busines_Type_Mutation_Response>;
+  /** insert a single row into the table: "busines_type" */
+  insert_busines_type_one?: Maybe<Busines_Type>;
+  /** insert data into the table: "fund" */
+  insert_fund?: Maybe<Fund_Mutation_Response>;
+  /** insert data into the table: "fund_contract" */
+  insert_fund_contract?: Maybe<Fund_Contract_Mutation_Response>;
+  /** insert a single row into the table: "fund_contract" */
+  insert_fund_contract_one?: Maybe<Fund_Contract>;
+  /** insert data into the table: "fund_contract_repayment" */
+  insert_fund_contract_repayment?: Maybe<Fund_Contract_Repayment_Mutation_Response>;
+  /** insert a single row into the table: "fund_contract_repayment" */
+  insert_fund_contract_repayment_one?: Maybe<Fund_Contract_Repayment>;
+  /** insert a single row into the table: "fund" */
+  insert_fund_one?: Maybe<Fund>;
+  /** insert data into the table: "fund_src" */
+  insert_fund_src?: Maybe<Fund_Src_Mutation_Response>;
+  /** insert a single row into the table: "fund_src" */
+  insert_fund_src_one?: Maybe<Fund_Src>;
+  /** insert data into the table: "loan" */
+  insert_loan?: Maybe<Loan_Mutation_Response>;
+  /** insert data into the table: "loan_collateral" */
+  insert_loan_collateral?: Maybe<Loan_Collateral_Mutation_Response>;
+  /** insert a single row into the table: "loan_collateral" */
+  insert_loan_collateral_one?: Maybe<Loan_Collateral>;
+  /** insert data into the table: "loan_disbursed" */
+  insert_loan_disbursed?: Maybe<Loan_Disbursed_Mutation_Response>;
+  /** insert a single row into the table: "loan_disbursed" */
+  insert_loan_disbursed_one?: Maybe<Loan_Disbursed>;
+  /** insert a single row into the table: "loan" */
+  insert_loan_one?: Maybe<Loan>;
+  /** insert data into the table: "loan_purpose" */
+  insert_loan_purpose?: Maybe<Loan_Purpose_Mutation_Response>;
+  /** insert a single row into the table: "loan_purpose" */
+  insert_loan_purpose_one?: Maybe<Loan_Purpose>;
+  /** insert data into the table: "loan_repayment" */
+  insert_loan_repayment?: Maybe<Loan_Repayment_Mutation_Response>;
+  /** insert a single row into the table: "loan_repayment" */
+  insert_loan_repayment_one?: Maybe<Loan_Repayment>;
+  /** insert data into the table: "loan_status" */
+  insert_loan_status?: Maybe<Loan_Status_Mutation_Response>;
+  /** insert a single row into the table: "loan_status" */
+  insert_loan_status_one?: Maybe<Loan_Status>;
+  /** insert data into the table: "loan_type" */
+  insert_loan_type?: Maybe<Loan_Type_Mutation_Response>;
+  /** insert a single row into the table: "loan_type" */
+  insert_loan_type_one?: Maybe<Loan_Type>;
   /** update single row of the table: "auth.providers" */
   updateAuthProvider?: Maybe<AuthProviders>;
   /** update single row of the table: "auth.provider_requests" */
@@ -1233,6 +7302,78 @@ export type Mutation_Root = {
   updateUser?: Maybe<Users>;
   /** update data of the table: "auth.users" */
   updateUsers?: Maybe<Users_Mutation_Response>;
+  /** update data of the table: "bank" */
+  update_bank?: Maybe<Bank_Mutation_Response>;
+  /** update data of the table: "bank_branch" */
+  update_bank_branch?: Maybe<Bank_Branch_Mutation_Response>;
+  /** update single row of the table: "bank_branch" */
+  update_bank_branch_by_pk?: Maybe<Bank_Branch>;
+  /** update single row of the table: "bank" */
+  update_bank_by_pk?: Maybe<Bank>;
+  /** update data of the table: "busines" */
+  update_busines?: Maybe<Busines_Mutation_Response>;
+  /** update single row of the table: "busines" */
+  update_busines_by_pk?: Maybe<Busines>;
+  /** update data of the table: "busines_class" */
+  update_busines_class?: Maybe<Busines_Class_Mutation_Response>;
+  /** update single row of the table: "busines_class" */
+  update_busines_class_by_pk?: Maybe<Busines_Class>;
+  /** update data of the table: "busines_sector" */
+  update_busines_sector?: Maybe<Busines_Sector_Mutation_Response>;
+  /** update single row of the table: "busines_sector" */
+  update_busines_sector_by_pk?: Maybe<Busines_Sector>;
+  /** update data of the table: "busines_size" */
+  update_busines_size?: Maybe<Busines_Size_Mutation_Response>;
+  /** update single row of the table: "busines_size" */
+  update_busines_size_by_pk?: Maybe<Busines_Size>;
+  /** update data of the table: "busines_type" */
+  update_busines_type?: Maybe<Busines_Type_Mutation_Response>;
+  /** update single row of the table: "busines_type" */
+  update_busines_type_by_pk?: Maybe<Busines_Type>;
+  /** update data of the table: "fund" */
+  update_fund?: Maybe<Fund_Mutation_Response>;
+  /** update single row of the table: "fund" */
+  update_fund_by_pk?: Maybe<Fund>;
+  /** update data of the table: "fund_contract" */
+  update_fund_contract?: Maybe<Fund_Contract_Mutation_Response>;
+  /** update single row of the table: "fund_contract" */
+  update_fund_contract_by_pk?: Maybe<Fund_Contract>;
+  /** update data of the table: "fund_contract_repayment" */
+  update_fund_contract_repayment?: Maybe<Fund_Contract_Repayment_Mutation_Response>;
+  /** update single row of the table: "fund_contract_repayment" */
+  update_fund_contract_repayment_by_pk?: Maybe<Fund_Contract_Repayment>;
+  /** update data of the table: "fund_src" */
+  update_fund_src?: Maybe<Fund_Src_Mutation_Response>;
+  /** update single row of the table: "fund_src" */
+  update_fund_src_by_pk?: Maybe<Fund_Src>;
+  /** update data of the table: "loan" */
+  update_loan?: Maybe<Loan_Mutation_Response>;
+  /** update single row of the table: "loan" */
+  update_loan_by_pk?: Maybe<Loan>;
+  /** update data of the table: "loan_collateral" */
+  update_loan_collateral?: Maybe<Loan_Collateral_Mutation_Response>;
+  /** update single row of the table: "loan_collateral" */
+  update_loan_collateral_by_pk?: Maybe<Loan_Collateral>;
+  /** update data of the table: "loan_disbursed" */
+  update_loan_disbursed?: Maybe<Loan_Disbursed_Mutation_Response>;
+  /** update single row of the table: "loan_disbursed" */
+  update_loan_disbursed_by_pk?: Maybe<Loan_Disbursed>;
+  /** update data of the table: "loan_purpose" */
+  update_loan_purpose?: Maybe<Loan_Purpose_Mutation_Response>;
+  /** update single row of the table: "loan_purpose" */
+  update_loan_purpose_by_pk?: Maybe<Loan_Purpose>;
+  /** update data of the table: "loan_repayment" */
+  update_loan_repayment?: Maybe<Loan_Repayment_Mutation_Response>;
+  /** update single row of the table: "loan_repayment" */
+  update_loan_repayment_by_pk?: Maybe<Loan_Repayment>;
+  /** update data of the table: "loan_status" */
+  update_loan_status?: Maybe<Loan_Status_Mutation_Response>;
+  /** update single row of the table: "loan_status" */
+  update_loan_status_by_pk?: Maybe<Loan_Status>;
+  /** update data of the table: "loan_type" */
+  update_loan_type?: Maybe<Loan_Type_Mutation_Response>;
+  /** update single row of the table: "loan_type" */
+  update_loan_type_by_pk?: Maybe<Loan_Type>;
 };
 
 
@@ -1317,6 +7458,222 @@ export type Mutation_RootDeleteUserArgs = {
 /** mutation root */
 export type Mutation_RootDeleteUsersArgs = {
   where: Users_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_BankArgs = {
+  where: Bank_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Bank_BranchArgs = {
+  where: Bank_Branch_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Bank_Branch_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Bank_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_BusinesArgs = {
+  where: Busines_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Busines_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Busines_ClassArgs = {
+  where: Busines_Class_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Busines_Class_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Busines_SectorArgs = {
+  where: Busines_Sector_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Busines_Sector_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Busines_SizeArgs = {
+  where: Busines_Size_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Busines_Size_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Busines_TypeArgs = {
+  where: Busines_Type_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Busines_Type_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_FundArgs = {
+  where: Fund_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Fund_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Fund_ContractArgs = {
+  where: Fund_Contract_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Fund_Contract_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Fund_Contract_RepaymentArgs = {
+  where: Fund_Contract_Repayment_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Fund_Contract_Repayment_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Fund_SrcArgs = {
+  where: Fund_Src_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Fund_Src_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_LoanArgs = {
+  where: Loan_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Loan_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Loan_CollateralArgs = {
+  where: Loan_Collateral_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Loan_Collateral_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Loan_DisbursedArgs = {
+  where: Loan_Disbursed_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Loan_Disbursed_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Loan_PurposeArgs = {
+  where: Loan_Purpose_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Loan_Purpose_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Loan_RepaymentArgs = {
+  where: Loan_Repayment_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Loan_Repayment_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Loan_StatusArgs = {
+  where: Loan_Status_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Loan_Status_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Loan_TypeArgs = {
+  where: Loan_Type_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Loan_Type_By_PkArgs = {
+  id: Scalars['String'];
 };
 
 
@@ -1415,6 +7772,258 @@ export type Mutation_RootInsertUserArgs = {
 export type Mutation_RootInsertUsersArgs = {
   objects: Array<Users_Insert_Input>;
   on_conflict?: InputMaybe<Users_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_BankArgs = {
+  objects: Array<Bank_Insert_Input>;
+  on_conflict?: InputMaybe<Bank_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Bank_BranchArgs = {
+  objects: Array<Bank_Branch_Insert_Input>;
+  on_conflict?: InputMaybe<Bank_Branch_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Bank_Branch_OneArgs = {
+  object: Bank_Branch_Insert_Input;
+  on_conflict?: InputMaybe<Bank_Branch_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Bank_OneArgs = {
+  object: Bank_Insert_Input;
+  on_conflict?: InputMaybe<Bank_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_BusinesArgs = {
+  objects: Array<Busines_Insert_Input>;
+  on_conflict?: InputMaybe<Busines_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Busines_ClassArgs = {
+  objects: Array<Busines_Class_Insert_Input>;
+  on_conflict?: InputMaybe<Busines_Class_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Busines_Class_OneArgs = {
+  object: Busines_Class_Insert_Input;
+  on_conflict?: InputMaybe<Busines_Class_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Busines_OneArgs = {
+  object: Busines_Insert_Input;
+  on_conflict?: InputMaybe<Busines_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Busines_SectorArgs = {
+  objects: Array<Busines_Sector_Insert_Input>;
+  on_conflict?: InputMaybe<Busines_Sector_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Busines_Sector_OneArgs = {
+  object: Busines_Sector_Insert_Input;
+  on_conflict?: InputMaybe<Busines_Sector_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Busines_SizeArgs = {
+  objects: Array<Busines_Size_Insert_Input>;
+  on_conflict?: InputMaybe<Busines_Size_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Busines_Size_OneArgs = {
+  object: Busines_Size_Insert_Input;
+  on_conflict?: InputMaybe<Busines_Size_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Busines_TypeArgs = {
+  objects: Array<Busines_Type_Insert_Input>;
+  on_conflict?: InputMaybe<Busines_Type_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Busines_Type_OneArgs = {
+  object: Busines_Type_Insert_Input;
+  on_conflict?: InputMaybe<Busines_Type_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_FundArgs = {
+  objects: Array<Fund_Insert_Input>;
+  on_conflict?: InputMaybe<Fund_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Fund_ContractArgs = {
+  objects: Array<Fund_Contract_Insert_Input>;
+  on_conflict?: InputMaybe<Fund_Contract_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Fund_Contract_OneArgs = {
+  object: Fund_Contract_Insert_Input;
+  on_conflict?: InputMaybe<Fund_Contract_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Fund_Contract_RepaymentArgs = {
+  objects: Array<Fund_Contract_Repayment_Insert_Input>;
+  on_conflict?: InputMaybe<Fund_Contract_Repayment_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Fund_Contract_Repayment_OneArgs = {
+  object: Fund_Contract_Repayment_Insert_Input;
+  on_conflict?: InputMaybe<Fund_Contract_Repayment_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Fund_OneArgs = {
+  object: Fund_Insert_Input;
+  on_conflict?: InputMaybe<Fund_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Fund_SrcArgs = {
+  objects: Array<Fund_Src_Insert_Input>;
+  on_conflict?: InputMaybe<Fund_Src_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Fund_Src_OneArgs = {
+  object: Fund_Src_Insert_Input;
+  on_conflict?: InputMaybe<Fund_Src_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_LoanArgs = {
+  objects: Array<Loan_Insert_Input>;
+  on_conflict?: InputMaybe<Loan_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Loan_CollateralArgs = {
+  objects: Array<Loan_Collateral_Insert_Input>;
+  on_conflict?: InputMaybe<Loan_Collateral_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Loan_Collateral_OneArgs = {
+  object: Loan_Collateral_Insert_Input;
+  on_conflict?: InputMaybe<Loan_Collateral_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Loan_DisbursedArgs = {
+  objects: Array<Loan_Disbursed_Insert_Input>;
+  on_conflict?: InputMaybe<Loan_Disbursed_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Loan_Disbursed_OneArgs = {
+  object: Loan_Disbursed_Insert_Input;
+  on_conflict?: InputMaybe<Loan_Disbursed_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Loan_OneArgs = {
+  object: Loan_Insert_Input;
+  on_conflict?: InputMaybe<Loan_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Loan_PurposeArgs = {
+  objects: Array<Loan_Purpose_Insert_Input>;
+  on_conflict?: InputMaybe<Loan_Purpose_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Loan_Purpose_OneArgs = {
+  object: Loan_Purpose_Insert_Input;
+  on_conflict?: InputMaybe<Loan_Purpose_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Loan_RepaymentArgs = {
+  objects: Array<Loan_Repayment_Insert_Input>;
+  on_conflict?: InputMaybe<Loan_Repayment_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Loan_Repayment_OneArgs = {
+  object: Loan_Repayment_Insert_Input;
+  on_conflict?: InputMaybe<Loan_Repayment_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Loan_StatusArgs = {
+  objects: Array<Loan_Status_Insert_Input>;
+  on_conflict?: InputMaybe<Loan_Status_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Loan_Status_OneArgs = {
+  object: Loan_Status_Insert_Input;
+  on_conflict?: InputMaybe<Loan_Status_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Loan_TypeArgs = {
+  objects: Array<Loan_Type_Insert_Input>;
+  on_conflict?: InputMaybe<Loan_Type_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Loan_Type_OneArgs = {
+  object: Loan_Type_Insert_Input;
+  on_conflict?: InputMaybe<Loan_Type_On_Conflict>;
 };
 
 
@@ -1535,6 +8144,285 @@ export type Mutation_RootUpdateUsersArgs = {
   where: Users_Bool_Exp;
 };
 
+
+/** mutation root */
+export type Mutation_RootUpdate_BankArgs = {
+  _set?: InputMaybe<Bank_Set_Input>;
+  where: Bank_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Bank_BranchArgs = {
+  _set?: InputMaybe<Bank_Branch_Set_Input>;
+  where: Bank_Branch_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Bank_Branch_By_PkArgs = {
+  _set?: InputMaybe<Bank_Branch_Set_Input>;
+  pk_columns: Bank_Branch_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Bank_By_PkArgs = {
+  _set?: InputMaybe<Bank_Set_Input>;
+  pk_columns: Bank_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_BusinesArgs = {
+  _inc?: InputMaybe<Busines_Inc_Input>;
+  _set?: InputMaybe<Busines_Set_Input>;
+  where: Busines_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Busines_By_PkArgs = {
+  _inc?: InputMaybe<Busines_Inc_Input>;
+  _set?: InputMaybe<Busines_Set_Input>;
+  pk_columns: Busines_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Busines_ClassArgs = {
+  _set?: InputMaybe<Busines_Class_Set_Input>;
+  where: Busines_Class_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Busines_Class_By_PkArgs = {
+  _set?: InputMaybe<Busines_Class_Set_Input>;
+  pk_columns: Busines_Class_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Busines_SectorArgs = {
+  _set?: InputMaybe<Busines_Sector_Set_Input>;
+  where: Busines_Sector_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Busines_Sector_By_PkArgs = {
+  _set?: InputMaybe<Busines_Sector_Set_Input>;
+  pk_columns: Busines_Sector_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Busines_SizeArgs = {
+  _set?: InputMaybe<Busines_Size_Set_Input>;
+  where: Busines_Size_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Busines_Size_By_PkArgs = {
+  _set?: InputMaybe<Busines_Size_Set_Input>;
+  pk_columns: Busines_Size_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Busines_TypeArgs = {
+  _set?: InputMaybe<Busines_Type_Set_Input>;
+  where: Busines_Type_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Busines_Type_By_PkArgs = {
+  _set?: InputMaybe<Busines_Type_Set_Input>;
+  pk_columns: Busines_Type_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_FundArgs = {
+  _inc?: InputMaybe<Fund_Inc_Input>;
+  _set?: InputMaybe<Fund_Set_Input>;
+  where: Fund_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Fund_By_PkArgs = {
+  _inc?: InputMaybe<Fund_Inc_Input>;
+  _set?: InputMaybe<Fund_Set_Input>;
+  pk_columns: Fund_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Fund_ContractArgs = {
+  _inc?: InputMaybe<Fund_Contract_Inc_Input>;
+  _set?: InputMaybe<Fund_Contract_Set_Input>;
+  where: Fund_Contract_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Fund_Contract_By_PkArgs = {
+  _inc?: InputMaybe<Fund_Contract_Inc_Input>;
+  _set?: InputMaybe<Fund_Contract_Set_Input>;
+  pk_columns: Fund_Contract_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Fund_Contract_RepaymentArgs = {
+  _inc?: InputMaybe<Fund_Contract_Repayment_Inc_Input>;
+  _set?: InputMaybe<Fund_Contract_Repayment_Set_Input>;
+  where: Fund_Contract_Repayment_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Fund_Contract_Repayment_By_PkArgs = {
+  _inc?: InputMaybe<Fund_Contract_Repayment_Inc_Input>;
+  _set?: InputMaybe<Fund_Contract_Repayment_Set_Input>;
+  pk_columns: Fund_Contract_Repayment_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Fund_SrcArgs = {
+  _set?: InputMaybe<Fund_Src_Set_Input>;
+  where: Fund_Src_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Fund_Src_By_PkArgs = {
+  _set?: InputMaybe<Fund_Src_Set_Input>;
+  pk_columns: Fund_Src_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_LoanArgs = {
+  _inc?: InputMaybe<Loan_Inc_Input>;
+  _set?: InputMaybe<Loan_Set_Input>;
+  where: Loan_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Loan_By_PkArgs = {
+  _inc?: InputMaybe<Loan_Inc_Input>;
+  _set?: InputMaybe<Loan_Set_Input>;
+  pk_columns: Loan_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Loan_CollateralArgs = {
+  _set?: InputMaybe<Loan_Collateral_Set_Input>;
+  where: Loan_Collateral_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Loan_Collateral_By_PkArgs = {
+  _set?: InputMaybe<Loan_Collateral_Set_Input>;
+  pk_columns: Loan_Collateral_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Loan_DisbursedArgs = {
+  _inc?: InputMaybe<Loan_Disbursed_Inc_Input>;
+  _set?: InputMaybe<Loan_Disbursed_Set_Input>;
+  where: Loan_Disbursed_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Loan_Disbursed_By_PkArgs = {
+  _inc?: InputMaybe<Loan_Disbursed_Inc_Input>;
+  _set?: InputMaybe<Loan_Disbursed_Set_Input>;
+  pk_columns: Loan_Disbursed_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Loan_PurposeArgs = {
+  _set?: InputMaybe<Loan_Purpose_Set_Input>;
+  where: Loan_Purpose_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Loan_Purpose_By_PkArgs = {
+  _set?: InputMaybe<Loan_Purpose_Set_Input>;
+  pk_columns: Loan_Purpose_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Loan_RepaymentArgs = {
+  _inc?: InputMaybe<Loan_Repayment_Inc_Input>;
+  _set?: InputMaybe<Loan_Repayment_Set_Input>;
+  where: Loan_Repayment_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Loan_Repayment_By_PkArgs = {
+  _inc?: InputMaybe<Loan_Repayment_Inc_Input>;
+  _set?: InputMaybe<Loan_Repayment_Set_Input>;
+  pk_columns: Loan_Repayment_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Loan_StatusArgs = {
+  _set?: InputMaybe<Loan_Status_Set_Input>;
+  where: Loan_Status_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Loan_Status_By_PkArgs = {
+  _set?: InputMaybe<Loan_Status_Set_Input>;
+  pk_columns: Loan_Status_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Loan_TypeArgs = {
+  _set?: InputMaybe<Loan_Type_Set_Input>;
+  where: Loan_Type_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Loan_Type_By_PkArgs = {
+  _set?: InputMaybe<Loan_Type_Set_Input>;
+  pk_columns: Loan_Type_Pk_Columns_Input;
+};
+
+/** Boolean expression to compare columns of type "numeric". All fields are combined with logical 'AND'. */
+export type Numeric_Comparison_Exp = {
+  _eq?: InputMaybe<Scalars['numeric']>;
+  _gt?: InputMaybe<Scalars['numeric']>;
+  _gte?: InputMaybe<Scalars['numeric']>;
+  _in?: InputMaybe<Array<Scalars['numeric']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _lt?: InputMaybe<Scalars['numeric']>;
+  _lte?: InputMaybe<Scalars['numeric']>;
+  _neq?: InputMaybe<Scalars['numeric']>;
+  _nin?: InputMaybe<Array<Scalars['numeric']>>;
+};
+
 /** column ordering options */
 export enum Order_By {
   /** in ascending order, nulls last */
@@ -1589,9 +8477,117 @@ export type Query_Root = {
   authUserRoles: Array<AuthUserRoles>;
   /** fetch aggregated fields from the table: "auth.user_roles" */
   authUserRolesAggregate: AuthUserRoles_Aggregate;
+  /** fetch data from the table: "bank" */
+  bank: Array<Bank>;
+  /** fetch aggregated fields from the table: "bank" */
+  bank_aggregate: Bank_Aggregate;
+  /** fetch data from the table: "bank_branch" */
+  bank_branch: Array<Bank_Branch>;
+  /** fetch aggregated fields from the table: "bank_branch" */
+  bank_branch_aggregate: Bank_Branch_Aggregate;
+  /** fetch data from the table: "bank_branch" using primary key columns */
+  bank_branch_by_pk?: Maybe<Bank_Branch>;
+  /** fetch data from the table: "bank" using primary key columns */
+  bank_by_pk?: Maybe<Bank>;
+  /** An array relationship */
+  busines: Array<Busines>;
+  /** An aggregate relationship */
+  busines_aggregate: Busines_Aggregate;
+  /** fetch data from the table: "busines" using primary key columns */
+  busines_by_pk?: Maybe<Busines>;
+  /** fetch data from the table: "busines_class" */
+  busines_class: Array<Busines_Class>;
+  /** fetch aggregated fields from the table: "busines_class" */
+  busines_class_aggregate: Busines_Class_Aggregate;
+  /** fetch data from the table: "busines_class" using primary key columns */
+  busines_class_by_pk?: Maybe<Busines_Class>;
+  /** fetch data from the table: "busines_sector" */
+  busines_sector: Array<Busines_Sector>;
+  /** fetch aggregated fields from the table: "busines_sector" */
+  busines_sector_aggregate: Busines_Sector_Aggregate;
+  /** fetch data from the table: "busines_sector" using primary key columns */
+  busines_sector_by_pk?: Maybe<Busines_Sector>;
+  /** fetch data from the table: "busines_size" */
+  busines_size: Array<Busines_Size>;
+  /** fetch aggregated fields from the table: "busines_size" */
+  busines_size_aggregate: Busines_Size_Aggregate;
+  /** fetch data from the table: "busines_size" using primary key columns */
+  busines_size_by_pk?: Maybe<Busines_Size>;
+  /** fetch data from the table: "busines_type" */
+  busines_type: Array<Busines_Type>;
+  /** fetch aggregated fields from the table: "busines_type" */
+  busines_type_aggregate: Busines_Type_Aggregate;
+  /** fetch data from the table: "busines_type" using primary key columns */
+  busines_type_by_pk?: Maybe<Busines_Type>;
+  /** fetch data from the table: "fund" */
+  fund: Array<Fund>;
+  /** fetch aggregated fields from the table: "fund" */
+  fund_aggregate: Fund_Aggregate;
+  /** fetch data from the table: "fund" using primary key columns */
+  fund_by_pk?: Maybe<Fund>;
+  /** fetch data from the table: "fund_contract" */
+  fund_contract: Array<Fund_Contract>;
+  /** fetch aggregated fields from the table: "fund_contract" */
+  fund_contract_aggregate: Fund_Contract_Aggregate;
+  /** fetch data from the table: "fund_contract" using primary key columns */
+  fund_contract_by_pk?: Maybe<Fund_Contract>;
+  /** fetch data from the table: "fund_contract_repayment" */
+  fund_contract_repayment: Array<Fund_Contract_Repayment>;
+  /** fetch aggregated fields from the table: "fund_contract_repayment" */
+  fund_contract_repayment_aggregate: Fund_Contract_Repayment_Aggregate;
+  /** fetch data from the table: "fund_contract_repayment" using primary key columns */
+  fund_contract_repayment_by_pk?: Maybe<Fund_Contract_Repayment>;
+  /** fetch data from the table: "fund_src" */
+  fund_src: Array<Fund_Src>;
+  /** fetch aggregated fields from the table: "fund_src" */
+  fund_src_aggregate: Fund_Src_Aggregate;
+  /** fetch data from the table: "fund_src" using primary key columns */
+  fund_src_by_pk?: Maybe<Fund_Src>;
+  /** fetch data from the table: "loan" */
+  loan: Array<Loan>;
+  /** fetch aggregated fields from the table: "loan" */
+  loan_aggregate: Loan_Aggregate;
+  /** fetch data from the table: "loan" using primary key columns */
+  loan_by_pk?: Maybe<Loan>;
+  /** fetch data from the table: "loan_collateral" */
+  loan_collateral: Array<Loan_Collateral>;
+  /** fetch aggregated fields from the table: "loan_collateral" */
+  loan_collateral_aggregate: Loan_Collateral_Aggregate;
+  /** fetch data from the table: "loan_collateral" using primary key columns */
+  loan_collateral_by_pk?: Maybe<Loan_Collateral>;
+  /** fetch data from the table: "loan_disbursed" */
+  loan_disbursed: Array<Loan_Disbursed>;
+  /** fetch aggregated fields from the table: "loan_disbursed" */
+  loan_disbursed_aggregate: Loan_Disbursed_Aggregate;
+  /** fetch data from the table: "loan_disbursed" using primary key columns */
+  loan_disbursed_by_pk?: Maybe<Loan_Disbursed>;
+  /** fetch data from the table: "loan_purpose" */
+  loan_purpose: Array<Loan_Purpose>;
+  /** fetch aggregated fields from the table: "loan_purpose" */
+  loan_purpose_aggregate: Loan_Purpose_Aggregate;
+  /** fetch data from the table: "loan_purpose" using primary key columns */
+  loan_purpose_by_pk?: Maybe<Loan_Purpose>;
+  /** fetch data from the table: "loan_repayment" */
+  loan_repayment: Array<Loan_Repayment>;
+  /** fetch aggregated fields from the table: "loan_repayment" */
+  loan_repayment_aggregate: Loan_Repayment_Aggregate;
+  /** fetch data from the table: "loan_repayment" using primary key columns */
+  loan_repayment_by_pk?: Maybe<Loan_Repayment>;
+  /** fetch data from the table: "loan_status" */
+  loan_status: Array<Loan_Status>;
+  /** fetch aggregated fields from the table: "loan_status" */
+  loan_status_aggregate: Loan_Status_Aggregate;
+  /** fetch data from the table: "loan_status" using primary key columns */
+  loan_status_by_pk?: Maybe<Loan_Status>;
+  /** fetch data from the table: "loan_type" */
+  loan_type: Array<Loan_Type>;
+  /** fetch aggregated fields from the table: "loan_type" */
+  loan_type_aggregate: Loan_Type_Aggregate;
+  /** fetch data from the table: "loan_type" using primary key columns */
+  loan_type_by_pk?: Maybe<Loan_Type>;
   /** fetch data from the table: "auth.users" using primary key columns */
   user?: Maybe<Users>;
-  /** fetch data from the table: "auth.users" */
+  /** An array relationship */
   users: Array<Users>;
   /** fetch aggregated fields from the table: "auth.users" */
   usersAggregate: Users_Aggregate;
@@ -1736,6 +8732,420 @@ export type Query_RootAuthUserRolesAggregateArgs = {
 };
 
 
+export type Query_RootBankArgs = {
+  distinct_on?: InputMaybe<Array<Bank_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Bank_Order_By>>;
+  where?: InputMaybe<Bank_Bool_Exp>;
+};
+
+
+export type Query_RootBank_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Bank_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Bank_Order_By>>;
+  where?: InputMaybe<Bank_Bool_Exp>;
+};
+
+
+export type Query_RootBank_BranchArgs = {
+  distinct_on?: InputMaybe<Array<Bank_Branch_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Bank_Branch_Order_By>>;
+  where?: InputMaybe<Bank_Branch_Bool_Exp>;
+};
+
+
+export type Query_RootBank_Branch_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Bank_Branch_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Bank_Branch_Order_By>>;
+  where?: InputMaybe<Bank_Branch_Bool_Exp>;
+};
+
+
+export type Query_RootBank_Branch_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+export type Query_RootBank_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Query_RootBusinesArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Order_By>>;
+  where?: InputMaybe<Busines_Bool_Exp>;
+};
+
+
+export type Query_RootBusines_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Order_By>>;
+  where?: InputMaybe<Busines_Bool_Exp>;
+};
+
+
+export type Query_RootBusines_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+export type Query_RootBusines_ClassArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Class_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Class_Order_By>>;
+  where?: InputMaybe<Busines_Class_Bool_Exp>;
+};
+
+
+export type Query_RootBusines_Class_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Class_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Class_Order_By>>;
+  where?: InputMaybe<Busines_Class_Bool_Exp>;
+};
+
+
+export type Query_RootBusines_Class_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Query_RootBusines_SectorArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Sector_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Sector_Order_By>>;
+  where?: InputMaybe<Busines_Sector_Bool_Exp>;
+};
+
+
+export type Query_RootBusines_Sector_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Sector_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Sector_Order_By>>;
+  where?: InputMaybe<Busines_Sector_Bool_Exp>;
+};
+
+
+export type Query_RootBusines_Sector_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Query_RootBusines_SizeArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Size_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Size_Order_By>>;
+  where?: InputMaybe<Busines_Size_Bool_Exp>;
+};
+
+
+export type Query_RootBusines_Size_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Size_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Size_Order_By>>;
+  where?: InputMaybe<Busines_Size_Bool_Exp>;
+};
+
+
+export type Query_RootBusines_Size_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Query_RootBusines_TypeArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Type_Order_By>>;
+  where?: InputMaybe<Busines_Type_Bool_Exp>;
+};
+
+
+export type Query_RootBusines_Type_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Type_Order_By>>;
+  where?: InputMaybe<Busines_Type_Bool_Exp>;
+};
+
+
+export type Query_RootBusines_Type_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Query_RootFundArgs = {
+  distinct_on?: InputMaybe<Array<Fund_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Fund_Order_By>>;
+  where?: InputMaybe<Fund_Bool_Exp>;
+};
+
+
+export type Query_RootFund_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Fund_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Fund_Order_By>>;
+  where?: InputMaybe<Fund_Bool_Exp>;
+};
+
+
+export type Query_RootFund_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+export type Query_RootFund_ContractArgs = {
+  distinct_on?: InputMaybe<Array<Fund_Contract_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Fund_Contract_Order_By>>;
+  where?: InputMaybe<Fund_Contract_Bool_Exp>;
+};
+
+
+export type Query_RootFund_Contract_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Fund_Contract_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Fund_Contract_Order_By>>;
+  where?: InputMaybe<Fund_Contract_Bool_Exp>;
+};
+
+
+export type Query_RootFund_Contract_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+export type Query_RootFund_Contract_RepaymentArgs = {
+  distinct_on?: InputMaybe<Array<Fund_Contract_Repayment_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Fund_Contract_Repayment_Order_By>>;
+  where?: InputMaybe<Fund_Contract_Repayment_Bool_Exp>;
+};
+
+
+export type Query_RootFund_Contract_Repayment_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Fund_Contract_Repayment_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Fund_Contract_Repayment_Order_By>>;
+  where?: InputMaybe<Fund_Contract_Repayment_Bool_Exp>;
+};
+
+
+export type Query_RootFund_Contract_Repayment_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+export type Query_RootFund_SrcArgs = {
+  distinct_on?: InputMaybe<Array<Fund_Src_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Fund_Src_Order_By>>;
+  where?: InputMaybe<Fund_Src_Bool_Exp>;
+};
+
+
+export type Query_RootFund_Src_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Fund_Src_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Fund_Src_Order_By>>;
+  where?: InputMaybe<Fund_Src_Bool_Exp>;
+};
+
+
+export type Query_RootFund_Src_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Query_RootLoanArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Order_By>>;
+  where?: InputMaybe<Loan_Bool_Exp>;
+};
+
+
+export type Query_RootLoan_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Order_By>>;
+  where?: InputMaybe<Loan_Bool_Exp>;
+};
+
+
+export type Query_RootLoan_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+export type Query_RootLoan_CollateralArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Collateral_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Collateral_Order_By>>;
+  where?: InputMaybe<Loan_Collateral_Bool_Exp>;
+};
+
+
+export type Query_RootLoan_Collateral_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Collateral_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Collateral_Order_By>>;
+  where?: InputMaybe<Loan_Collateral_Bool_Exp>;
+};
+
+
+export type Query_RootLoan_Collateral_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Query_RootLoan_DisbursedArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Disbursed_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Disbursed_Order_By>>;
+  where?: InputMaybe<Loan_Disbursed_Bool_Exp>;
+};
+
+
+export type Query_RootLoan_Disbursed_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Disbursed_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Disbursed_Order_By>>;
+  where?: InputMaybe<Loan_Disbursed_Bool_Exp>;
+};
+
+
+export type Query_RootLoan_Disbursed_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+export type Query_RootLoan_PurposeArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Purpose_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Purpose_Order_By>>;
+  where?: InputMaybe<Loan_Purpose_Bool_Exp>;
+};
+
+
+export type Query_RootLoan_Purpose_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Purpose_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Purpose_Order_By>>;
+  where?: InputMaybe<Loan_Purpose_Bool_Exp>;
+};
+
+
+export type Query_RootLoan_Purpose_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Query_RootLoan_RepaymentArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Repayment_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Repayment_Order_By>>;
+  where?: InputMaybe<Loan_Repayment_Bool_Exp>;
+};
+
+
+export type Query_RootLoan_Repayment_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Repayment_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Repayment_Order_By>>;
+  where?: InputMaybe<Loan_Repayment_Bool_Exp>;
+};
+
+
+export type Query_RootLoan_Repayment_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+export type Query_RootLoan_StatusArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Status_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Status_Order_By>>;
+  where?: InputMaybe<Loan_Status_Bool_Exp>;
+};
+
+
+export type Query_RootLoan_Status_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Status_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Status_Order_By>>;
+  where?: InputMaybe<Loan_Status_Bool_Exp>;
+};
+
+
+export type Query_RootLoan_Status_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Query_RootLoan_TypeArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Type_Order_By>>;
+  where?: InputMaybe<Loan_Type_Bool_Exp>;
+};
+
+
+export type Query_RootLoan_Type_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Type_Order_By>>;
+  where?: InputMaybe<Loan_Type_Bool_Exp>;
+};
+
+
+export type Query_RootLoan_Type_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
 export type Query_RootUserArgs = {
   id: Scalars['uuid'];
 };
@@ -1796,9 +9206,117 @@ export type Subscription_Root = {
   authUserRoles: Array<AuthUserRoles>;
   /** fetch aggregated fields from the table: "auth.user_roles" */
   authUserRolesAggregate: AuthUserRoles_Aggregate;
+  /** fetch data from the table: "bank" */
+  bank: Array<Bank>;
+  /** fetch aggregated fields from the table: "bank" */
+  bank_aggregate: Bank_Aggregate;
+  /** fetch data from the table: "bank_branch" */
+  bank_branch: Array<Bank_Branch>;
+  /** fetch aggregated fields from the table: "bank_branch" */
+  bank_branch_aggregate: Bank_Branch_Aggregate;
+  /** fetch data from the table: "bank_branch" using primary key columns */
+  bank_branch_by_pk?: Maybe<Bank_Branch>;
+  /** fetch data from the table: "bank" using primary key columns */
+  bank_by_pk?: Maybe<Bank>;
+  /** An array relationship */
+  busines: Array<Busines>;
+  /** An aggregate relationship */
+  busines_aggregate: Busines_Aggregate;
+  /** fetch data from the table: "busines" using primary key columns */
+  busines_by_pk?: Maybe<Busines>;
+  /** fetch data from the table: "busines_class" */
+  busines_class: Array<Busines_Class>;
+  /** fetch aggregated fields from the table: "busines_class" */
+  busines_class_aggregate: Busines_Class_Aggregate;
+  /** fetch data from the table: "busines_class" using primary key columns */
+  busines_class_by_pk?: Maybe<Busines_Class>;
+  /** fetch data from the table: "busines_sector" */
+  busines_sector: Array<Busines_Sector>;
+  /** fetch aggregated fields from the table: "busines_sector" */
+  busines_sector_aggregate: Busines_Sector_Aggregate;
+  /** fetch data from the table: "busines_sector" using primary key columns */
+  busines_sector_by_pk?: Maybe<Busines_Sector>;
+  /** fetch data from the table: "busines_size" */
+  busines_size: Array<Busines_Size>;
+  /** fetch aggregated fields from the table: "busines_size" */
+  busines_size_aggregate: Busines_Size_Aggregate;
+  /** fetch data from the table: "busines_size" using primary key columns */
+  busines_size_by_pk?: Maybe<Busines_Size>;
+  /** fetch data from the table: "busines_type" */
+  busines_type: Array<Busines_Type>;
+  /** fetch aggregated fields from the table: "busines_type" */
+  busines_type_aggregate: Busines_Type_Aggregate;
+  /** fetch data from the table: "busines_type" using primary key columns */
+  busines_type_by_pk?: Maybe<Busines_Type>;
+  /** fetch data from the table: "fund" */
+  fund: Array<Fund>;
+  /** fetch aggregated fields from the table: "fund" */
+  fund_aggregate: Fund_Aggregate;
+  /** fetch data from the table: "fund" using primary key columns */
+  fund_by_pk?: Maybe<Fund>;
+  /** fetch data from the table: "fund_contract" */
+  fund_contract: Array<Fund_Contract>;
+  /** fetch aggregated fields from the table: "fund_contract" */
+  fund_contract_aggregate: Fund_Contract_Aggregate;
+  /** fetch data from the table: "fund_contract" using primary key columns */
+  fund_contract_by_pk?: Maybe<Fund_Contract>;
+  /** fetch data from the table: "fund_contract_repayment" */
+  fund_contract_repayment: Array<Fund_Contract_Repayment>;
+  /** fetch aggregated fields from the table: "fund_contract_repayment" */
+  fund_contract_repayment_aggregate: Fund_Contract_Repayment_Aggregate;
+  /** fetch data from the table: "fund_contract_repayment" using primary key columns */
+  fund_contract_repayment_by_pk?: Maybe<Fund_Contract_Repayment>;
+  /** fetch data from the table: "fund_src" */
+  fund_src: Array<Fund_Src>;
+  /** fetch aggregated fields from the table: "fund_src" */
+  fund_src_aggregate: Fund_Src_Aggregate;
+  /** fetch data from the table: "fund_src" using primary key columns */
+  fund_src_by_pk?: Maybe<Fund_Src>;
+  /** fetch data from the table: "loan" */
+  loan: Array<Loan>;
+  /** fetch aggregated fields from the table: "loan" */
+  loan_aggregate: Loan_Aggregate;
+  /** fetch data from the table: "loan" using primary key columns */
+  loan_by_pk?: Maybe<Loan>;
+  /** fetch data from the table: "loan_collateral" */
+  loan_collateral: Array<Loan_Collateral>;
+  /** fetch aggregated fields from the table: "loan_collateral" */
+  loan_collateral_aggregate: Loan_Collateral_Aggregate;
+  /** fetch data from the table: "loan_collateral" using primary key columns */
+  loan_collateral_by_pk?: Maybe<Loan_Collateral>;
+  /** fetch data from the table: "loan_disbursed" */
+  loan_disbursed: Array<Loan_Disbursed>;
+  /** fetch aggregated fields from the table: "loan_disbursed" */
+  loan_disbursed_aggregate: Loan_Disbursed_Aggregate;
+  /** fetch data from the table: "loan_disbursed" using primary key columns */
+  loan_disbursed_by_pk?: Maybe<Loan_Disbursed>;
+  /** fetch data from the table: "loan_purpose" */
+  loan_purpose: Array<Loan_Purpose>;
+  /** fetch aggregated fields from the table: "loan_purpose" */
+  loan_purpose_aggregate: Loan_Purpose_Aggregate;
+  /** fetch data from the table: "loan_purpose" using primary key columns */
+  loan_purpose_by_pk?: Maybe<Loan_Purpose>;
+  /** fetch data from the table: "loan_repayment" */
+  loan_repayment: Array<Loan_Repayment>;
+  /** fetch aggregated fields from the table: "loan_repayment" */
+  loan_repayment_aggregate: Loan_Repayment_Aggregate;
+  /** fetch data from the table: "loan_repayment" using primary key columns */
+  loan_repayment_by_pk?: Maybe<Loan_Repayment>;
+  /** fetch data from the table: "loan_status" */
+  loan_status: Array<Loan_Status>;
+  /** fetch aggregated fields from the table: "loan_status" */
+  loan_status_aggregate: Loan_Status_Aggregate;
+  /** fetch data from the table: "loan_status" using primary key columns */
+  loan_status_by_pk?: Maybe<Loan_Status>;
+  /** fetch data from the table: "loan_type" */
+  loan_type: Array<Loan_Type>;
+  /** fetch aggregated fields from the table: "loan_type" */
+  loan_type_aggregate: Loan_Type_Aggregate;
+  /** fetch data from the table: "loan_type" using primary key columns */
+  loan_type_by_pk?: Maybe<Loan_Type>;
   /** fetch data from the table: "auth.users" using primary key columns */
   user?: Maybe<Users>;
-  /** fetch data from the table: "auth.users" */
+  /** An array relationship */
   users: Array<Users>;
   /** fetch aggregated fields from the table: "auth.users" */
   usersAggregate: Users_Aggregate;
@@ -1943,6 +9461,420 @@ export type Subscription_RootAuthUserRolesAggregateArgs = {
 };
 
 
+export type Subscription_RootBankArgs = {
+  distinct_on?: InputMaybe<Array<Bank_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Bank_Order_By>>;
+  where?: InputMaybe<Bank_Bool_Exp>;
+};
+
+
+export type Subscription_RootBank_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Bank_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Bank_Order_By>>;
+  where?: InputMaybe<Bank_Bool_Exp>;
+};
+
+
+export type Subscription_RootBank_BranchArgs = {
+  distinct_on?: InputMaybe<Array<Bank_Branch_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Bank_Branch_Order_By>>;
+  where?: InputMaybe<Bank_Branch_Bool_Exp>;
+};
+
+
+export type Subscription_RootBank_Branch_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Bank_Branch_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Bank_Branch_Order_By>>;
+  where?: InputMaybe<Bank_Branch_Bool_Exp>;
+};
+
+
+export type Subscription_RootBank_Branch_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+export type Subscription_RootBank_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Subscription_RootBusinesArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Order_By>>;
+  where?: InputMaybe<Busines_Bool_Exp>;
+};
+
+
+export type Subscription_RootBusines_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Order_By>>;
+  where?: InputMaybe<Busines_Bool_Exp>;
+};
+
+
+export type Subscription_RootBusines_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+export type Subscription_RootBusines_ClassArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Class_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Class_Order_By>>;
+  where?: InputMaybe<Busines_Class_Bool_Exp>;
+};
+
+
+export type Subscription_RootBusines_Class_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Class_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Class_Order_By>>;
+  where?: InputMaybe<Busines_Class_Bool_Exp>;
+};
+
+
+export type Subscription_RootBusines_Class_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Subscription_RootBusines_SectorArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Sector_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Sector_Order_By>>;
+  where?: InputMaybe<Busines_Sector_Bool_Exp>;
+};
+
+
+export type Subscription_RootBusines_Sector_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Sector_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Sector_Order_By>>;
+  where?: InputMaybe<Busines_Sector_Bool_Exp>;
+};
+
+
+export type Subscription_RootBusines_Sector_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Subscription_RootBusines_SizeArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Size_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Size_Order_By>>;
+  where?: InputMaybe<Busines_Size_Bool_Exp>;
+};
+
+
+export type Subscription_RootBusines_Size_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Size_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Size_Order_By>>;
+  where?: InputMaybe<Busines_Size_Bool_Exp>;
+};
+
+
+export type Subscription_RootBusines_Size_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Subscription_RootBusines_TypeArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Type_Order_By>>;
+  where?: InputMaybe<Busines_Type_Bool_Exp>;
+};
+
+
+export type Subscription_RootBusines_Type_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Type_Order_By>>;
+  where?: InputMaybe<Busines_Type_Bool_Exp>;
+};
+
+
+export type Subscription_RootBusines_Type_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Subscription_RootFundArgs = {
+  distinct_on?: InputMaybe<Array<Fund_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Fund_Order_By>>;
+  where?: InputMaybe<Fund_Bool_Exp>;
+};
+
+
+export type Subscription_RootFund_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Fund_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Fund_Order_By>>;
+  where?: InputMaybe<Fund_Bool_Exp>;
+};
+
+
+export type Subscription_RootFund_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+export type Subscription_RootFund_ContractArgs = {
+  distinct_on?: InputMaybe<Array<Fund_Contract_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Fund_Contract_Order_By>>;
+  where?: InputMaybe<Fund_Contract_Bool_Exp>;
+};
+
+
+export type Subscription_RootFund_Contract_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Fund_Contract_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Fund_Contract_Order_By>>;
+  where?: InputMaybe<Fund_Contract_Bool_Exp>;
+};
+
+
+export type Subscription_RootFund_Contract_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+export type Subscription_RootFund_Contract_RepaymentArgs = {
+  distinct_on?: InputMaybe<Array<Fund_Contract_Repayment_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Fund_Contract_Repayment_Order_By>>;
+  where?: InputMaybe<Fund_Contract_Repayment_Bool_Exp>;
+};
+
+
+export type Subscription_RootFund_Contract_Repayment_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Fund_Contract_Repayment_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Fund_Contract_Repayment_Order_By>>;
+  where?: InputMaybe<Fund_Contract_Repayment_Bool_Exp>;
+};
+
+
+export type Subscription_RootFund_Contract_Repayment_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+export type Subscription_RootFund_SrcArgs = {
+  distinct_on?: InputMaybe<Array<Fund_Src_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Fund_Src_Order_By>>;
+  where?: InputMaybe<Fund_Src_Bool_Exp>;
+};
+
+
+export type Subscription_RootFund_Src_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Fund_Src_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Fund_Src_Order_By>>;
+  where?: InputMaybe<Fund_Src_Bool_Exp>;
+};
+
+
+export type Subscription_RootFund_Src_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Subscription_RootLoanArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Order_By>>;
+  where?: InputMaybe<Loan_Bool_Exp>;
+};
+
+
+export type Subscription_RootLoan_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Order_By>>;
+  where?: InputMaybe<Loan_Bool_Exp>;
+};
+
+
+export type Subscription_RootLoan_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+export type Subscription_RootLoan_CollateralArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Collateral_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Collateral_Order_By>>;
+  where?: InputMaybe<Loan_Collateral_Bool_Exp>;
+};
+
+
+export type Subscription_RootLoan_Collateral_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Collateral_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Collateral_Order_By>>;
+  where?: InputMaybe<Loan_Collateral_Bool_Exp>;
+};
+
+
+export type Subscription_RootLoan_Collateral_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Subscription_RootLoan_DisbursedArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Disbursed_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Disbursed_Order_By>>;
+  where?: InputMaybe<Loan_Disbursed_Bool_Exp>;
+};
+
+
+export type Subscription_RootLoan_Disbursed_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Disbursed_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Disbursed_Order_By>>;
+  where?: InputMaybe<Loan_Disbursed_Bool_Exp>;
+};
+
+
+export type Subscription_RootLoan_Disbursed_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+export type Subscription_RootLoan_PurposeArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Purpose_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Purpose_Order_By>>;
+  where?: InputMaybe<Loan_Purpose_Bool_Exp>;
+};
+
+
+export type Subscription_RootLoan_Purpose_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Purpose_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Purpose_Order_By>>;
+  where?: InputMaybe<Loan_Purpose_Bool_Exp>;
+};
+
+
+export type Subscription_RootLoan_Purpose_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Subscription_RootLoan_RepaymentArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Repayment_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Repayment_Order_By>>;
+  where?: InputMaybe<Loan_Repayment_Bool_Exp>;
+};
+
+
+export type Subscription_RootLoan_Repayment_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Repayment_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Repayment_Order_By>>;
+  where?: InputMaybe<Loan_Repayment_Bool_Exp>;
+};
+
+
+export type Subscription_RootLoan_Repayment_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+export type Subscription_RootLoan_StatusArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Status_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Status_Order_By>>;
+  where?: InputMaybe<Loan_Status_Bool_Exp>;
+};
+
+
+export type Subscription_RootLoan_Status_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Status_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Status_Order_By>>;
+  where?: InputMaybe<Loan_Status_Bool_Exp>;
+};
+
+
+export type Subscription_RootLoan_Status_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Subscription_RootLoan_TypeArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Type_Order_By>>;
+  where?: InputMaybe<Loan_Type_Bool_Exp>;
+};
+
+
+export type Subscription_RootLoan_Type_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Type_Order_By>>;
+  where?: InputMaybe<Loan_Type_Bool_Exp>;
+};
+
+
+export type Subscription_RootLoan_Type_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
 export type Subscription_RootUserArgs = {
   id: Scalars['uuid'];
 };
@@ -1983,6 +9915,13 @@ export type Users = {
   __typename?: 'users';
   activeMfaType?: Maybe<Scalars['String']>;
   avatarUrl: Scalars['String'];
+  /** An object relationship */
+  bank_branch?: Maybe<Bank_Branch>;
+  bank_branch_id?: Maybe<Scalars['uuid']>;
+  /** An array relationship */
+  banks: Array<Bank>;
+  /** An aggregate relationship */
+  banks_aggregate: Bank_Aggregate;
   createdAt: Scalars['timestamptz'];
   defaultRole: Scalars['String'];
   /** An object relationship */
@@ -2019,6 +9958,26 @@ export type Users = {
   userProviders: Array<AuthUserProviders>;
   /** An aggregate relationship */
   userProviders_aggregate: AuthUserProviders_Aggregate;
+};
+
+
+/** columns and relationships of "auth.users" */
+export type UsersBanksArgs = {
+  distinct_on?: InputMaybe<Array<Bank_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Bank_Order_By>>;
+  where?: InputMaybe<Bank_Bool_Exp>;
+};
+
+
+/** columns and relationships of "auth.users" */
+export type UsersBanks_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Bank_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Bank_Order_By>>;
+  where?: InputMaybe<Bank_Bool_Exp>;
 };
 
 
@@ -2135,6 +10094,9 @@ export type Users_Bool_Exp = {
   _or?: InputMaybe<Array<Users_Bool_Exp>>;
   activeMfaType?: InputMaybe<String_Comparison_Exp>;
   avatarUrl?: InputMaybe<String_Comparison_Exp>;
+  bank_branch?: InputMaybe<Bank_Branch_Bool_Exp>;
+  bank_branch_id?: InputMaybe<Uuid_Comparison_Exp>;
+  banks?: InputMaybe<Bank_Bool_Exp>;
   createdAt?: InputMaybe<Timestamptz_Comparison_Exp>;
   defaultRole?: InputMaybe<String_Comparison_Exp>;
   defaultRoleByRole?: InputMaybe<AuthRoles_Bool_Exp>;
@@ -2192,6 +10154,9 @@ export type Users_Delete_Key_Input = {
 export type Users_Insert_Input = {
   activeMfaType?: InputMaybe<Scalars['String']>;
   avatarUrl?: InputMaybe<Scalars['String']>;
+  bank_branch?: InputMaybe<Bank_Branch_Obj_Rel_Insert_Input>;
+  bank_branch_id?: InputMaybe<Scalars['uuid']>;
+  banks?: InputMaybe<Bank_Arr_Rel_Insert_Input>;
   createdAt?: InputMaybe<Scalars['timestamptz']>;
   defaultRole?: InputMaybe<Scalars['String']>;
   defaultRoleByRole?: InputMaybe<AuthRoles_Obj_Rel_Insert_Input>;
@@ -2225,6 +10190,7 @@ export type Users_Max_Fields = {
   __typename?: 'users_max_fields';
   activeMfaType?: Maybe<Scalars['String']>;
   avatarUrl?: Maybe<Scalars['String']>;
+  bank_branch_id?: Maybe<Scalars['uuid']>;
   createdAt?: Maybe<Scalars['timestamptz']>;
   defaultRole?: Maybe<Scalars['String']>;
   displayName?: Maybe<Scalars['String']>;
@@ -2248,6 +10214,7 @@ export type Users_Max_Fields = {
 export type Users_Max_Order_By = {
   activeMfaType?: InputMaybe<Order_By>;
   avatarUrl?: InputMaybe<Order_By>;
+  bank_branch_id?: InputMaybe<Order_By>;
   createdAt?: InputMaybe<Order_By>;
   defaultRole?: InputMaybe<Order_By>;
   displayName?: InputMaybe<Order_By>;
@@ -2272,6 +10239,7 @@ export type Users_Min_Fields = {
   __typename?: 'users_min_fields';
   activeMfaType?: Maybe<Scalars['String']>;
   avatarUrl?: Maybe<Scalars['String']>;
+  bank_branch_id?: Maybe<Scalars['uuid']>;
   createdAt?: Maybe<Scalars['timestamptz']>;
   defaultRole?: Maybe<Scalars['String']>;
   displayName?: Maybe<Scalars['String']>;
@@ -2295,6 +10263,7 @@ export type Users_Min_Fields = {
 export type Users_Min_Order_By = {
   activeMfaType?: InputMaybe<Order_By>;
   avatarUrl?: InputMaybe<Order_By>;
+  bank_branch_id?: InputMaybe<Order_By>;
   createdAt?: InputMaybe<Order_By>;
   defaultRole?: InputMaybe<Order_By>;
   displayName?: InputMaybe<Order_By>;
@@ -2341,6 +10310,9 @@ export type Users_On_Conflict = {
 export type Users_Order_By = {
   activeMfaType?: InputMaybe<Order_By>;
   avatarUrl?: InputMaybe<Order_By>;
+  bank_branch?: InputMaybe<Bank_Branch_Order_By>;
+  bank_branch_id?: InputMaybe<Order_By>;
+  banks_aggregate?: InputMaybe<Bank_Aggregate_Order_By>;
   createdAt?: InputMaybe<Order_By>;
   defaultRole?: InputMaybe<Order_By>;
   defaultRoleByRole?: InputMaybe<AuthRoles_Order_By>;
@@ -2385,6 +10357,8 @@ export enum Users_Select_Column {
   ActiveMfaType = 'activeMfaType',
   /** column name */
   AvatarUrl = 'avatarUrl',
+  /** column name */
+  BankBranchId = 'bank_branch_id',
   /** column name */
   CreatedAt = 'createdAt',
   /** column name */
@@ -2435,6 +10409,7 @@ export enum Users_Select_Column {
 export type Users_Set_Input = {
   activeMfaType?: InputMaybe<Scalars['String']>;
   avatarUrl?: InputMaybe<Scalars['String']>;
+  bank_branch_id?: InputMaybe<Scalars['uuid']>;
   createdAt?: InputMaybe<Scalars['timestamptz']>;
   defaultRole?: InputMaybe<Scalars['String']>;
   disabled?: InputMaybe<Scalars['Boolean']>;
@@ -2465,6 +10440,8 @@ export enum Users_Update_Column {
   ActiveMfaType = 'activeMfaType',
   /** column name */
   AvatarUrl = 'avatarUrl',
+  /** column name */
+  BankBranchId = 'bank_branch_id',
   /** column name */
   CreatedAt = 'createdAt',
   /** column name */
