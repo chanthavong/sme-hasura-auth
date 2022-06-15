@@ -102,6 +102,7 @@ specifiers:
   passport-gitlab2: ^5.0.0
   passport-google-oauth20: 2.0.0
   passport-linkedin-oauth2: ^2.0.0
+  passport-oauth2: ^1.6.1
   passport-oauth2-refresh: ^2.1.0
   passport-spotify: ^2.0.0
   passport-twitter: ^1.0.4
@@ -168,6 +169,7 @@ dependencies:
   passport-gitlab2: 5.0.0
   passport-google-oauth20: 2.0.0
   passport-linkedin-oauth2: 2.0.0
+  passport-oauth2: 1.6.1
   passport-oauth2-refresh: 2.1.0
   passport-spotify: 2.0.0
   passport-twitter: 1.0.4
@@ -8842,7 +8844,7 @@ packages:
     dev: false
 
   /oauth/0.9.15:
-    resolution: {integrity: sha1-vR/vr2hslrdUda7VGWQS/2DPucE=}
+    resolution: {integrity: sha512-a5ERWK1kh38ExDEfoO6qUHJb32rd7aYmPHuyCu3Fta/cnICvYmgd2uhuKXvPD+PXB+gCEYYEaQdIRAjCOwAKNA==}
     dev: false
 
   /object-assign/4.1.1:
@@ -9234,7 +9236,7 @@ packages:
     dev: false
 
   /passport-strategy/1.0.0:
-    resolution: {integrity: sha1-tVOaqPwiWj0a0XlHbd8ja0QPUuQ=}
+    resolution: {integrity: sha512-CB97UUvDKJde2V0KDWWB3lyf6PC3FaZP7YxZ2G8OAtn9p4HI9j9JLP9qjOGZFvyl8uwNT8qM+hGnz/n16NI7oA==}
     engines: {node: '>= 0.4.0'}
     dev: false
 
