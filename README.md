@@ -87,3 +87,6 @@ This project is MIT licensed.
 ```bash 
     server.ts
 ```
+## resize image
+
+https://usefulangle.com/post/97/nodejs-resize-image

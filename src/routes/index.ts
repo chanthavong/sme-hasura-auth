@@ -9,6 +9,7 @@ import { userRouter } from './user';
 import { mfaRouter } from './mfa';
 import { tokenRouter } from './token';
 import { signOutRouter } from './signout';
+import { uploadRouter } from './upload';
 import env from './env';
 import { verifyRouter } from './verify';
 
@@ -41,6 +42,7 @@ router.use(userRouter);
 router.use(mfaRouter);
 router.use(tokenRouter);
 router.use(verifyRouter);
+router.use(uploadRouter);
 
 // admin
 env(router);

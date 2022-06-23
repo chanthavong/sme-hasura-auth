@@ -18,6 +18,7 @@ export type Scalars = {
   date: any;
   jsonb: any;
   numeric: any;
+  timestamp: any;
   timestamptz: any;
   uuid: any;
 };
@@ -80,6 +81,170 @@ export type String_Comparison_Exp = {
   /** does the column match the given SQL regular expression */
   _similar?: InputMaybe<Scalars['String']>;
 };
+
+/** columns and relationships of "app_setting" */
+export type App_Setting = {
+  __typename?: 'app_setting';
+  created_at: Scalars['timestamp'];
+  data?: Maybe<Scalars['jsonb']>;
+  id: Scalars['String'];
+  updated_at: Scalars['timestamp'];
+};
+
+
+/** columns and relationships of "app_setting" */
+export type App_SettingDataArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregated selection of "app_setting" */
+export type App_Setting_Aggregate = {
+  __typename?: 'app_setting_aggregate';
+  aggregate?: Maybe<App_Setting_Aggregate_Fields>;
+  nodes: Array<App_Setting>;
+};
+
+/** aggregate fields of "app_setting" */
+export type App_Setting_Aggregate_Fields = {
+  __typename?: 'app_setting_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<App_Setting_Max_Fields>;
+  min?: Maybe<App_Setting_Min_Fields>;
+};
+
+
+/** aggregate fields of "app_setting" */
+export type App_Setting_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<App_Setting_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** append existing jsonb value of filtered columns with new jsonb value */
+export type App_Setting_Append_Input = {
+  data?: InputMaybe<Scalars['jsonb']>;
+};
+
+/** Boolean expression to filter rows from the table "app_setting". All fields are combined with a logical 'AND'. */
+export type App_Setting_Bool_Exp = {
+  _and?: InputMaybe<Array<App_Setting_Bool_Exp>>;
+  _not?: InputMaybe<App_Setting_Bool_Exp>;
+  _or?: InputMaybe<Array<App_Setting_Bool_Exp>>;
+  created_at?: InputMaybe<Timestamp_Comparison_Exp>;
+  data?: InputMaybe<Jsonb_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamp_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "app_setting" */
+export enum App_Setting_Constraint {
+  /** unique or primary key constraint */
+  AppSettingPkey = 'app_setting_pkey'
+}
+
+/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+export type App_Setting_Delete_At_Path_Input = {
+  data?: InputMaybe<Array<Scalars['String']>>;
+};
+
+/** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+export type App_Setting_Delete_Elem_Input = {
+  data?: InputMaybe<Scalars['Int']>;
+};
+
+/** delete key/value pair or string element. key/value pairs are matched based on their key value */
+export type App_Setting_Delete_Key_Input = {
+  data?: InputMaybe<Scalars['String']>;
+};
+
+/** input type for inserting data into table "app_setting" */
+export type App_Setting_Insert_Input = {
+  created_at?: InputMaybe<Scalars['timestamp']>;
+  data?: InputMaybe<Scalars['jsonb']>;
+  id?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamp']>;
+};
+
+/** aggregate max on columns */
+export type App_Setting_Max_Fields = {
+  __typename?: 'app_setting_max_fields';
+  created_at?: Maybe<Scalars['timestamp']>;
+  id?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamp']>;
+};
+
+/** aggregate min on columns */
+export type App_Setting_Min_Fields = {
+  __typename?: 'app_setting_min_fields';
+  created_at?: Maybe<Scalars['timestamp']>;
+  id?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamp']>;
+};
+
+/** response of any mutation on the table "app_setting" */
+export type App_Setting_Mutation_Response = {
+  __typename?: 'app_setting_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<App_Setting>;
+};
+
+/** on_conflict condition type for table "app_setting" */
+export type App_Setting_On_Conflict = {
+  constraint: App_Setting_Constraint;
+  update_columns?: Array<App_Setting_Update_Column>;
+  where?: InputMaybe<App_Setting_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "app_setting". */
+export type App_Setting_Order_By = {
+  created_at?: InputMaybe<Order_By>;
+  data?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: app_setting */
+export type App_Setting_Pk_Columns_Input = {
+  id: Scalars['String'];
+};
+
+/** prepend existing jsonb value of filtered columns with new jsonb value */
+export type App_Setting_Prepend_Input = {
+  data?: InputMaybe<Scalars['jsonb']>;
+};
+
+/** select columns of table "app_setting" */
+export enum App_Setting_Select_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Data = 'data',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "app_setting" */
+export type App_Setting_Set_Input = {
+  created_at?: InputMaybe<Scalars['timestamp']>;
+  data?: InputMaybe<Scalars['jsonb']>;
+  id?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamp']>;
+};
+
+/** update columns of table "app_setting" */
+export enum App_Setting_Update_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Data = 'data',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
 
 /** columns and relationships of "auth.provider_requests" */
 export type AuthProviderRequests = {
@@ -1108,6 +1273,8 @@ export type Bank = {
   bank_branches: Array<Bank_Branch>;
   /** An aggregate relationship */
   bank_branches_aggregate: Bank_Branch_Aggregate;
+  /** An object relationship */
+  bank_type?: Maybe<Bank_Type>;
   code?: Maybe<Scalars['String']>;
   created_at: Scalars['timestamptz'];
   en: Scalars['String'];
@@ -1118,6 +1285,7 @@ export type Bank = {
   id: Scalars['String'];
   lo: Scalars['String'];
   logo?: Maybe<Scalars['String']>;
+  type_id?: Maybe<Scalars['String']>;
   updated_at: Scalars['timestamptz'];
   /** An object relationship */
   user?: Maybe<Users>;
@@ -1207,6 +1375,7 @@ export type Bank_Bool_Exp = {
   _or?: InputMaybe<Array<Bank_Bool_Exp>>;
   active?: InputMaybe<Boolean_Comparison_Exp>;
   bank_branches?: InputMaybe<Bank_Branch_Bool_Exp>;
+  bank_type?: InputMaybe<Bank_Type_Bool_Exp>;
   code?: InputMaybe<String_Comparison_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   en?: InputMaybe<String_Comparison_Exp>;
@@ -1214,6 +1383,7 @@ export type Bank_Bool_Exp = {
   id?: InputMaybe<String_Comparison_Exp>;
   lo?: InputMaybe<String_Comparison_Exp>;
   logo?: InputMaybe<String_Comparison_Exp>;
+  type_id?: InputMaybe<String_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   user?: InputMaybe<Users_Bool_Exp>;
   user_id?: InputMaybe<Uuid_Comparison_Exp>;
@@ -1237,6 +1407,7 @@ export type Bank_Branch = {
   users: Array<Users>;
   /** An aggregate relationship */
   users_aggregate: Users_Aggregate;
+  village_id?: Maybe<Scalars['String']>;
 };
 
 
@@ -1311,6 +1482,7 @@ export type Bank_Branch_Bool_Exp = {
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   user_id?: InputMaybe<Uuid_Comparison_Exp>;
   users?: InputMaybe<Users_Bool_Exp>;
+  village_id?: InputMaybe<String_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "bank_branch" */
@@ -1332,6 +1504,7 @@ export type Bank_Branch_Insert_Input = {
   updated_at?: InputMaybe<Scalars['timestamptz']>;
   user_id?: InputMaybe<Scalars['uuid']>;
   users?: InputMaybe<Users_Arr_Rel_Insert_Input>;
+  village_id?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate max on columns */
@@ -1345,6 +1518,7 @@ export type Bank_Branch_Max_Fields = {
   name?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
   user_id?: Maybe<Scalars['uuid']>;
+  village_id?: Maybe<Scalars['String']>;
 };
 
 /** order by max() on columns of table "bank_branch" */
@@ -1357,6 +1531,7 @@ export type Bank_Branch_Max_Order_By = {
   name?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
   user_id?: InputMaybe<Order_By>;
+  village_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -1370,6 +1545,7 @@ export type Bank_Branch_Min_Fields = {
   name?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
   user_id?: Maybe<Scalars['uuid']>;
+  village_id?: Maybe<Scalars['String']>;
 };
 
 /** order by min() on columns of table "bank_branch" */
@@ -1382,6 +1558,7 @@ export type Bank_Branch_Min_Order_By = {
   name?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
   user_id?: InputMaybe<Order_By>;
+  village_id?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "bank_branch" */
@@ -1420,6 +1597,7 @@ export type Bank_Branch_Order_By = {
   updated_at?: InputMaybe<Order_By>;
   user_id?: InputMaybe<Order_By>;
   users_aggregate?: InputMaybe<Users_Aggregate_Order_By>;
+  village_id?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: bank_branch */
@@ -1446,7 +1624,9 @@ export enum Bank_Branch_Select_Column {
   /** column name */
   UpdatedAt = 'updated_at',
   /** column name */
-  UserId = 'user_id'
+  UserId = 'user_id',
+  /** column name */
+  VillageId = 'village_id'
 }
 
 /** input type for updating data in table "bank_branch" */
@@ -1460,6 +1640,7 @@ export type Bank_Branch_Set_Input = {
   name?: InputMaybe<Scalars['String']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
   user_id?: InputMaybe<Scalars['uuid']>;
+  village_id?: InputMaybe<Scalars['String']>;
 };
 
 /** update columns of table "bank_branch" */
@@ -1481,7 +1662,9 @@ export enum Bank_Branch_Update_Column {
   /** column name */
   UpdatedAt = 'updated_at',
   /** column name */
-  UserId = 'user_id'
+  UserId = 'user_id',
+  /** column name */
+  VillageId = 'village_id'
 }
 
 /** unique or primary key constraints on table "bank" */
@@ -1494,6 +1677,7 @@ export enum Bank_Constraint {
 export type Bank_Insert_Input = {
   active?: InputMaybe<Scalars['Boolean']>;
   bank_branches?: InputMaybe<Bank_Branch_Arr_Rel_Insert_Input>;
+  bank_type?: InputMaybe<Bank_Type_Obj_Rel_Insert_Input>;
   code?: InputMaybe<Scalars['String']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   en?: InputMaybe<Scalars['String']>;
@@ -1501,6 +1685,7 @@ export type Bank_Insert_Input = {
   id?: InputMaybe<Scalars['String']>;
   lo?: InputMaybe<Scalars['String']>;
   logo?: InputMaybe<Scalars['String']>;
+  type_id?: InputMaybe<Scalars['String']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
   user?: InputMaybe<Users_Obj_Rel_Insert_Input>;
   user_id?: InputMaybe<Scalars['uuid']>;
@@ -1515,6 +1700,7 @@ export type Bank_Max_Fields = {
   id?: Maybe<Scalars['String']>;
   lo?: Maybe<Scalars['String']>;
   logo?: Maybe<Scalars['String']>;
+  type_id?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
   user_id?: Maybe<Scalars['uuid']>;
 };
@@ -1527,6 +1713,7 @@ export type Bank_Max_Order_By = {
   id?: InputMaybe<Order_By>;
   lo?: InputMaybe<Order_By>;
   logo?: InputMaybe<Order_By>;
+  type_id?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
   user_id?: InputMaybe<Order_By>;
 };
@@ -1540,6 +1727,7 @@ export type Bank_Min_Fields = {
   id?: Maybe<Scalars['String']>;
   lo?: Maybe<Scalars['String']>;
   logo?: Maybe<Scalars['String']>;
+  type_id?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
   user_id?: Maybe<Scalars['uuid']>;
 };
@@ -1552,6 +1740,7 @@ export type Bank_Min_Order_By = {
   id?: InputMaybe<Order_By>;
   lo?: InputMaybe<Order_By>;
   logo?: InputMaybe<Order_By>;
+  type_id?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
   user_id?: InputMaybe<Order_By>;
 };
@@ -1583,6 +1772,7 @@ export type Bank_On_Conflict = {
 export type Bank_Order_By = {
   active?: InputMaybe<Order_By>;
   bank_branches_aggregate?: InputMaybe<Bank_Branch_Aggregate_Order_By>;
+  bank_type?: InputMaybe<Bank_Type_Order_By>;
   code?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
   en?: InputMaybe<Order_By>;
@@ -1590,6 +1780,7 @@ export type Bank_Order_By = {
   id?: InputMaybe<Order_By>;
   lo?: InputMaybe<Order_By>;
   logo?: InputMaybe<Order_By>;
+  type_id?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
   user?: InputMaybe<Users_Order_By>;
   user_id?: InputMaybe<Order_By>;
@@ -1617,6 +1808,8 @@ export enum Bank_Select_Column {
   /** column name */
   Logo = 'logo',
   /** column name */
+  TypeId = 'type_id',
+  /** column name */
   UpdatedAt = 'updated_at',
   /** column name */
   UserId = 'user_id'
@@ -1631,9 +1824,221 @@ export type Bank_Set_Input = {
   id?: InputMaybe<Scalars['String']>;
   lo?: InputMaybe<Scalars['String']>;
   logo?: InputMaybe<Scalars['String']>;
+  type_id?: InputMaybe<Scalars['String']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
   user_id?: InputMaybe<Scalars['uuid']>;
 };
+
+/** columns and relationships of "bank_type" */
+export type Bank_Type = {
+  __typename?: 'bank_type';
+  active?: Maybe<Scalars['Boolean']>;
+  /** An array relationship */
+  banks: Array<Bank>;
+  /** An aggregate relationship */
+  banks_aggregate: Bank_Aggregate;
+  code?: Maybe<Scalars['String']>;
+  created_at: Scalars['timestamp'];
+  en: Scalars['String'];
+  id: Scalars['String'];
+  lo: Scalars['String'];
+  updated_at: Scalars['timestamp'];
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+
+/** columns and relationships of "bank_type" */
+export type Bank_TypeBanksArgs = {
+  distinct_on?: InputMaybe<Array<Bank_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Bank_Order_By>>;
+  where?: InputMaybe<Bank_Bool_Exp>;
+};
+
+
+/** columns and relationships of "bank_type" */
+export type Bank_TypeBanks_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Bank_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Bank_Order_By>>;
+  where?: InputMaybe<Bank_Bool_Exp>;
+};
+
+/** aggregated selection of "bank_type" */
+export type Bank_Type_Aggregate = {
+  __typename?: 'bank_type_aggregate';
+  aggregate?: Maybe<Bank_Type_Aggregate_Fields>;
+  nodes: Array<Bank_Type>;
+};
+
+/** aggregate fields of "bank_type" */
+export type Bank_Type_Aggregate_Fields = {
+  __typename?: 'bank_type_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Bank_Type_Max_Fields>;
+  min?: Maybe<Bank_Type_Min_Fields>;
+};
+
+
+/** aggregate fields of "bank_type" */
+export type Bank_Type_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Bank_Type_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "bank_type". All fields are combined with a logical 'AND'. */
+export type Bank_Type_Bool_Exp = {
+  _and?: InputMaybe<Array<Bank_Type_Bool_Exp>>;
+  _not?: InputMaybe<Bank_Type_Bool_Exp>;
+  _or?: InputMaybe<Array<Bank_Type_Bool_Exp>>;
+  active?: InputMaybe<Boolean_Comparison_Exp>;
+  banks?: InputMaybe<Bank_Bool_Exp>;
+  code?: InputMaybe<String_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamp_Comparison_Exp>;
+  en?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  lo?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamp_Comparison_Exp>;
+  user_id?: InputMaybe<Uuid_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "bank_type" */
+export enum Bank_Type_Constraint {
+  /** unique or primary key constraint */
+  BankTypePkey = 'bank_type_pkey'
+}
+
+/** input type for inserting data into table "bank_type" */
+export type Bank_Type_Insert_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  banks?: InputMaybe<Bank_Arr_Rel_Insert_Input>;
+  code?: InputMaybe<Scalars['String']>;
+  created_at?: InputMaybe<Scalars['timestamp']>;
+  en?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  lo?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamp']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** aggregate max on columns */
+export type Bank_Type_Max_Fields = {
+  __typename?: 'bank_type_max_fields';
+  code?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['timestamp']>;
+  en?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  lo?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamp']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** aggregate min on columns */
+export type Bank_Type_Min_Fields = {
+  __typename?: 'bank_type_min_fields';
+  code?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['timestamp']>;
+  en?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  lo?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamp']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** response of any mutation on the table "bank_type" */
+export type Bank_Type_Mutation_Response = {
+  __typename?: 'bank_type_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Bank_Type>;
+};
+
+/** input type for inserting object relation for remote table "bank_type" */
+export type Bank_Type_Obj_Rel_Insert_Input = {
+  data: Bank_Type_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Bank_Type_On_Conflict>;
+};
+
+/** on_conflict condition type for table "bank_type" */
+export type Bank_Type_On_Conflict = {
+  constraint: Bank_Type_Constraint;
+  update_columns?: Array<Bank_Type_Update_Column>;
+  where?: InputMaybe<Bank_Type_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "bank_type". */
+export type Bank_Type_Order_By = {
+  active?: InputMaybe<Order_By>;
+  banks_aggregate?: InputMaybe<Bank_Aggregate_Order_By>;
+  code?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  en?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  lo?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: bank_type */
+export type Bank_Type_Pk_Columns_Input = {
+  id: Scalars['String'];
+};
+
+/** select columns of table "bank_type" */
+export enum Bank_Type_Select_Column {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  Code = 'code',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  En = 'en',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Lo = 'lo',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "bank_type" */
+export type Bank_Type_Set_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  code?: InputMaybe<Scalars['String']>;
+  created_at?: InputMaybe<Scalars['timestamp']>;
+  en?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  lo?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamp']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** update columns of table "bank_type" */
+export enum Bank_Type_Update_Column {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  Code = 'code',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  En = 'en',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Lo = 'lo',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
 
 /** update columns of table "bank" */
 export enum Bank_Update_Column {
@@ -1651,6 +2056,8 @@ export enum Bank_Update_Column {
   Lo = 'lo',
   /** column name */
   Logo = 'logo',
+  /** column name */
+  TypeId = 'type_id',
   /** column name */
   UpdatedAt = 'updated_at',
   /** column name */
@@ -3125,7 +3532,8 @@ export type Fund = {
   budget: Scalars['numeric'];
   code?: Maybe<Scalars['String']>;
   created_at: Scalars['timestamptz'];
-  end_date: Scalars['date'];
+  description?: Maybe<Scalars['String']>;
+  end_date?: Maybe<Scalars['date']>;
   /** An array relationship */
   fund_contracts: Array<Fund_Contract>;
   /** An aggregate relationship */
@@ -3134,7 +3542,7 @@ export type Fund = {
   fund_src: Fund_Src;
   fund_src_id: Scalars['String'];
   id: Scalars['uuid'];
-  start_date: Scalars['date'];
+  start_date?: Maybe<Scalars['date']>;
   title: Scalars['String'];
   updated_at: Scalars['timestamptz'];
   user_id?: Maybe<Scalars['uuid']>;
@@ -3235,6 +3643,7 @@ export type Fund_Bool_Exp = {
   budget?: InputMaybe<Numeric_Comparison_Exp>;
   code?: InputMaybe<String_Comparison_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  description?: InputMaybe<String_Comparison_Exp>;
   end_date?: InputMaybe<Date_Comparison_Exp>;
   fund_contracts?: InputMaybe<Fund_Contract_Bool_Exp>;
   fund_src?: InputMaybe<Fund_Src_Bool_Exp>;
@@ -4113,6 +4522,7 @@ export type Fund_Insert_Input = {
   budget?: InputMaybe<Scalars['numeric']>;
   code?: InputMaybe<Scalars['String']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
+  description?: InputMaybe<Scalars['String']>;
   end_date?: InputMaybe<Scalars['date']>;
   fund_contracts?: InputMaybe<Fund_Contract_Arr_Rel_Insert_Input>;
   fund_src?: InputMaybe<Fund_Src_Obj_Rel_Insert_Input>;
@@ -4131,6 +4541,7 @@ export type Fund_Max_Fields = {
   budget?: Maybe<Scalars['numeric']>;
   code?: Maybe<Scalars['String']>;
   created_at?: Maybe<Scalars['timestamptz']>;
+  description?: Maybe<Scalars['String']>;
   end_date?: Maybe<Scalars['date']>;
   fund_src_id?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['uuid']>;
@@ -4146,6 +4557,7 @@ export type Fund_Max_Order_By = {
   budget?: InputMaybe<Order_By>;
   code?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
+  description?: InputMaybe<Order_By>;
   end_date?: InputMaybe<Order_By>;
   fund_src_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
@@ -4162,6 +4574,7 @@ export type Fund_Min_Fields = {
   budget?: Maybe<Scalars['numeric']>;
   code?: Maybe<Scalars['String']>;
   created_at?: Maybe<Scalars['timestamptz']>;
+  description?: Maybe<Scalars['String']>;
   end_date?: Maybe<Scalars['date']>;
   fund_src_id?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['uuid']>;
@@ -4177,6 +4590,7 @@ export type Fund_Min_Order_By = {
   budget?: InputMaybe<Order_By>;
   code?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
+  description?: InputMaybe<Order_By>;
   end_date?: InputMaybe<Order_By>;
   fund_src_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
@@ -4216,6 +4630,7 @@ export type Fund_Order_By = {
   budget?: InputMaybe<Order_By>;
   code?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
+  description?: InputMaybe<Order_By>;
   end_date?: InputMaybe<Order_By>;
   fund_contracts_aggregate?: InputMaybe<Fund_Contract_Aggregate_Order_By>;
   fund_src?: InputMaybe<Fund_Src_Order_By>;
@@ -4245,6 +4660,8 @@ export enum Fund_Select_Column {
   /** column name */
   CreatedAt = 'created_at',
   /** column name */
+  Description = 'description',
+  /** column name */
   EndDate = 'end_date',
   /** column name */
   FundSrcId = 'fund_src_id',
@@ -4267,6 +4684,7 @@ export type Fund_Set_Input = {
   budget?: InputMaybe<Scalars['numeric']>;
   code?: InputMaybe<Scalars['String']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
+  description?: InputMaybe<Scalars['String']>;
   end_date?: InputMaybe<Scalars['date']>;
   fund_src_id?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['uuid']>;
@@ -4280,7 +4698,7 @@ export type Fund_Set_Input = {
 export type Fund_Src = {
   __typename?: 'fund_src';
   active?: Maybe<Scalars['Boolean']>;
-  created_at: Scalars['timestamptz'];
+  created_at: Scalars['timestamp'];
   en?: Maybe<Scalars['String']>;
   /** An array relationship */
   funds: Array<Fund>;
@@ -4290,7 +4708,7 @@ export type Fund_Src = {
   /** The fund source name */
   lo: Scalars['String'];
   logo?: Maybe<Scalars['String']>;
-  updated_at: Scalars['timestamptz'];
+  updated_at?: Maybe<Scalars['timestamp']>;
   user_id?: Maybe<Scalars['uuid']>;
 };
 
@@ -4342,13 +4760,13 @@ export type Fund_Src_Bool_Exp = {
   _not?: InputMaybe<Fund_Src_Bool_Exp>;
   _or?: InputMaybe<Array<Fund_Src_Bool_Exp>>;
   active?: InputMaybe<Boolean_Comparison_Exp>;
-  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamp_Comparison_Exp>;
   en?: InputMaybe<String_Comparison_Exp>;
   funds?: InputMaybe<Fund_Bool_Exp>;
   id?: InputMaybe<String_Comparison_Exp>;
   lo?: InputMaybe<String_Comparison_Exp>;
   logo?: InputMaybe<String_Comparison_Exp>;
-  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamp_Comparison_Exp>;
   user_id?: InputMaybe<Uuid_Comparison_Exp>;
 };
 
@@ -4361,40 +4779,40 @@ export enum Fund_Src_Constraint {
 /** input type for inserting data into table "fund_src" */
 export type Fund_Src_Insert_Input = {
   active?: InputMaybe<Scalars['Boolean']>;
-  created_at?: InputMaybe<Scalars['timestamptz']>;
+  created_at?: InputMaybe<Scalars['timestamp']>;
   en?: InputMaybe<Scalars['String']>;
   funds?: InputMaybe<Fund_Arr_Rel_Insert_Input>;
   id?: InputMaybe<Scalars['String']>;
   /** The fund source name */
   lo?: InputMaybe<Scalars['String']>;
   logo?: InputMaybe<Scalars['String']>;
-  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  updated_at?: InputMaybe<Scalars['timestamp']>;
   user_id?: InputMaybe<Scalars['uuid']>;
 };
 
 /** aggregate max on columns */
 export type Fund_Src_Max_Fields = {
   __typename?: 'fund_src_max_fields';
-  created_at?: Maybe<Scalars['timestamptz']>;
+  created_at?: Maybe<Scalars['timestamp']>;
   en?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
   /** The fund source name */
   lo?: Maybe<Scalars['String']>;
   logo?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  updated_at?: Maybe<Scalars['timestamp']>;
   user_id?: Maybe<Scalars['uuid']>;
 };
 
 /** aggregate min on columns */
 export type Fund_Src_Min_Fields = {
   __typename?: 'fund_src_min_fields';
-  created_at?: Maybe<Scalars['timestamptz']>;
+  created_at?: Maybe<Scalars['timestamp']>;
   en?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
   /** The fund source name */
   lo?: Maybe<Scalars['String']>;
   logo?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  updated_at?: Maybe<Scalars['timestamp']>;
   user_id?: Maybe<Scalars['uuid']>;
 };
 
@@ -4462,13 +4880,13 @@ export enum Fund_Src_Select_Column {
 /** input type for updating data in table "fund_src" */
 export type Fund_Src_Set_Input = {
   active?: InputMaybe<Scalars['Boolean']>;
-  created_at?: InputMaybe<Scalars['timestamptz']>;
+  created_at?: InputMaybe<Scalars['timestamp']>;
   en?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   /** The fund source name */
   lo?: InputMaybe<Scalars['String']>;
   logo?: InputMaybe<Scalars['String']>;
-  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  updated_at?: InputMaybe<Scalars['timestamp']>;
   user_id?: InputMaybe<Scalars['uuid']>;
 };
 
@@ -4556,6 +4974,8 @@ export enum Fund_Update_Column {
   Code = 'code',
   /** column name */
   CreatedAt = 'created_at',
+  /** column name */
+  Description = 'description',
   /** column name */
   EndDate = 'end_date',
   /** column name */
@@ -7102,6 +7522,10 @@ export type Mutation_Root = {
   deleteUser?: Maybe<Users>;
   /** delete data from the table: "auth.users" */
   deleteUsers?: Maybe<Users_Mutation_Response>;
+  /** delete data from the table: "app_setting" */
+  delete_app_setting?: Maybe<App_Setting_Mutation_Response>;
+  /** delete single row from the table: "app_setting" */
+  delete_app_setting_by_pk?: Maybe<App_Setting>;
   /** delete data from the table: "bank" */
   delete_bank?: Maybe<Bank_Mutation_Response>;
   /** delete data from the table: "bank_branch" */
@@ -7110,6 +7534,10 @@ export type Mutation_Root = {
   delete_bank_branch_by_pk?: Maybe<Bank_Branch>;
   /** delete single row from the table: "bank" */
   delete_bank_by_pk?: Maybe<Bank>;
+  /** delete data from the table: "bank_type" */
+  delete_bank_type?: Maybe<Bank_Type_Mutation_Response>;
+  /** delete single row from the table: "bank_type" */
+  delete_bank_type_by_pk?: Maybe<Bank_Type>;
   /** delete data from the table: "busines" */
   delete_busines?: Maybe<Busines_Mutation_Response>;
   /** delete single row from the table: "busines" */
@@ -7202,6 +7630,10 @@ export type Mutation_Root = {
   insertUser?: Maybe<Users>;
   /** insert data into the table: "auth.users" */
   insertUsers?: Maybe<Users_Mutation_Response>;
+  /** insert data into the table: "app_setting" */
+  insert_app_setting?: Maybe<App_Setting_Mutation_Response>;
+  /** insert a single row into the table: "app_setting" */
+  insert_app_setting_one?: Maybe<App_Setting>;
   /** insert data into the table: "bank" */
   insert_bank?: Maybe<Bank_Mutation_Response>;
   /** insert data into the table: "bank_branch" */
@@ -7210,6 +7642,10 @@ export type Mutation_Root = {
   insert_bank_branch_one?: Maybe<Bank_Branch>;
   /** insert a single row into the table: "bank" */
   insert_bank_one?: Maybe<Bank>;
+  /** insert data into the table: "bank_type" */
+  insert_bank_type?: Maybe<Bank_Type_Mutation_Response>;
+  /** insert a single row into the table: "bank_type" */
+  insert_bank_type_one?: Maybe<Bank_Type>;
   /** insert data into the table: "busines" */
   insert_busines?: Maybe<Busines_Mutation_Response>;
   /** insert data into the table: "busines_class" */
@@ -7302,6 +7738,10 @@ export type Mutation_Root = {
   updateUser?: Maybe<Users>;
   /** update data of the table: "auth.users" */
   updateUsers?: Maybe<Users_Mutation_Response>;
+  /** update data of the table: "app_setting" */
+  update_app_setting?: Maybe<App_Setting_Mutation_Response>;
+  /** update single row of the table: "app_setting" */
+  update_app_setting_by_pk?: Maybe<App_Setting>;
   /** update data of the table: "bank" */
   update_bank?: Maybe<Bank_Mutation_Response>;
   /** update data of the table: "bank_branch" */
@@ -7310,6 +7750,10 @@ export type Mutation_Root = {
   update_bank_branch_by_pk?: Maybe<Bank_Branch>;
   /** update single row of the table: "bank" */
   update_bank_by_pk?: Maybe<Bank>;
+  /** update data of the table: "bank_type" */
+  update_bank_type?: Maybe<Bank_Type_Mutation_Response>;
+  /** update single row of the table: "bank_type" */
+  update_bank_type_by_pk?: Maybe<Bank_Type>;
   /** update data of the table: "busines" */
   update_busines?: Maybe<Busines_Mutation_Response>;
   /** update single row of the table: "busines" */
@@ -7462,6 +7906,18 @@ export type Mutation_RootDeleteUsersArgs = {
 
 
 /** mutation root */
+export type Mutation_RootDelete_App_SettingArgs = {
+  where: App_Setting_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_App_Setting_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+/** mutation root */
 export type Mutation_RootDelete_BankArgs = {
   where: Bank_Bool_Exp;
 };
@@ -7481,6 +7937,18 @@ export type Mutation_RootDelete_Bank_Branch_By_PkArgs = {
 
 /** mutation root */
 export type Mutation_RootDelete_Bank_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Bank_TypeArgs = {
+  where: Bank_Type_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Bank_Type_By_PkArgs = {
   id: Scalars['String'];
 };
 
@@ -7776,6 +8244,20 @@ export type Mutation_RootInsertUsersArgs = {
 
 
 /** mutation root */
+export type Mutation_RootInsert_App_SettingArgs = {
+  objects: Array<App_Setting_Insert_Input>;
+  on_conflict?: InputMaybe<App_Setting_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_App_Setting_OneArgs = {
+  object: App_Setting_Insert_Input;
+  on_conflict?: InputMaybe<App_Setting_On_Conflict>;
+};
+
+
+/** mutation root */
 export type Mutation_RootInsert_BankArgs = {
   objects: Array<Bank_Insert_Input>;
   on_conflict?: InputMaybe<Bank_On_Conflict>;
@@ -7800,6 +8282,20 @@ export type Mutation_RootInsert_Bank_Branch_OneArgs = {
 export type Mutation_RootInsert_Bank_OneArgs = {
   object: Bank_Insert_Input;
   on_conflict?: InputMaybe<Bank_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Bank_TypeArgs = {
+  objects: Array<Bank_Type_Insert_Input>;
+  on_conflict?: InputMaybe<Bank_Type_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Bank_Type_OneArgs = {
+  object: Bank_Type_Insert_Input;
+  on_conflict?: InputMaybe<Bank_Type_On_Conflict>;
 };
 
 
@@ -8146,6 +8642,30 @@ export type Mutation_RootUpdateUsersArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_App_SettingArgs = {
+  _append?: InputMaybe<App_Setting_Append_Input>;
+  _delete_at_path?: InputMaybe<App_Setting_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<App_Setting_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<App_Setting_Delete_Key_Input>;
+  _prepend?: InputMaybe<App_Setting_Prepend_Input>;
+  _set?: InputMaybe<App_Setting_Set_Input>;
+  where: App_Setting_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_App_Setting_By_PkArgs = {
+  _append?: InputMaybe<App_Setting_Append_Input>;
+  _delete_at_path?: InputMaybe<App_Setting_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<App_Setting_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<App_Setting_Delete_Key_Input>;
+  _prepend?: InputMaybe<App_Setting_Prepend_Input>;
+  _set?: InputMaybe<App_Setting_Set_Input>;
+  pk_columns: App_Setting_Pk_Columns_Input;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_BankArgs = {
   _set?: InputMaybe<Bank_Set_Input>;
   where: Bank_Bool_Exp;
@@ -8170,6 +8690,20 @@ export type Mutation_RootUpdate_Bank_Branch_By_PkArgs = {
 export type Mutation_RootUpdate_Bank_By_PkArgs = {
   _set?: InputMaybe<Bank_Set_Input>;
   pk_columns: Bank_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Bank_TypeArgs = {
+  _set?: InputMaybe<Bank_Type_Set_Input>;
+  where: Bank_Type_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Bank_Type_By_PkArgs = {
+  _set?: InputMaybe<Bank_Type_Set_Input>;
+  pk_columns: Bank_Type_Pk_Columns_Input;
 };
 
 
@@ -8441,6 +8975,12 @@ export enum Order_By {
 
 export type Query_Root = {
   __typename?: 'query_root';
+  /** fetch data from the table: "app_setting" */
+  app_setting: Array<App_Setting>;
+  /** fetch aggregated fields from the table: "app_setting" */
+  app_setting_aggregate: App_Setting_Aggregate;
+  /** fetch data from the table: "app_setting" using primary key columns */
+  app_setting_by_pk?: Maybe<App_Setting>;
   /** fetch data from the table: "auth.providers" using primary key columns */
   authProvider?: Maybe<AuthProviders>;
   /** fetch data from the table: "auth.provider_requests" using primary key columns */
@@ -8489,6 +9029,12 @@ export type Query_Root = {
   bank_branch_by_pk?: Maybe<Bank_Branch>;
   /** fetch data from the table: "bank" using primary key columns */
   bank_by_pk?: Maybe<Bank>;
+  /** fetch data from the table: "bank_type" */
+  bank_type: Array<Bank_Type>;
+  /** fetch aggregated fields from the table: "bank_type" */
+  bank_type_aggregate: Bank_Type_Aggregate;
+  /** fetch data from the table: "bank_type" using primary key columns */
+  bank_type_by_pk?: Maybe<Bank_Type>;
   /** An array relationship */
   busines: Array<Busines>;
   /** An aggregate relationship */
@@ -8591,6 +9137,29 @@ export type Query_Root = {
   users: Array<Users>;
   /** fetch aggregated fields from the table: "auth.users" */
   usersAggregate: Users_Aggregate;
+};
+
+
+export type Query_RootApp_SettingArgs = {
+  distinct_on?: InputMaybe<Array<App_Setting_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<App_Setting_Order_By>>;
+  where?: InputMaybe<App_Setting_Bool_Exp>;
+};
+
+
+export type Query_RootApp_Setting_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<App_Setting_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<App_Setting_Order_By>>;
+  where?: InputMaybe<App_Setting_Bool_Exp>;
+};
+
+
+export type Query_RootApp_Setting_By_PkArgs = {
+  id: Scalars['String'];
 };
 
 
@@ -8774,6 +9343,29 @@ export type Query_RootBank_Branch_By_PkArgs = {
 
 
 export type Query_RootBank_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Query_RootBank_TypeArgs = {
+  distinct_on?: InputMaybe<Array<Bank_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Bank_Type_Order_By>>;
+  where?: InputMaybe<Bank_Type_Bool_Exp>;
+};
+
+
+export type Query_RootBank_Type_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Bank_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Bank_Type_Order_By>>;
+  where?: InputMaybe<Bank_Type_Bool_Exp>;
+};
+
+
+export type Query_RootBank_Type_By_PkArgs = {
   id: Scalars['String'];
 };
 
@@ -9170,6 +9762,12 @@ export type Query_RootUsersAggregateArgs = {
 
 export type Subscription_Root = {
   __typename?: 'subscription_root';
+  /** fetch data from the table: "app_setting" */
+  app_setting: Array<App_Setting>;
+  /** fetch aggregated fields from the table: "app_setting" */
+  app_setting_aggregate: App_Setting_Aggregate;
+  /** fetch data from the table: "app_setting" using primary key columns */
+  app_setting_by_pk?: Maybe<App_Setting>;
   /** fetch data from the table: "auth.providers" using primary key columns */
   authProvider?: Maybe<AuthProviders>;
   /** fetch data from the table: "auth.provider_requests" using primary key columns */
@@ -9218,6 +9816,12 @@ export type Subscription_Root = {
   bank_branch_by_pk?: Maybe<Bank_Branch>;
   /** fetch data from the table: "bank" using primary key columns */
   bank_by_pk?: Maybe<Bank>;
+  /** fetch data from the table: "bank_type" */
+  bank_type: Array<Bank_Type>;
+  /** fetch aggregated fields from the table: "bank_type" */
+  bank_type_aggregate: Bank_Type_Aggregate;
+  /** fetch data from the table: "bank_type" using primary key columns */
+  bank_type_by_pk?: Maybe<Bank_Type>;
   /** An array relationship */
   busines: Array<Busines>;
   /** An aggregate relationship */
@@ -9320,6 +9924,29 @@ export type Subscription_Root = {
   users: Array<Users>;
   /** fetch aggregated fields from the table: "auth.users" */
   usersAggregate: Users_Aggregate;
+};
+
+
+export type Subscription_RootApp_SettingArgs = {
+  distinct_on?: InputMaybe<Array<App_Setting_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<App_Setting_Order_By>>;
+  where?: InputMaybe<App_Setting_Bool_Exp>;
+};
+
+
+export type Subscription_RootApp_Setting_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<App_Setting_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<App_Setting_Order_By>>;
+  where?: InputMaybe<App_Setting_Bool_Exp>;
+};
+
+
+export type Subscription_RootApp_Setting_By_PkArgs = {
+  id: Scalars['String'];
 };
 
 
@@ -9503,6 +10130,29 @@ export type Subscription_RootBank_Branch_By_PkArgs = {
 
 
 export type Subscription_RootBank_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Subscription_RootBank_TypeArgs = {
+  distinct_on?: InputMaybe<Array<Bank_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Bank_Type_Order_By>>;
+  where?: InputMaybe<Bank_Type_Bool_Exp>;
+};
+
+
+export type Subscription_RootBank_Type_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Bank_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Bank_Type_Order_By>>;
+  where?: InputMaybe<Bank_Type_Bool_Exp>;
+};
+
+
+export type Subscription_RootBank_Type_By_PkArgs = {
   id: Scalars['String'];
 };
 
@@ -9895,6 +10545,19 @@ export type Subscription_RootUsersAggregateArgs = {
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<Users_Order_By>>;
   where?: InputMaybe<Users_Bool_Exp>;
+};
+
+/** Boolean expression to compare columns of type "timestamp". All fields are combined with logical 'AND'. */
+export type Timestamp_Comparison_Exp = {
+  _eq?: InputMaybe<Scalars['timestamp']>;
+  _gt?: InputMaybe<Scalars['timestamp']>;
+  _gte?: InputMaybe<Scalars['timestamp']>;
+  _in?: InputMaybe<Array<Scalars['timestamp']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _lt?: InputMaybe<Scalars['timestamp']>;
+  _lte?: InputMaybe<Scalars['timestamp']>;
+  _neq?: InputMaybe<Scalars['timestamp']>;
+  _nin?: InputMaybe<Array<Scalars['timestamp']>>;
 };
 
 /** Boolean expression to compare columns of type "timestamptz". All fields are combined with logical 'AND'. */
