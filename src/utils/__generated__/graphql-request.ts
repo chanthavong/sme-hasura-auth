@@ -1400,6 +1400,10 @@ export type Bank_Branch = {
   code?: Maybe<Scalars['String']>;
   created_at: Scalars['timestamptz'];
   id: Scalars['uuid'];
+  /** An array relationship */
+  loans: Array<Loan>;
+  /** An aggregate relationship */
+  loans_aggregate: Loan_Aggregate;
   name: Scalars['String'];
   updated_at: Scalars['timestamptz'];
   user_id?: Maybe<Scalars['uuid']>;
@@ -1408,6 +1412,26 @@ export type Bank_Branch = {
   /** An aggregate relationship */
   users_aggregate: Users_Aggregate;
   village_id?: Maybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "bank_branch" */
+export type Bank_BranchLoansArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Order_By>>;
+  where?: InputMaybe<Loan_Bool_Exp>;
+};
+
+
+/** columns and relationships of "bank_branch" */
+export type Bank_BranchLoans_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Order_By>>;
+  where?: InputMaybe<Loan_Bool_Exp>;
 };
 
 
@@ -1478,6 +1502,7 @@ export type Bank_Branch_Bool_Exp = {
   code?: InputMaybe<String_Comparison_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
+  loans?: InputMaybe<Loan_Bool_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   user_id?: InputMaybe<Uuid_Comparison_Exp>;
@@ -1500,6 +1525,7 @@ export type Bank_Branch_Insert_Input = {
   code?: InputMaybe<Scalars['String']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   id?: InputMaybe<Scalars['uuid']>;
+  loans?: InputMaybe<Loan_Arr_Rel_Insert_Input>;
   name?: InputMaybe<Scalars['String']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
   user_id?: InputMaybe<Scalars['uuid']>;
@@ -1593,6 +1619,7 @@ export type Bank_Branch_Order_By = {
   code?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  loans_aggregate?: InputMaybe<Loan_Aggregate_Order_By>;
   name?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
   user_id?: InputMaybe<Order_By>;
@@ -3528,7 +3555,7 @@ export type Date_Comparison_Exp = {
 export type Fund = {
   __typename?: 'fund';
   active?: Maybe<Scalars['Boolean']>;
-  balance: Scalars['numeric'];
+  balance?: Maybe<Scalars['numeric']>;
   budget: Scalars['numeric'];
   code?: Maybe<Scalars['String']>;
   created_at: Scalars['timestamptz'];
@@ -3664,12 +3691,14 @@ export enum Fund_Constraint {
 /** columns and relationships of "fund_contract" */
 export type Fund_Contract = {
   __typename?: 'fund_contract';
+  active?: Maybe<Scalars['Boolean']>;
   /** An object relationship */
   bank: Bank;
   bank_id: Scalars['String'];
   budget: Scalars['numeric'];
   code?: Maybe<Scalars['String']>;
   created_at: Scalars['timestamptz'];
+  detail?: Maybe<Scalars['String']>;
   end_date: Scalars['date'];
   fees: Scalars['numeric'];
   /** An object relationship */
@@ -3681,6 +3710,10 @@ export type Fund_Contract = {
   fund_id: Scalars['uuid'];
   id: Scalars['uuid'];
   interest: Scalars['numeric'];
+  /** An array relationship */
+  loans: Array<Loan>;
+  /** An aggregate relationship */
+  loans_aggregate: Loan_Aggregate;
   repayment?: Maybe<Scalars['numeric']>;
   start_date: Scalars['date'];
   title: Scalars['String'];
@@ -3707,6 +3740,26 @@ export type Fund_ContractFund_Contract_Repayments_AggregateArgs = {
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<Fund_Contract_Repayment_Order_By>>;
   where?: InputMaybe<Fund_Contract_Repayment_Bool_Exp>;
+};
+
+
+/** columns and relationships of "fund_contract" */
+export type Fund_ContractLoansArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Order_By>>;
+  where?: InputMaybe<Loan_Bool_Exp>;
+};
+
+
+/** columns and relationships of "fund_contract" */
+export type Fund_ContractLoans_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Loan_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_Order_By>>;
+  where?: InputMaybe<Loan_Bool_Exp>;
 };
 
 /** aggregated selection of "fund_contract" */
@@ -3783,11 +3836,13 @@ export type Fund_Contract_Bool_Exp = {
   _and?: InputMaybe<Array<Fund_Contract_Bool_Exp>>;
   _not?: InputMaybe<Fund_Contract_Bool_Exp>;
   _or?: InputMaybe<Array<Fund_Contract_Bool_Exp>>;
+  active?: InputMaybe<Boolean_Comparison_Exp>;
   bank?: InputMaybe<Bank_Bool_Exp>;
   bank_id?: InputMaybe<String_Comparison_Exp>;
   budget?: InputMaybe<Numeric_Comparison_Exp>;
   code?: InputMaybe<String_Comparison_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  detail?: InputMaybe<String_Comparison_Exp>;
   end_date?: InputMaybe<Date_Comparison_Exp>;
   fees?: InputMaybe<Numeric_Comparison_Exp>;
   fund?: InputMaybe<Fund_Bool_Exp>;
@@ -3795,6 +3850,7 @@ export type Fund_Contract_Bool_Exp = {
   fund_id?: InputMaybe<Uuid_Comparison_Exp>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
   interest?: InputMaybe<Numeric_Comparison_Exp>;
+  loans?: InputMaybe<Loan_Bool_Exp>;
   repayment?: InputMaybe<Numeric_Comparison_Exp>;
   start_date?: InputMaybe<Date_Comparison_Exp>;
   title?: InputMaybe<String_Comparison_Exp>;
@@ -3819,11 +3875,13 @@ export type Fund_Contract_Inc_Input = {
 
 /** input type for inserting data into table "fund_contract" */
 export type Fund_Contract_Insert_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
   bank?: InputMaybe<Bank_Obj_Rel_Insert_Input>;
   bank_id?: InputMaybe<Scalars['String']>;
   budget?: InputMaybe<Scalars['numeric']>;
   code?: InputMaybe<Scalars['String']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
+  detail?: InputMaybe<Scalars['String']>;
   end_date?: InputMaybe<Scalars['date']>;
   fees?: InputMaybe<Scalars['numeric']>;
   fund?: InputMaybe<Fund_Obj_Rel_Insert_Input>;
@@ -3831,6 +3889,7 @@ export type Fund_Contract_Insert_Input = {
   fund_id?: InputMaybe<Scalars['uuid']>;
   id?: InputMaybe<Scalars['uuid']>;
   interest?: InputMaybe<Scalars['numeric']>;
+  loans?: InputMaybe<Loan_Arr_Rel_Insert_Input>;
   repayment?: InputMaybe<Scalars['numeric']>;
   start_date?: InputMaybe<Scalars['date']>;
   title?: InputMaybe<Scalars['String']>;
@@ -3846,6 +3905,7 @@ export type Fund_Contract_Max_Fields = {
   budget?: Maybe<Scalars['numeric']>;
   code?: Maybe<Scalars['String']>;
   created_at?: Maybe<Scalars['timestamptz']>;
+  detail?: Maybe<Scalars['String']>;
   end_date?: Maybe<Scalars['date']>;
   fees?: Maybe<Scalars['numeric']>;
   fund_id?: Maybe<Scalars['uuid']>;
@@ -3864,6 +3924,7 @@ export type Fund_Contract_Max_Order_By = {
   budget?: InputMaybe<Order_By>;
   code?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
+  detail?: InputMaybe<Order_By>;
   end_date?: InputMaybe<Order_By>;
   fees?: InputMaybe<Order_By>;
   fund_id?: InputMaybe<Order_By>;
@@ -3883,6 +3944,7 @@ export type Fund_Contract_Min_Fields = {
   budget?: Maybe<Scalars['numeric']>;
   code?: Maybe<Scalars['String']>;
   created_at?: Maybe<Scalars['timestamptz']>;
+  detail?: Maybe<Scalars['String']>;
   end_date?: Maybe<Scalars['date']>;
   fees?: Maybe<Scalars['numeric']>;
   fund_id?: Maybe<Scalars['uuid']>;
@@ -3901,6 +3963,7 @@ export type Fund_Contract_Min_Order_By = {
   budget?: InputMaybe<Order_By>;
   code?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
+  detail?: InputMaybe<Order_By>;
   end_date?: InputMaybe<Order_By>;
   fees?: InputMaybe<Order_By>;
   fund_id?: InputMaybe<Order_By>;
@@ -3938,11 +4001,13 @@ export type Fund_Contract_On_Conflict = {
 
 /** Ordering options when selecting data from "fund_contract". */
 export type Fund_Contract_Order_By = {
+  active?: InputMaybe<Order_By>;
   bank?: InputMaybe<Bank_Order_By>;
   bank_id?: InputMaybe<Order_By>;
   budget?: InputMaybe<Order_By>;
   code?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
+  detail?: InputMaybe<Order_By>;
   end_date?: InputMaybe<Order_By>;
   fees?: InputMaybe<Order_By>;
   fund?: InputMaybe<Fund_Order_By>;
@@ -3950,6 +4015,7 @@ export type Fund_Contract_Order_By = {
   fund_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   interest?: InputMaybe<Order_By>;
+  loans_aggregate?: InputMaybe<Loan_Aggregate_Order_By>;
   repayment?: InputMaybe<Order_By>;
   start_date?: InputMaybe<Order_By>;
   title?: InputMaybe<Order_By>;
@@ -4306,6 +4372,8 @@ export type Fund_Contract_Repayment_Variance_Order_By = {
 /** select columns of table "fund_contract" */
 export enum Fund_Contract_Select_Column {
   /** column name */
+  Active = 'active',
+  /** column name */
   BankId = 'bank_id',
   /** column name */
   Budget = 'budget',
@@ -4313,6 +4381,8 @@ export enum Fund_Contract_Select_Column {
   Code = 'code',
   /** column name */
   CreatedAt = 'created_at',
+  /** column name */
+  Detail = 'detail',
   /** column name */
   EndDate = 'end_date',
   /** column name */
@@ -4339,10 +4409,12 @@ export enum Fund_Contract_Select_Column {
 
 /** input type for updating data in table "fund_contract" */
 export type Fund_Contract_Set_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
   bank_id?: InputMaybe<Scalars['String']>;
   budget?: InputMaybe<Scalars['numeric']>;
   code?: InputMaybe<Scalars['String']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
+  detail?: InputMaybe<Scalars['String']>;
   end_date?: InputMaybe<Scalars['date']>;
   fees?: InputMaybe<Scalars['numeric']>;
   fund_id?: InputMaybe<Scalars['uuid']>;
@@ -4427,6 +4499,8 @@ export type Fund_Contract_Sum_Order_By = {
 /** update columns of table "fund_contract" */
 export enum Fund_Contract_Update_Column {
   /** column name */
+  Active = 'active',
+  /** column name */
   BankId = 'bank_id',
   /** column name */
   Budget = 'budget',
@@ -4434,6 +4508,8 @@ export enum Fund_Contract_Update_Column {
   Code = 'code',
   /** column name */
   CreatedAt = 'created_at',
+  /** column name */
+  Detail = 'detail',
   /** column name */
   EndDate = 'end_date',
   /** column name */
@@ -5064,6 +5140,8 @@ export type Loan = {
   __typename?: 'loan';
   account_number: Scalars['String'];
   amount: Scalars['numeric'];
+  /** An object relationship */
+  bank_branch: Bank_Branch;
   bank_branch_id: Scalars['uuid'];
   close_date?: Maybe<Scalars['date']>;
   closed?: Maybe<Scalars['Boolean']>;
@@ -5074,10 +5152,14 @@ export type Loan = {
   contract_no: Scalars['String'];
   covid_affected?: Maybe<Scalars['Boolean']>;
   created_at: Scalars['timestamptz'];
+  /** An object relationship */
+  fund_contract?: Maybe<Fund_Contract>;
+  fund_contract_id?: Maybe<Scalars['uuid']>;
   grade?: Maybe<Scalars['String']>;
   id: Scalars['uuid'];
   inital_free_cost?: Maybe<Scalars['date']>;
   interest: Scalars['numeric'];
+  /** ໄລຍະປອດທຶນ */
   is_free_cost?: Maybe<Scalars['Boolean']>;
   last_free_cost?: Maybe<Scalars['date']>;
   loan_amount_approved: Scalars['numeric'];
@@ -5243,6 +5325,7 @@ export type Loan_Bool_Exp = {
   _or?: InputMaybe<Array<Loan_Bool_Exp>>;
   account_number?: InputMaybe<String_Comparison_Exp>;
   amount?: InputMaybe<Numeric_Comparison_Exp>;
+  bank_branch?: InputMaybe<Bank_Branch_Bool_Exp>;
   bank_branch_id?: InputMaybe<Uuid_Comparison_Exp>;
   close_date?: InputMaybe<Date_Comparison_Exp>;
   closed?: InputMaybe<Boolean_Comparison_Exp>;
@@ -5253,6 +5336,8 @@ export type Loan_Bool_Exp = {
   contract_no?: InputMaybe<String_Comparison_Exp>;
   covid_affected?: InputMaybe<Boolean_Comparison_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  fund_contract?: InputMaybe<Fund_Contract_Bool_Exp>;
+  fund_contract_id?: InputMaybe<Uuid_Comparison_Exp>;
   grade?: InputMaybe<String_Comparison_Exp>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
   inital_free_cost?: InputMaybe<Date_Comparison_Exp>;
@@ -5890,6 +5975,7 @@ export type Loan_Inc_Input = {
 export type Loan_Insert_Input = {
   account_number?: InputMaybe<Scalars['String']>;
   amount?: InputMaybe<Scalars['numeric']>;
+  bank_branch?: InputMaybe<Bank_Branch_Obj_Rel_Insert_Input>;
   bank_branch_id?: InputMaybe<Scalars['uuid']>;
   close_date?: InputMaybe<Scalars['date']>;
   closed?: InputMaybe<Scalars['Boolean']>;
@@ -5900,10 +5986,13 @@ export type Loan_Insert_Input = {
   contract_no?: InputMaybe<Scalars['String']>;
   covid_affected?: InputMaybe<Scalars['Boolean']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
+  fund_contract?: InputMaybe<Fund_Contract_Obj_Rel_Insert_Input>;
+  fund_contract_id?: InputMaybe<Scalars['uuid']>;
   grade?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['uuid']>;
   inital_free_cost?: InputMaybe<Scalars['date']>;
   interest?: InputMaybe<Scalars['numeric']>;
+  /** ໄລຍະປອດທຶນ */
   is_free_cost?: InputMaybe<Scalars['Boolean']>;
   last_free_cost?: InputMaybe<Scalars['date']>;
   loan_amount_approved?: InputMaybe<Scalars['numeric']>;
@@ -5946,6 +6035,7 @@ export type Loan_Max_Fields = {
   contract_end?: Maybe<Scalars['date']>;
   contract_no?: Maybe<Scalars['String']>;
   created_at?: Maybe<Scalars['timestamptz']>;
+  fund_contract_id?: Maybe<Scalars['uuid']>;
   grade?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['uuid']>;
   inital_free_cost?: Maybe<Scalars['date']>;
@@ -5983,6 +6073,7 @@ export type Loan_Max_Order_By = {
   contract_end?: InputMaybe<Order_By>;
   contract_no?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
+  fund_contract_id?: InputMaybe<Order_By>;
   grade?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   inital_free_cost?: InputMaybe<Order_By>;
@@ -6021,6 +6112,7 @@ export type Loan_Min_Fields = {
   contract_end?: Maybe<Scalars['date']>;
   contract_no?: Maybe<Scalars['String']>;
   created_at?: Maybe<Scalars['timestamptz']>;
+  fund_contract_id?: Maybe<Scalars['uuid']>;
   grade?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['uuid']>;
   inital_free_cost?: Maybe<Scalars['date']>;
@@ -6058,6 +6150,7 @@ export type Loan_Min_Order_By = {
   contract_end?: InputMaybe<Order_By>;
   contract_no?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
+  fund_contract_id?: InputMaybe<Order_By>;
   grade?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   inital_free_cost?: InputMaybe<Order_By>;
@@ -6110,6 +6203,7 @@ export type Loan_On_Conflict = {
 export type Loan_Order_By = {
   account_number?: InputMaybe<Order_By>;
   amount?: InputMaybe<Order_By>;
+  bank_branch?: InputMaybe<Bank_Branch_Order_By>;
   bank_branch_id?: InputMaybe<Order_By>;
   close_date?: InputMaybe<Order_By>;
   closed?: InputMaybe<Order_By>;
@@ -6120,6 +6214,8 @@ export type Loan_Order_By = {
   contract_no?: InputMaybe<Order_By>;
   covid_affected?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
+  fund_contract?: InputMaybe<Fund_Contract_Order_By>;
+  fund_contract_id?: InputMaybe<Order_By>;
   grade?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   inital_free_cost?: InputMaybe<Order_By>;
@@ -6740,6 +6836,8 @@ export enum Loan_Select_Column {
   /** column name */
   CreatedAt = 'created_at',
   /** column name */
+  FundContractId = 'fund_contract_id',
+  /** column name */
   Grade = 'grade',
   /** column name */
   Id = 'id',
@@ -6801,10 +6899,12 @@ export type Loan_Set_Input = {
   contract_no?: InputMaybe<Scalars['String']>;
   covid_affected?: InputMaybe<Scalars['Boolean']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
+  fund_contract_id?: InputMaybe<Scalars['uuid']>;
   grade?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['uuid']>;
   inital_free_cost?: InputMaybe<Scalars['date']>;
   interest?: InputMaybe<Scalars['numeric']>;
+  /** ໄລຍະປອດທຶນ */
   is_free_cost?: InputMaybe<Scalars['Boolean']>;
   last_free_cost?: InputMaybe<Scalars['date']>;
   loan_amount_approved?: InputMaybe<Scalars['numeric']>;
@@ -7362,6 +7462,8 @@ export enum Loan_Update_Column {
   CovidAffected = 'covid_affected',
   /** column name */
   CreatedAt = 'created_at',
+  /** column name */
+  FundContractId = 'fund_contract_id',
   /** column name */
   Grade = 'grade',
   /** column name */
