@@ -23,6 +23,13 @@ import {
 } from './email';
 import { userEmailChange } from './email';
 
+import { signUpEmailPasswordSchema } from '../signup/email-password';
+import {
+  userAdd,
+  userPasswordrestSchema,
+  userResetPassword,
+} from './user-manage';
+
 const router = Router();
 
 /**
@@ -139,6 +146,20 @@ router.post(
   '/user/provider/tokens',
   bodyValidator(userProviderTokensSchema),
   aw(userProviderTokensHandler)
+);
+
+router.post(
+  '/user/add',
+  bodyValidator(signUpEmailPasswordSchema),
+  authenticationGate,
+  aw(userAdd)
+);
+
+router.post(
+  '/user/reset-password',
+  bodyValidator(userPasswordrestSchema),
+  authenticationGate,
+  aw(userResetPassword)
 );
 
 const userRouter = router;

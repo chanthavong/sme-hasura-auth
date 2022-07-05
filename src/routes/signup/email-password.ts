@@ -79,7 +79,10 @@ export const signUpEmailPasswordHandler: RequestHandler<
       // restructure user roles to be inserted in GraphQL mutation
       data: allowedRoles.map((role: string) => ({ role })),
     },
-    metadata,
+    metadata:
+      metadata == null
+        ? [{ label: 'dashboard_workplace', value: 'dashboard_workplace' }]
+        : metadata,
   });
 
   // user is now inserted. Continue sending out activation email
