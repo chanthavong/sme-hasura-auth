@@ -30,6 +30,8 @@ export const signUpEmailPasswordSchema = Joi.object({
   emailVerified: Joi.boolean(),
 }).meta({ className: 'SignUpEmailPasswordSchema' });
 
+const BASE_ROLES = ['admin', 'sme', 'bank'];
+
 export const userAdd: RequestHandler<
   {},
   {},
@@ -64,7 +66,7 @@ export const userAdd: RequestHandler<
   //   }
 
   const role = req?.auth?.defaultRole || '';
-  const hasRole = ['admin', 'sme', 'bank'].includes(role);
+  const hasRole = BASE_ROLES.includes(role);
   if (!hasRole) {
     return sendError(res, 'invalid-request');
   }
@@ -118,6 +120,12 @@ export const userResetPassword: RequestHandler<
   // check if user is logged in
 
   const { newPassword, userId } = req.body;
+
+  const role = req?.auth?.defaultRole || '';
+  const hasRole = BASE_ROLES.includes(role);
+  if (!hasRole) {
+    return sendError(res, 'invalid-request');
+  }
 
   if (!userId) {
     return sendError(res, 'unauthenticated-user');
