@@ -21,14 +21,14 @@ import {
   registrationOptions,
 } from '@/validation';
 
-export const signUpEmailPasswordSchema = Joi.object({
+export const addUserSchema = Joi.object({
   email: email.required(),
   password: passwordInsert.required(),
   options: registrationOptions,
   branchId: Joi.string(),
   disabled: Joi.boolean(),
   emailVerified: Joi.boolean(),
-}).meta({ className: 'SignUpEmailPasswordSchema' });
+}).meta({ className: 'addUserSchema' });
 
 const BASE_ROLES = ['admin', 'sme', 'bank'];
 
@@ -94,10 +94,7 @@ export const userAdd: RequestHandler<
       // restructure user roles to be inserted in GraphQL mutation
       data: allowedRoles.map((role: string) => ({ role })),
     },
-    metadata:
-      metadata == null
-        ? [{ label: 'dashboard_workplace', value: 'dashboard_workplace' }]
-        : metadata,
+    metadata,
   });
 
   // SIGNIN_EMAIL_VERIFIED_REQUIRED = true => Must verify email before sign in

@@ -23,11 +23,12 @@ import {
 } from './email';
 import { userEmailChange } from './email';
 
-import { signUpEmailPasswordSchema } from '../signup/email-password';
+
 import {
   userAdd,
   userPasswordrestSchema,
   userResetPassword,
+  addUserSchema
 } from './user-manage';
 
 const router = Router();
@@ -150,7 +151,7 @@ router.post(
 
 router.post(
   '/user/add',
-  bodyValidator(signUpEmailPasswordSchema),
+  bodyValidator(addUserSchema),
   authenticationGate,
   aw(userAdd)
 );
