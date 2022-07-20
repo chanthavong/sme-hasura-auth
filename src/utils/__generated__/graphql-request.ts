@@ -87,6 +87,7 @@ export type App_Setting = {
   __typename?: 'app_setting';
   created_at: Scalars['timestamp'];
   data?: Maybe<Scalars['jsonb']>;
+  group_id?: Maybe<Scalars['String']>;
   id: Scalars['String'];
   updated_at: Scalars['timestamp'];
 };
@@ -131,6 +132,7 @@ export type App_Setting_Bool_Exp = {
   _or?: InputMaybe<Array<App_Setting_Bool_Exp>>;
   created_at?: InputMaybe<Timestamp_Comparison_Exp>;
   data?: InputMaybe<Jsonb_Comparison_Exp>;
+  group_id?: InputMaybe<String_Comparison_Exp>;
   id?: InputMaybe<String_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamp_Comparison_Exp>;
 };
@@ -160,6 +162,7 @@ export type App_Setting_Delete_Key_Input = {
 export type App_Setting_Insert_Input = {
   created_at?: InputMaybe<Scalars['timestamp']>;
   data?: InputMaybe<Scalars['jsonb']>;
+  group_id?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   updated_at?: InputMaybe<Scalars['timestamp']>;
 };
@@ -168,6 +171,7 @@ export type App_Setting_Insert_Input = {
 export type App_Setting_Max_Fields = {
   __typename?: 'app_setting_max_fields';
   created_at?: Maybe<Scalars['timestamp']>;
+  group_id?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamp']>;
 };
@@ -176,6 +180,7 @@ export type App_Setting_Max_Fields = {
 export type App_Setting_Min_Fields = {
   __typename?: 'app_setting_min_fields';
   created_at?: Maybe<Scalars['timestamp']>;
+  group_id?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamp']>;
 };
@@ -200,6 +205,7 @@ export type App_Setting_On_Conflict = {
 export type App_Setting_Order_By = {
   created_at?: InputMaybe<Order_By>;
   data?: InputMaybe<Order_By>;
+  group_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
 };
@@ -221,6 +227,8 @@ export enum App_Setting_Select_Column {
   /** column name */
   Data = 'data',
   /** column name */
+  GroupId = 'group_id',
+  /** column name */
   Id = 'id',
   /** column name */
   UpdatedAt = 'updated_at'
@@ -230,6 +238,7 @@ export enum App_Setting_Select_Column {
 export type App_Setting_Set_Input = {
   created_at?: InputMaybe<Scalars['timestamp']>;
   data?: InputMaybe<Scalars['jsonb']>;
+  group_id?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   updated_at?: InputMaybe<Scalars['timestamp']>;
 };
@@ -240,6 +249,8 @@ export enum App_Setting_Update_Column {
   CreatedAt = 'created_at',
   /** column name */
   Data = 'data',
+  /** column name */
+  GroupId = 'group_id',
   /** column name */
   Id = 'id',
   /** column name */
@@ -3550,6 +3561,236 @@ export type Date_Comparison_Exp = {
   _neq?: InputMaybe<Scalars['date']>;
   _nin?: InputMaybe<Array<Scalars['date']>>;
 };
+
+/** columns and relationships of "districts" */
+export type Districts = {
+  __typename?: 'districts';
+  created_at?: Maybe<Scalars['timestamp']>;
+  en?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  lo?: Maybe<Scalars['String']>;
+  prov_id?: Maybe<Scalars['String']>;
+  /** An object relationship */
+  province?: Maybe<Provinces>;
+  updated_at?: Maybe<Scalars['timestamp']>;
+  /** An array relationship */
+  villages: Array<Villages>;
+  /** An aggregate relationship */
+  villages_aggregate: Villages_Aggregate;
+};
+
+
+/** columns and relationships of "districts" */
+export type DistrictsVillagesArgs = {
+  distinct_on?: InputMaybe<Array<Villages_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Villages_Order_By>>;
+  where?: InputMaybe<Villages_Bool_Exp>;
+};
+
+
+/** columns and relationships of "districts" */
+export type DistrictsVillages_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Villages_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Villages_Order_By>>;
+  where?: InputMaybe<Villages_Bool_Exp>;
+};
+
+/** aggregated selection of "districts" */
+export type Districts_Aggregate = {
+  __typename?: 'districts_aggregate';
+  aggregate?: Maybe<Districts_Aggregate_Fields>;
+  nodes: Array<Districts>;
+};
+
+/** aggregate fields of "districts" */
+export type Districts_Aggregate_Fields = {
+  __typename?: 'districts_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Districts_Max_Fields>;
+  min?: Maybe<Districts_Min_Fields>;
+};
+
+
+/** aggregate fields of "districts" */
+export type Districts_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Districts_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "districts" */
+export type Districts_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Districts_Max_Order_By>;
+  min?: InputMaybe<Districts_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "districts" */
+export type Districts_Arr_Rel_Insert_Input = {
+  data: Array<Districts_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Districts_On_Conflict>;
+};
+
+/** Boolean expression to filter rows from the table "districts". All fields are combined with a logical 'AND'. */
+export type Districts_Bool_Exp = {
+  _and?: InputMaybe<Array<Districts_Bool_Exp>>;
+  _not?: InputMaybe<Districts_Bool_Exp>;
+  _or?: InputMaybe<Array<Districts_Bool_Exp>>;
+  created_at?: InputMaybe<Timestamp_Comparison_Exp>;
+  en?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  lo?: InputMaybe<String_Comparison_Exp>;
+  prov_id?: InputMaybe<String_Comparison_Exp>;
+  province?: InputMaybe<Provinces_Bool_Exp>;
+  updated_at?: InputMaybe<Timestamp_Comparison_Exp>;
+  villages?: InputMaybe<Villages_Bool_Exp>;
+};
+
+/** unique or primary key constraints on table "districts" */
+export enum Districts_Constraint {
+  /** unique or primary key constraint */
+  DistrictsPkey = 'districts_pkey'
+}
+
+/** input type for inserting data into table "districts" */
+export type Districts_Insert_Input = {
+  created_at?: InputMaybe<Scalars['timestamp']>;
+  en?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  lo?: InputMaybe<Scalars['String']>;
+  prov_id?: InputMaybe<Scalars['String']>;
+  province?: InputMaybe<Provinces_Obj_Rel_Insert_Input>;
+  updated_at?: InputMaybe<Scalars['timestamp']>;
+  villages?: InputMaybe<Villages_Arr_Rel_Insert_Input>;
+};
+
+/** aggregate max on columns */
+export type Districts_Max_Fields = {
+  __typename?: 'districts_max_fields';
+  created_at?: Maybe<Scalars['timestamp']>;
+  en?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  lo?: Maybe<Scalars['String']>;
+  prov_id?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamp']>;
+};
+
+/** order by max() on columns of table "districts" */
+export type Districts_Max_Order_By = {
+  created_at?: InputMaybe<Order_By>;
+  en?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  lo?: InputMaybe<Order_By>;
+  prov_id?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Districts_Min_Fields = {
+  __typename?: 'districts_min_fields';
+  created_at?: Maybe<Scalars['timestamp']>;
+  en?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  lo?: Maybe<Scalars['String']>;
+  prov_id?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamp']>;
+};
+
+/** order by min() on columns of table "districts" */
+export type Districts_Min_Order_By = {
+  created_at?: InputMaybe<Order_By>;
+  en?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  lo?: InputMaybe<Order_By>;
+  prov_id?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** response of any mutation on the table "districts" */
+export type Districts_Mutation_Response = {
+  __typename?: 'districts_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Districts>;
+};
+
+/** input type for inserting object relation for remote table "districts" */
+export type Districts_Obj_Rel_Insert_Input = {
+  data: Districts_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Districts_On_Conflict>;
+};
+
+/** on_conflict condition type for table "districts" */
+export type Districts_On_Conflict = {
+  constraint: Districts_Constraint;
+  update_columns?: Array<Districts_Update_Column>;
+  where?: InputMaybe<Districts_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "districts". */
+export type Districts_Order_By = {
+  created_at?: InputMaybe<Order_By>;
+  en?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  lo?: InputMaybe<Order_By>;
+  prov_id?: InputMaybe<Order_By>;
+  province?: InputMaybe<Provinces_Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  villages_aggregate?: InputMaybe<Villages_Aggregate_Order_By>;
+};
+
+/** primary key columns input for table: districts */
+export type Districts_Pk_Columns_Input = {
+  id: Scalars['String'];
+};
+
+/** select columns of table "districts" */
+export enum Districts_Select_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  En = 'en',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Lo = 'lo',
+  /** column name */
+  ProvId = 'prov_id',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "districts" */
+export type Districts_Set_Input = {
+  created_at?: InputMaybe<Scalars['timestamp']>;
+  en?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  lo?: InputMaybe<Scalars['String']>;
+  prov_id?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamp']>;
+};
+
+/** update columns of table "districts" */
+export enum Districts_Update_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  En = 'en',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Lo = 'lo',
+  /** column name */
+  ProvId = 'prov_id',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
 
 /** columns and relationships of "fund" */
 export type Fund = {
@@ -7660,6 +7901,10 @@ export type Mutation_Root = {
   delete_busines_type?: Maybe<Busines_Type_Mutation_Response>;
   /** delete single row from the table: "busines_type" */
   delete_busines_type_by_pk?: Maybe<Busines_Type>;
+  /** delete data from the table: "districts" */
+  delete_districts?: Maybe<Districts_Mutation_Response>;
+  /** delete single row from the table: "districts" */
+  delete_districts_by_pk?: Maybe<Districts>;
   /** delete data from the table: "fund" */
   delete_fund?: Maybe<Fund_Mutation_Response>;
   /** delete single row from the table: "fund" */
@@ -7704,6 +7949,14 @@ export type Mutation_Root = {
   delete_loan_type?: Maybe<Loan_Type_Mutation_Response>;
   /** delete single row from the table: "loan_type" */
   delete_loan_type_by_pk?: Maybe<Loan_Type>;
+  /** delete data from the table: "provinces" */
+  delete_provinces?: Maybe<Provinces_Mutation_Response>;
+  /** delete single row from the table: "provinces" */
+  delete_provinces_by_pk?: Maybe<Provinces>;
+  /** delete data from the table: "villages" */
+  delete_villages?: Maybe<Villages_Mutation_Response>;
+  /** delete single row from the table: "villages" */
+  delete_villages_by_pk?: Maybe<Villages>;
   /** insert a single row into the table: "auth.providers" */
   insertAuthProvider?: Maybe<AuthProviders>;
   /** insert a single row into the table: "auth.provider_requests" */
@@ -7768,6 +8021,10 @@ export type Mutation_Root = {
   insert_busines_type?: Maybe<Busines_Type_Mutation_Response>;
   /** insert a single row into the table: "busines_type" */
   insert_busines_type_one?: Maybe<Busines_Type>;
+  /** insert data into the table: "districts" */
+  insert_districts?: Maybe<Districts_Mutation_Response>;
+  /** insert a single row into the table: "districts" */
+  insert_districts_one?: Maybe<Districts>;
   /** insert data into the table: "fund" */
   insert_fund?: Maybe<Fund_Mutation_Response>;
   /** insert data into the table: "fund_contract" */
@@ -7812,6 +8069,14 @@ export type Mutation_Root = {
   insert_loan_type?: Maybe<Loan_Type_Mutation_Response>;
   /** insert a single row into the table: "loan_type" */
   insert_loan_type_one?: Maybe<Loan_Type>;
+  /** insert data into the table: "provinces" */
+  insert_provinces?: Maybe<Provinces_Mutation_Response>;
+  /** insert a single row into the table: "provinces" */
+  insert_provinces_one?: Maybe<Provinces>;
+  /** insert data into the table: "villages" */
+  insert_villages?: Maybe<Villages_Mutation_Response>;
+  /** insert a single row into the table: "villages" */
+  insert_villages_one?: Maybe<Villages>;
   /** update single row of the table: "auth.providers" */
   updateAuthProvider?: Maybe<AuthProviders>;
   /** update single row of the table: "auth.provider_requests" */
@@ -7876,6 +8141,10 @@ export type Mutation_Root = {
   update_busines_type?: Maybe<Busines_Type_Mutation_Response>;
   /** update single row of the table: "busines_type" */
   update_busines_type_by_pk?: Maybe<Busines_Type>;
+  /** update data of the table: "districts" */
+  update_districts?: Maybe<Districts_Mutation_Response>;
+  /** update single row of the table: "districts" */
+  update_districts_by_pk?: Maybe<Districts>;
   /** update data of the table: "fund" */
   update_fund?: Maybe<Fund_Mutation_Response>;
   /** update single row of the table: "fund" */
@@ -7920,6 +8189,14 @@ export type Mutation_Root = {
   update_loan_type?: Maybe<Loan_Type_Mutation_Response>;
   /** update single row of the table: "loan_type" */
   update_loan_type_by_pk?: Maybe<Loan_Type>;
+  /** update data of the table: "provinces" */
+  update_provinces?: Maybe<Provinces_Mutation_Response>;
+  /** update single row of the table: "provinces" */
+  update_provinces_by_pk?: Maybe<Provinces>;
+  /** update data of the table: "villages" */
+  update_villages?: Maybe<Villages_Mutation_Response>;
+  /** update single row of the table: "villages" */
+  update_villages_by_pk?: Maybe<Villages>;
 };
 
 
@@ -8116,6 +8393,18 @@ export type Mutation_RootDelete_Busines_Type_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootDelete_DistrictsArgs = {
+  where: Districts_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Districts_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+/** mutation root */
 export type Mutation_RootDelete_FundArgs = {
   where: Fund_Bool_Exp;
 };
@@ -8243,6 +8532,30 @@ export type Mutation_RootDelete_Loan_TypeArgs = {
 
 /** mutation root */
 export type Mutation_RootDelete_Loan_Type_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_ProvincesArgs = {
+  where: Provinces_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Provinces_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_VillagesArgs = {
+  where: Villages_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Villages_By_PkArgs = {
   id: Scalars['String'];
 };
 
@@ -8472,6 +8785,20 @@ export type Mutation_RootInsert_Busines_Type_OneArgs = {
 
 
 /** mutation root */
+export type Mutation_RootInsert_DistrictsArgs = {
+  objects: Array<Districts_Insert_Input>;
+  on_conflict?: InputMaybe<Districts_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Districts_OneArgs = {
+  object: Districts_Insert_Input;
+  on_conflict?: InputMaybe<Districts_On_Conflict>;
+};
+
+
+/** mutation root */
 export type Mutation_RootInsert_FundArgs = {
   objects: Array<Fund_Insert_Input>;
   on_conflict?: InputMaybe<Fund_On_Conflict>;
@@ -8622,6 +8949,34 @@ export type Mutation_RootInsert_Loan_TypeArgs = {
 export type Mutation_RootInsert_Loan_Type_OneArgs = {
   object: Loan_Type_Insert_Input;
   on_conflict?: InputMaybe<Loan_Type_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_ProvincesArgs = {
+  objects: Array<Provinces_Insert_Input>;
+  on_conflict?: InputMaybe<Provinces_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Provinces_OneArgs = {
+  object: Provinces_Insert_Input;
+  on_conflict?: InputMaybe<Provinces_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_VillagesArgs = {
+  objects: Array<Villages_Insert_Input>;
+  on_conflict?: InputMaybe<Villages_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Villages_OneArgs = {
+  object: Villages_Insert_Input;
+  on_conflict?: InputMaybe<Villages_On_Conflict>;
 };
 
 
@@ -8882,6 +9237,20 @@ export type Mutation_RootUpdate_Busines_Type_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_DistrictsArgs = {
+  _set?: InputMaybe<Districts_Set_Input>;
+  where: Districts_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Districts_By_PkArgs = {
+  _set?: InputMaybe<Districts_Set_Input>;
+  pk_columns: Districts_Pk_Columns_Input;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_FundArgs = {
   _inc?: InputMaybe<Fund_Inc_Input>;
   _set?: InputMaybe<Fund_Set_Input>;
@@ -9046,6 +9415,34 @@ export type Mutation_RootUpdate_Loan_Type_By_PkArgs = {
   pk_columns: Loan_Type_Pk_Columns_Input;
 };
 
+
+/** mutation root */
+export type Mutation_RootUpdate_ProvincesArgs = {
+  _set?: InputMaybe<Provinces_Set_Input>;
+  where: Provinces_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Provinces_By_PkArgs = {
+  _set?: InputMaybe<Provinces_Set_Input>;
+  pk_columns: Provinces_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_VillagesArgs = {
+  _set?: InputMaybe<Villages_Set_Input>;
+  where: Villages_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Villages_By_PkArgs = {
+  _set?: InputMaybe<Villages_Set_Input>;
+  pk_columns: Villages_Pk_Columns_Input;
+};
+
 /** Boolean expression to compare columns of type "numeric". All fields are combined with logical 'AND'. */
 export type Numeric_Comparison_Exp = {
   _eq?: InputMaybe<Scalars['numeric']>;
@@ -9073,6 +9470,197 @@ export enum Order_By {
   DescNullsFirst = 'desc_nulls_first',
   /** in descending order, nulls last */
   DescNullsLast = 'desc_nulls_last'
+}
+
+/** columns and relationships of "provinces" */
+export type Provinces = {
+  __typename?: 'provinces';
+  created_at?: Maybe<Scalars['timestamp']>;
+  /** An array relationship */
+  districts: Array<Districts>;
+  /** An aggregate relationship */
+  districts_aggregate: Districts_Aggregate;
+  en?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  lo?: Maybe<Scalars['String']>;
+  prov_sym?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamp']>;
+};
+
+
+/** columns and relationships of "provinces" */
+export type ProvincesDistrictsArgs = {
+  distinct_on?: InputMaybe<Array<Districts_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Districts_Order_By>>;
+  where?: InputMaybe<Districts_Bool_Exp>;
+};
+
+
+/** columns and relationships of "provinces" */
+export type ProvincesDistricts_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Districts_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Districts_Order_By>>;
+  where?: InputMaybe<Districts_Bool_Exp>;
+};
+
+/** aggregated selection of "provinces" */
+export type Provinces_Aggregate = {
+  __typename?: 'provinces_aggregate';
+  aggregate?: Maybe<Provinces_Aggregate_Fields>;
+  nodes: Array<Provinces>;
+};
+
+/** aggregate fields of "provinces" */
+export type Provinces_Aggregate_Fields = {
+  __typename?: 'provinces_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Provinces_Max_Fields>;
+  min?: Maybe<Provinces_Min_Fields>;
+};
+
+
+/** aggregate fields of "provinces" */
+export type Provinces_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Provinces_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "provinces". All fields are combined with a logical 'AND'. */
+export type Provinces_Bool_Exp = {
+  _and?: InputMaybe<Array<Provinces_Bool_Exp>>;
+  _not?: InputMaybe<Provinces_Bool_Exp>;
+  _or?: InputMaybe<Array<Provinces_Bool_Exp>>;
+  created_at?: InputMaybe<Timestamp_Comparison_Exp>;
+  districts?: InputMaybe<Districts_Bool_Exp>;
+  en?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  lo?: InputMaybe<String_Comparison_Exp>;
+  prov_sym?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamp_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "provinces" */
+export enum Provinces_Constraint {
+  /** unique or primary key constraint */
+  ProvincesPkey = 'provinces_pkey'
+}
+
+/** input type for inserting data into table "provinces" */
+export type Provinces_Insert_Input = {
+  created_at?: InputMaybe<Scalars['timestamp']>;
+  districts?: InputMaybe<Districts_Arr_Rel_Insert_Input>;
+  en?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  lo?: InputMaybe<Scalars['String']>;
+  prov_sym?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamp']>;
+};
+
+/** aggregate max on columns */
+export type Provinces_Max_Fields = {
+  __typename?: 'provinces_max_fields';
+  created_at?: Maybe<Scalars['timestamp']>;
+  en?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  lo?: Maybe<Scalars['String']>;
+  prov_sym?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamp']>;
+};
+
+/** aggregate min on columns */
+export type Provinces_Min_Fields = {
+  __typename?: 'provinces_min_fields';
+  created_at?: Maybe<Scalars['timestamp']>;
+  en?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  lo?: Maybe<Scalars['String']>;
+  prov_sym?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamp']>;
+};
+
+/** response of any mutation on the table "provinces" */
+export type Provinces_Mutation_Response = {
+  __typename?: 'provinces_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Provinces>;
+};
+
+/** input type for inserting object relation for remote table "provinces" */
+export type Provinces_Obj_Rel_Insert_Input = {
+  data: Provinces_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Provinces_On_Conflict>;
+};
+
+/** on_conflict condition type for table "provinces" */
+export type Provinces_On_Conflict = {
+  constraint: Provinces_Constraint;
+  update_columns?: Array<Provinces_Update_Column>;
+  where?: InputMaybe<Provinces_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "provinces". */
+export type Provinces_Order_By = {
+  created_at?: InputMaybe<Order_By>;
+  districts_aggregate?: InputMaybe<Districts_Aggregate_Order_By>;
+  en?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  lo?: InputMaybe<Order_By>;
+  prov_sym?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: provinces */
+export type Provinces_Pk_Columns_Input = {
+  id: Scalars['String'];
+};
+
+/** select columns of table "provinces" */
+export enum Provinces_Select_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  En = 'en',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Lo = 'lo',
+  /** column name */
+  ProvSym = 'prov_sym',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "provinces" */
+export type Provinces_Set_Input = {
+  created_at?: InputMaybe<Scalars['timestamp']>;
+  en?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  lo?: InputMaybe<Scalars['String']>;
+  prov_sym?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamp']>;
+};
+
+/** update columns of table "provinces" */
+export enum Provinces_Update_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  En = 'en',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Lo = 'lo',
+  /** column name */
+  ProvSym = 'prov_sym',
+  /** column name */
+  UpdatedAt = 'updated_at'
 }
 
 export type Query_Root = {
@@ -9167,6 +9755,12 @@ export type Query_Root = {
   busines_type_aggregate: Busines_Type_Aggregate;
   /** fetch data from the table: "busines_type" using primary key columns */
   busines_type_by_pk?: Maybe<Busines_Type>;
+  /** An array relationship */
+  districts: Array<Districts>;
+  /** An aggregate relationship */
+  districts_aggregate: Districts_Aggregate;
+  /** fetch data from the table: "districts" using primary key columns */
+  districts_by_pk?: Maybe<Districts>;
   /** fetch data from the table: "fund" */
   fund: Array<Fund>;
   /** fetch aggregated fields from the table: "fund" */
@@ -9233,12 +9827,24 @@ export type Query_Root = {
   loan_type_aggregate: Loan_Type_Aggregate;
   /** fetch data from the table: "loan_type" using primary key columns */
   loan_type_by_pk?: Maybe<Loan_Type>;
+  /** fetch data from the table: "provinces" */
+  provinces: Array<Provinces>;
+  /** fetch aggregated fields from the table: "provinces" */
+  provinces_aggregate: Provinces_Aggregate;
+  /** fetch data from the table: "provinces" using primary key columns */
+  provinces_by_pk?: Maybe<Provinces>;
   /** fetch data from the table: "auth.users" using primary key columns */
   user?: Maybe<Users>;
   /** An array relationship */
   users: Array<Users>;
   /** fetch aggregated fields from the table: "auth.users" */
   usersAggregate: Users_Aggregate;
+  /** An array relationship */
+  villages: Array<Villages>;
+  /** An aggregate relationship */
+  villages_aggregate: Villages_Aggregate;
+  /** fetch data from the table: "villages" using primary key columns */
+  villages_by_pk?: Maybe<Villages>;
 };
 
 
@@ -9587,6 +10193,29 @@ export type Query_RootBusines_Type_By_PkArgs = {
 };
 
 
+export type Query_RootDistrictsArgs = {
+  distinct_on?: InputMaybe<Array<Districts_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Districts_Order_By>>;
+  where?: InputMaybe<Districts_Bool_Exp>;
+};
+
+
+export type Query_RootDistricts_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Districts_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Districts_Order_By>>;
+  where?: InputMaybe<Districts_Bool_Exp>;
+};
+
+
+export type Query_RootDistricts_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
 export type Query_RootFundArgs = {
   distinct_on?: InputMaybe<Array<Fund_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -9840,6 +10469,29 @@ export type Query_RootLoan_Type_By_PkArgs = {
 };
 
 
+export type Query_RootProvincesArgs = {
+  distinct_on?: InputMaybe<Array<Provinces_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Provinces_Order_By>>;
+  where?: InputMaybe<Provinces_Bool_Exp>;
+};
+
+
+export type Query_RootProvinces_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Provinces_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Provinces_Order_By>>;
+  where?: InputMaybe<Provinces_Bool_Exp>;
+};
+
+
+export type Query_RootProvinces_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
 export type Query_RootUserArgs = {
   id: Scalars['uuid'];
 };
@@ -9860,6 +10512,29 @@ export type Query_RootUsersAggregateArgs = {
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<Users_Order_By>>;
   where?: InputMaybe<Users_Bool_Exp>;
+};
+
+
+export type Query_RootVillagesArgs = {
+  distinct_on?: InputMaybe<Array<Villages_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Villages_Order_By>>;
+  where?: InputMaybe<Villages_Bool_Exp>;
+};
+
+
+export type Query_RootVillages_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Villages_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Villages_Order_By>>;
+  where?: InputMaybe<Villages_Bool_Exp>;
+};
+
+
+export type Query_RootVillages_By_PkArgs = {
+  id: Scalars['String'];
 };
 
 export type Subscription_Root = {
@@ -9954,6 +10629,12 @@ export type Subscription_Root = {
   busines_type_aggregate: Busines_Type_Aggregate;
   /** fetch data from the table: "busines_type" using primary key columns */
   busines_type_by_pk?: Maybe<Busines_Type>;
+  /** An array relationship */
+  districts: Array<Districts>;
+  /** An aggregate relationship */
+  districts_aggregate: Districts_Aggregate;
+  /** fetch data from the table: "districts" using primary key columns */
+  districts_by_pk?: Maybe<Districts>;
   /** fetch data from the table: "fund" */
   fund: Array<Fund>;
   /** fetch aggregated fields from the table: "fund" */
@@ -10020,12 +10701,24 @@ export type Subscription_Root = {
   loan_type_aggregate: Loan_Type_Aggregate;
   /** fetch data from the table: "loan_type" using primary key columns */
   loan_type_by_pk?: Maybe<Loan_Type>;
+  /** fetch data from the table: "provinces" */
+  provinces: Array<Provinces>;
+  /** fetch aggregated fields from the table: "provinces" */
+  provinces_aggregate: Provinces_Aggregate;
+  /** fetch data from the table: "provinces" using primary key columns */
+  provinces_by_pk?: Maybe<Provinces>;
   /** fetch data from the table: "auth.users" using primary key columns */
   user?: Maybe<Users>;
   /** An array relationship */
   users: Array<Users>;
   /** fetch aggregated fields from the table: "auth.users" */
   usersAggregate: Users_Aggregate;
+  /** An array relationship */
+  villages: Array<Villages>;
+  /** An aggregate relationship */
+  villages_aggregate: Villages_Aggregate;
+  /** fetch data from the table: "villages" using primary key columns */
+  villages_by_pk?: Maybe<Villages>;
 };
 
 
@@ -10374,6 +11067,29 @@ export type Subscription_RootBusines_Type_By_PkArgs = {
 };
 
 
+export type Subscription_RootDistrictsArgs = {
+  distinct_on?: InputMaybe<Array<Districts_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Districts_Order_By>>;
+  where?: InputMaybe<Districts_Bool_Exp>;
+};
+
+
+export type Subscription_RootDistricts_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Districts_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Districts_Order_By>>;
+  where?: InputMaybe<Districts_Bool_Exp>;
+};
+
+
+export type Subscription_RootDistricts_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
 export type Subscription_RootFundArgs = {
   distinct_on?: InputMaybe<Array<Fund_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -10627,6 +11343,29 @@ export type Subscription_RootLoan_Type_By_PkArgs = {
 };
 
 
+export type Subscription_RootProvincesArgs = {
+  distinct_on?: InputMaybe<Array<Provinces_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Provinces_Order_By>>;
+  where?: InputMaybe<Provinces_Bool_Exp>;
+};
+
+
+export type Subscription_RootProvinces_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Provinces_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Provinces_Order_By>>;
+  where?: InputMaybe<Provinces_Bool_Exp>;
+};
+
+
+export type Subscription_RootProvinces_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
 export type Subscription_RootUserArgs = {
   id: Scalars['uuid'];
 };
@@ -10647,6 +11386,29 @@ export type Subscription_RootUsersAggregateArgs = {
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<Users_Order_By>>;
   where?: InputMaybe<Users_Bool_Exp>;
+};
+
+
+export type Subscription_RootVillagesArgs = {
+  distinct_on?: InputMaybe<Array<Villages_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Villages_Order_By>>;
+  where?: InputMaybe<Villages_Bool_Exp>;
+};
+
+
+export type Subscription_RootVillages_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Villages_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Villages_Order_By>>;
+  where?: InputMaybe<Villages_Bool_Exp>;
+};
+
+
+export type Subscription_RootVillages_By_PkArgs = {
+  id: Scalars['String'];
 };
 
 /** Boolean expression to compare columns of type "timestamp". All fields are combined with logical 'AND'. */
@@ -11265,6 +12027,237 @@ export type Uuid_Comparison_Exp = {
   _neq?: InputMaybe<Scalars['uuid']>;
   _nin?: InputMaybe<Array<Scalars['uuid']>>;
 };
+
+/** columns and relationships of "villages" */
+export type Villages = {
+  __typename?: 'villages';
+  created_at?: Maybe<Scalars['timestamp']>;
+  dist_id?: Maybe<Scalars['String']>;
+  /** An object relationship */
+  district?: Maybe<Districts>;
+  en?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  lo?: Maybe<Scalars['String']>;
+  location?: Maybe<Scalars['String']>;
+  map?: Maybe<Scalars['String']>;
+  status?: Maybe<Scalars['Boolean']>;
+  updated_at?: Maybe<Scalars['timestamp']>;
+};
+
+/** aggregated selection of "villages" */
+export type Villages_Aggregate = {
+  __typename?: 'villages_aggregate';
+  aggregate?: Maybe<Villages_Aggregate_Fields>;
+  nodes: Array<Villages>;
+};
+
+/** aggregate fields of "villages" */
+export type Villages_Aggregate_Fields = {
+  __typename?: 'villages_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Villages_Max_Fields>;
+  min?: Maybe<Villages_Min_Fields>;
+};
+
+
+/** aggregate fields of "villages" */
+export type Villages_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Villages_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "villages" */
+export type Villages_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Villages_Max_Order_By>;
+  min?: InputMaybe<Villages_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "villages" */
+export type Villages_Arr_Rel_Insert_Input = {
+  data: Array<Villages_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Villages_On_Conflict>;
+};
+
+/** Boolean expression to filter rows from the table "villages". All fields are combined with a logical 'AND'. */
+export type Villages_Bool_Exp = {
+  _and?: InputMaybe<Array<Villages_Bool_Exp>>;
+  _not?: InputMaybe<Villages_Bool_Exp>;
+  _or?: InputMaybe<Array<Villages_Bool_Exp>>;
+  created_at?: InputMaybe<Timestamp_Comparison_Exp>;
+  dist_id?: InputMaybe<String_Comparison_Exp>;
+  district?: InputMaybe<Districts_Bool_Exp>;
+  en?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  lo?: InputMaybe<String_Comparison_Exp>;
+  location?: InputMaybe<String_Comparison_Exp>;
+  map?: InputMaybe<String_Comparison_Exp>;
+  status?: InputMaybe<Boolean_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamp_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "villages" */
+export enum Villages_Constraint {
+  /** unique or primary key constraint */
+  VillagesPkey = 'villages_pkey'
+}
+
+/** input type for inserting data into table "villages" */
+export type Villages_Insert_Input = {
+  created_at?: InputMaybe<Scalars['timestamp']>;
+  dist_id?: InputMaybe<Scalars['String']>;
+  district?: InputMaybe<Districts_Obj_Rel_Insert_Input>;
+  en?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  lo?: InputMaybe<Scalars['String']>;
+  location?: InputMaybe<Scalars['String']>;
+  map?: InputMaybe<Scalars['String']>;
+  status?: InputMaybe<Scalars['Boolean']>;
+  updated_at?: InputMaybe<Scalars['timestamp']>;
+};
+
+/** aggregate max on columns */
+export type Villages_Max_Fields = {
+  __typename?: 'villages_max_fields';
+  created_at?: Maybe<Scalars['timestamp']>;
+  dist_id?: Maybe<Scalars['String']>;
+  en?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  lo?: Maybe<Scalars['String']>;
+  location?: Maybe<Scalars['String']>;
+  map?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamp']>;
+};
+
+/** order by max() on columns of table "villages" */
+export type Villages_Max_Order_By = {
+  created_at?: InputMaybe<Order_By>;
+  dist_id?: InputMaybe<Order_By>;
+  en?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  lo?: InputMaybe<Order_By>;
+  location?: InputMaybe<Order_By>;
+  map?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Villages_Min_Fields = {
+  __typename?: 'villages_min_fields';
+  created_at?: Maybe<Scalars['timestamp']>;
+  dist_id?: Maybe<Scalars['String']>;
+  en?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  lo?: Maybe<Scalars['String']>;
+  location?: Maybe<Scalars['String']>;
+  map?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamp']>;
+};
+
+/** order by min() on columns of table "villages" */
+export type Villages_Min_Order_By = {
+  created_at?: InputMaybe<Order_By>;
+  dist_id?: InputMaybe<Order_By>;
+  en?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  lo?: InputMaybe<Order_By>;
+  location?: InputMaybe<Order_By>;
+  map?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** response of any mutation on the table "villages" */
+export type Villages_Mutation_Response = {
+  __typename?: 'villages_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Villages>;
+};
+
+/** on_conflict condition type for table "villages" */
+export type Villages_On_Conflict = {
+  constraint: Villages_Constraint;
+  update_columns?: Array<Villages_Update_Column>;
+  where?: InputMaybe<Villages_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "villages". */
+export type Villages_Order_By = {
+  created_at?: InputMaybe<Order_By>;
+  dist_id?: InputMaybe<Order_By>;
+  district?: InputMaybe<Districts_Order_By>;
+  en?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  lo?: InputMaybe<Order_By>;
+  location?: InputMaybe<Order_By>;
+  map?: InputMaybe<Order_By>;
+  status?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: villages */
+export type Villages_Pk_Columns_Input = {
+  id: Scalars['String'];
+};
+
+/** select columns of table "villages" */
+export enum Villages_Select_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  DistId = 'dist_id',
+  /** column name */
+  En = 'en',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Lo = 'lo',
+  /** column name */
+  Location = 'location',
+  /** column name */
+  Map = 'map',
+  /** column name */
+  Status = 'status',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "villages" */
+export type Villages_Set_Input = {
+  created_at?: InputMaybe<Scalars['timestamp']>;
+  dist_id?: InputMaybe<Scalars['String']>;
+  en?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  lo?: InputMaybe<Scalars['String']>;
+  location?: InputMaybe<Scalars['String']>;
+  map?: InputMaybe<Scalars['String']>;
+  status?: InputMaybe<Scalars['Boolean']>;
+  updated_at?: InputMaybe<Scalars['timestamp']>;
+};
+
+/** update columns of table "villages" */
+export enum Villages_Update_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  DistId = 'dist_id',
+  /** column name */
+  En = 'en',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Lo = 'lo',
+  /** column name */
+  Location = 'location',
+  /** column name */
+  Map = 'map',
+  /** column name */
+  Status = 'status',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
 
 export type InsertProviderRequestMutationVariables = Exact<{
   providerRequest: AuthProviderRequests_Insert_Input;
