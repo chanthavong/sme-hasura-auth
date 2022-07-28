@@ -20,6 +20,19 @@ CREATE OR REPLACE FUNCTION "public"."gen_random_uuid"()
   LANGUAGE c VOLATILE
   COST 1;
 
+create table user_log (
+  id uuid not null default gen_random_uuid() primary key,
+  title text not null,
+  tag varchar(255) not null,
+  event varchar(255) not null,
+  object_id uuid null,
+  data jsonb null,
+  origin jsonb null,
+  user_id uuid not null,
+  created_at timestamp  without time zone not null default now_utc(),
+  updated_at timestamp  without time zone not null default now_utc()
+);
+
 
 
 CREATE TABLE meta (
@@ -31,6 +44,7 @@ CREATE TABLE meta (
     active boolean default true,
     is_default boolean default false,
     description character varying NULL,
+    options jsonb NULL,
     created_at timestamp without time zone DEFAULT now_utc() NOT NULL,
     updated_at timestamp without time zone DEFAULT now_utc() NOT NULL,
     user_id uuid NULL
@@ -140,6 +154,7 @@ CREATE TABLE fund_contract_repayment (
     fee numeric(20,2) NULL,
     category_key character varying NULL,
     meta_id uuid NULL,
+    note character varying NULL,
     created_at timestamp without time zone DEFAULT now_utc() NOT NULL,
     updated_at timestamp without time zone DEFAULT now_utc() NOT NULL,
     user_id uuid NULL
@@ -330,6 +345,7 @@ CREATE TABLE loan_repayment (
     trash boolean default false,
     fee numeric(20,2)  NULL,
     category_key character varying NULL,
+    note character varying NULL,
     created_at timestamp without time zone DEFAULT now_utc() NOT NULL,
     updated_at timestamp without time zone DEFAULT now_utc() NOT NULL,
     user_id uuid NULL

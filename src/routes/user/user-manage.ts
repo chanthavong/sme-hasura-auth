@@ -25,7 +25,7 @@ export const addUserSchema = Joi.object({
   email: email.required(),
   password: passwordInsert.required(),
   options: registrationOptions,
-  branchId: Joi.string(),
+  branchId: Joi.allow(null),
   disabled: Joi.boolean(),
   emailVerified: Joi.boolean(),
 }).meta({ className: 'addUserSchema' });
@@ -46,6 +46,7 @@ export const userAdd: RequestHandler<
   }
 > = async (req, res) => {
   const { body } = req;
+  console.log('body', body);
   const {
     email,
     password,
