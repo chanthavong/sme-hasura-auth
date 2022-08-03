@@ -125,7 +125,7 @@ CREATE TABLE fund_contract (
     budget numeric(20,2) NOT NULL,
     interest numeric(6,2) NOT NULL,
     fees numeric(6,2) NOT NULL,
-    repayment numeric(20,2) NULL,
+    repayment numeric(20,2) NULL default 0,
     code character varying NULL,
     trash boolean default false,
     start_date DATE NOT NULL,
