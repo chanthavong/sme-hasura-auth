@@ -2148,6 +2148,8 @@ export type Busines = {
   trash?: Maybe<Scalars['Boolean']>;
   updated_at: Scalars['timestamptz'];
   user_id?: Maybe<Scalars['uuid']>;
+  /** An object relationship */
+  village?: Maybe<Villages>;
   village_id?: Maybe<Scalars['String']>;
   village_name?: Maybe<Scalars['String']>;
 };
@@ -2272,6 +2274,7 @@ export type Busines_Bool_Exp = {
   trash?: InputMaybe<Boolean_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   user_id?: InputMaybe<Uuid_Comparison_Exp>;
+  village?: InputMaybe<Villages_Bool_Exp>;
   village_id?: InputMaybe<String_Comparison_Exp>;
   village_name?: InputMaybe<String_Comparison_Exp>;
 };
@@ -2522,6 +2525,7 @@ export type Busines_Insert_Input = {
   trash?: InputMaybe<Scalars['Boolean']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
   user_id?: InputMaybe<Scalars['uuid']>;
+  village?: InputMaybe<Villages_Obj_Rel_Insert_Input>;
   village_id?: InputMaybe<Scalars['String']>;
   village_name?: InputMaybe<Scalars['String']>;
 };
@@ -2701,6 +2705,7 @@ export type Busines_Order_By = {
   trash?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
   user_id?: InputMaybe<Order_By>;
+  village?: InputMaybe<Villages_Order_By>;
   village_id?: InputMaybe<Order_By>;
   village_name?: InputMaybe<Order_By>;
 };
@@ -13414,6 +13419,10 @@ export type Villages = {
   bank_branches: Array<Bank_Branch>;
   /** An aggregate relationship */
   bank_branches_aggregate: Bank_Branch_Aggregate;
+  /** An array relationship */
+  busines: Array<Busines>;
+  /** An aggregate relationship */
+  busines_aggregate: Busines_Aggregate;
   created_at?: Maybe<Scalars['timestamp']>;
   dist_id?: Maybe<Scalars['String']>;
   /** An object relationship */
@@ -13445,6 +13454,26 @@ export type VillagesBank_Branches_AggregateArgs = {
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<Bank_Branch_Order_By>>;
   where?: InputMaybe<Bank_Branch_Bool_Exp>;
+};
+
+
+/** columns and relationships of "villages" */
+export type VillagesBusinesArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Order_By>>;
+  where?: InputMaybe<Busines_Bool_Exp>;
+};
+
+
+/** columns and relationships of "villages" */
+export type VillagesBusines_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Order_By>>;
+  where?: InputMaybe<Busines_Bool_Exp>;
 };
 
 /** aggregated selection of "villages" */
@@ -13489,6 +13518,7 @@ export type Villages_Bool_Exp = {
   _not?: InputMaybe<Villages_Bool_Exp>;
   _or?: InputMaybe<Array<Villages_Bool_Exp>>;
   bank_branches?: InputMaybe<Bank_Branch_Bool_Exp>;
+  busines?: InputMaybe<Busines_Bool_Exp>;
   created_at?: InputMaybe<Timestamp_Comparison_Exp>;
   dist_id?: InputMaybe<String_Comparison_Exp>;
   district?: InputMaybe<Districts_Bool_Exp>;
@@ -13510,6 +13540,7 @@ export enum Villages_Constraint {
 /** input type for inserting data into table "villages" */
 export type Villages_Insert_Input = {
   bank_branches?: InputMaybe<Bank_Branch_Arr_Rel_Insert_Input>;
+  busines?: InputMaybe<Busines_Arr_Rel_Insert_Input>;
   created_at?: InputMaybe<Scalars['timestamp']>;
   dist_id?: InputMaybe<Scalars['String']>;
   district?: InputMaybe<Districts_Obj_Rel_Insert_Input>;
@@ -13598,6 +13629,7 @@ export type Villages_On_Conflict = {
 /** Ordering options when selecting data from "villages". */
 export type Villages_Order_By = {
   bank_branches_aggregate?: InputMaybe<Bank_Branch_Aggregate_Order_By>;
+  busines_aggregate?: InputMaybe<Busines_Aggregate_Order_By>;
   created_at?: InputMaybe<Order_By>;
   dist_id?: InputMaybe<Order_By>;
   district?: InputMaybe<Districts_Order_By>;

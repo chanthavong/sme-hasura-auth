@@ -65,6 +65,8 @@ CREATE TABLE fund_src (
 comment on column fund_src.lo is 'The fund source name';
 comment on table fund_src is 'The fund source table';
 
+
+
 CREATE TABLE fund (
     id uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY,
     fund_src_id character varying NOT NULL,
@@ -116,6 +118,16 @@ CREATE TABLE bank_branch (
     user_id uuid NULL
 );
 
+create table fund_contract_status(
+    id character varying NOT NULL PRIMARY KEY,
+    lo character varying NOT NULL,
+    en character varying NOT NULL,
+    active boolean default true,
+    approved boolean default false,
+    color character varying NULL DEFAULT '#A9A9A9',
+    created_at timestamp without time zone DEFAULT now_utc() NOT NULL,
+    updated_at timestamp without time zone DEFAULT now_utc() NOT NULL
+);
 
 CREATE TABLE fund_contract (
     id uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY,
@@ -135,6 +147,7 @@ CREATE TABLE fund_contract (
     close_date DATE NULL,
     closed boolean default false,
     lock boolean default false,
+    fund_contract_status_id character varying NULL,
     created_at timestamp without time zone DEFAULT now_utc() NOT NULL,
     updated_at timestamp without time zone DEFAULT now_utc() NOT NULL,
     user_id uuid NULL
@@ -389,6 +402,7 @@ create trigger set_busines_size_updated_at before update on busines_size for eac
 
 create trigger set_fund_contract_updated_at before update on fund_contract for each row execute FUNCTION public.set_current_timestamp_updated_at();
 create trigger set_fund_contract_repayment_updated_at before update on fund_contract_repayment for each row execute FUNCTION public.set_current_timestamp_updated_at();
+create trigger set_fund_contract_status_updated_at before update on fund_contract_status for each row execute FUNCTION public.set_current_timestamp_updated_at();
 
 ALTER TABLE ONLY fund
     ADD CONSTRAINT fund_src_fkey FOREIGN KEY (fund_src_id) REFERENCES fund_src(id) ON UPDATE CASCADE ON DELETE RESTRICT;
@@ -400,6 +414,7 @@ ALTER TABLE ONLY fund_contract
 ALTER TABLE ONLY fund_contract_repayment
     ADD CONSTRAINT fund_contract_fkey FOREIGN KEY (fund_contract_id) REFERENCES fund_contract(id) ON UPDATE CASCADE ON DELETE RESTRICT;
 ALTER TABLE ONLY fund_contract_repayment ADD CONSTRAINT meta_fkey FOREIGN KEY (meta_id) REFERENCES meta(id) ON UPDATE CASCADE ON DELETE RESTRICT;
+ALTER TABLE ONLY fund_contract ADD CONSTRAINT fund_contract_status_fkey FOREIGN KEY (fund_contract_status_id) REFERENCES fund_contract_status(id) ON UPDATE CASCADE ON DELETE RESTRICT;
 
 -- bank_branch
 ALTER TABLE ONLY bank_branch 
