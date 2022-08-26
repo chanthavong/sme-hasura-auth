@@ -90,3 +90,12 @@ This project is MIT licensed.
 ## resize image
 
 https://usefulangle.com/post/97/nodejs-resize-image
+
+
+## local migrade
+
+```base
+# remove from pg url connection
+?sslmode=require
+
+# set pg connect
