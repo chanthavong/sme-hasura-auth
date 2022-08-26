@@ -12,3 +12,5 @@ docker/data
 .env.development
 
 uploads/
+
+.DS_Store
