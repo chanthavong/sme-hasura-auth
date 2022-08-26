@@ -4,7 +4,6 @@ if(process.env.NODE_ENV=='development') {
 }else{
     require('dotenv').config({ path: `./.env` })
 }
-console.log(process.env.HASURA_GRAPHQL_GRAPHQL_URL)
 
 import { start } from './server';
 
