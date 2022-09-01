@@ -1,3 +1,15 @@
+# auth hasura sme fund
+
+## doc
+
+[Miro Board planning](https://miro.com/app/board/uXjVO3ApFBs=/)
+
+[Project Task](https://project.mtsvte.com/index.php/projects/view/13)
+
+[hasura dev](https://smedev.mtsapi.com/console)
+
+[hasura production](https://smepublic.mtsapi.com/)
+
 <h1 align="center">Hasura Auth</h1>
 <h2 align="center">The Open Source Authentication Service for Hasura.</h2>
 
