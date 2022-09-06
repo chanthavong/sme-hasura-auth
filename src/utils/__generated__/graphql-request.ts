@@ -117,7 +117,7 @@ export type AuthProviderRequests_Bool_Exp = {
 
 /** unique or primary key constraints on table "auth.provider_requests" */
 export enum AuthProviderRequests_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   ProviderRequestsPkey = 'provider_requests_pkey'
 }
 
@@ -208,6 +208,22 @@ export enum AuthProviderRequests_Update_Column {
   Options = 'options'
 }
 
+export type AuthProviderRequests_Updates = {
+  /** append existing jsonb value of filtered columns with new jsonb value */
+  _append?: InputMaybe<AuthProviderRequests_Append_Input>;
+  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+  _delete_at_path?: InputMaybe<AuthProviderRequests_Delete_At_Path_Input>;
+  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+  _delete_elem?: InputMaybe<AuthProviderRequests_Delete_Elem_Input>;
+  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
+  _delete_key?: InputMaybe<AuthProviderRequests_Delete_Key_Input>;
+  /** prepend existing jsonb value of filtered columns with new jsonb value */
+  _prepend?: InputMaybe<AuthProviderRequests_Prepend_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<AuthProviderRequests_Set_Input>;
+  where: AuthProviderRequests_Bool_Exp;
+};
+
 /** columns and relationships of "auth.providers" */
 export type AuthProviders = {
   __typename?: 'authProviders';
@@ -271,7 +287,7 @@ export type AuthProviders_Bool_Exp = {
 
 /** unique or primary key constraints on table "auth.providers" */
 export enum AuthProviders_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   ProvidersPkey = 'providers_pkey'
 }
 
@@ -344,6 +360,12 @@ export enum AuthProviders_Update_Column {
   Id = 'id'
 }
 
+export type AuthProviders_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<AuthProviders_Set_Input>;
+  where: AuthProviders_Bool_Exp;
+};
+
 /** columns and relationships of "auth.refresh_tokens" */
 export type AuthRefreshTokens = {
   __typename?: 'authRefreshTokens';
@@ -405,7 +427,7 @@ export type AuthRefreshTokens_Bool_Exp = {
 
 /** unique or primary key constraints on table "auth.refresh_tokens" */
 export enum AuthRefreshTokens_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "refresh_token" */
   RefreshTokensPkey = 'refresh_tokens_pkey'
 }
 
@@ -514,6 +536,12 @@ export enum AuthRefreshTokens_Update_Column {
   UserId = 'userId'
 }
 
+export type AuthRefreshTokens_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<AuthRefreshTokens_Set_Input>;
+  where: AuthRefreshTokens_Bool_Exp;
+};
+
 /** columns and relationships of "auth.roles" */
 export type AuthRoles = {
   __typename?: 'authRoles';
@@ -602,7 +630,7 @@ export type AuthRoles_Bool_Exp = {
 
 /** unique or primary key constraints on table "auth.roles" */
 export enum AuthRoles_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "role" */
   RolesPkey = 'roles_pkey'
 }
 
@@ -677,6 +705,12 @@ export enum AuthRoles_Update_Column {
   Role = 'role'
 }
 
+export type AuthRoles_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<AuthRoles_Set_Input>;
+  where: AuthRoles_Bool_Exp;
+};
+
 /** columns and relationships of "auth.user_providers" */
 export type AuthUserProviders = {
   __typename?: 'authUserProviders';
@@ -749,11 +783,11 @@ export type AuthUserProviders_Bool_Exp = {
 
 /** unique or primary key constraints on table "auth.user_providers" */
 export enum AuthUserProviders_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   UserProvidersPkey = 'user_providers_pkey',
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "provider_id", "provider_user_id" */
   UserProvidersProviderIdProviderUserIdKey = 'user_providers_provider_id_provider_user_id_key',
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "provider_id", "user_id" */
   UserProvidersUserIdProviderIdKey = 'user_providers_user_id_provider_id_key'
 }
 
@@ -908,6 +942,12 @@ export enum AuthUserProviders_Update_Column {
   UserId = 'userId'
 }
 
+export type AuthUserProviders_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<AuthUserProviders_Set_Input>;
+  where: AuthUserProviders_Bool_Exp;
+};
+
 /** columns and relationships of "auth.user_roles" */
 export type AuthUserRoles = {
   __typename?: 'authUserRoles';
@@ -972,9 +1012,9 @@ export type AuthUserRoles_Bool_Exp = {
 
 /** unique or primary key constraints on table "auth.user_roles" */
 export enum AuthUserRoles_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   UserRolesPkey = 'user_roles_pkey',
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "user_id", "role" */
   UserRolesUserIdRoleKey = 'user_roles_user_id_role_key'
 }
 
@@ -1085,6 +1125,12 @@ export enum AuthUserRoles_Update_Column {
   UserId = 'userId'
 }
 
+export type AuthUserRoles_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<AuthUserRoles_Set_Input>;
+  where: AuthUserRoles_Bool_Exp;
+};
+
 /** Boolean expression to compare columns of type "citext". All fields are combined with logical 'AND'. */
 export type Citext_Comparison_Exp = {
   _eq?: InputMaybe<Scalars['citext']>;
@@ -1118,8 +1164,13 @@ export type Citext_Comparison_Exp = {
   _similar?: InputMaybe<Scalars['citext']>;
 };
 
+export type Jsonb_Cast_Exp = {
+  String?: InputMaybe<String_Comparison_Exp>;
+};
+
 /** Boolean expression to compare columns of type "jsonb". All fields are combined with logical 'AND'. */
 export type Jsonb_Comparison_Exp = {
+  _cast?: InputMaybe<Jsonb_Cast_Exp>;
   /** is the column contained in the given json value */
   _contained_in?: InputMaybe<Scalars['jsonb']>;
   /** does the column contain the given json value at the top level */
@@ -1228,6 +1279,20 @@ export type Mutation_Root = {
   updateUser?: Maybe<Users>;
   /** update data of the table: "auth.users" */
   updateUsers?: Maybe<Users_Mutation_Response>;
+  /** update multiples rows of table: "auth.provider_requests" */
+  update_authProviderRequests_many?: Maybe<Array<Maybe<AuthProviderRequests_Mutation_Response>>>;
+  /** update multiples rows of table: "auth.providers" */
+  update_authProviders_many?: Maybe<Array<Maybe<AuthProviders_Mutation_Response>>>;
+  /** update multiples rows of table: "auth.refresh_tokens" */
+  update_authRefreshTokens_many?: Maybe<Array<Maybe<AuthRefreshTokens_Mutation_Response>>>;
+  /** update multiples rows of table: "auth.roles" */
+  update_authRoles_many?: Maybe<Array<Maybe<AuthRoles_Mutation_Response>>>;
+  /** update multiples rows of table: "auth.user_providers" */
+  update_authUserProviders_many?: Maybe<Array<Maybe<AuthUserProviders_Mutation_Response>>>;
+  /** update multiples rows of table: "auth.user_roles" */
+  update_authUserRoles_many?: Maybe<Array<Maybe<AuthUserRoles_Mutation_Response>>>;
+  /** update multiples rows of table: "auth.users" */
+  update_users_many?: Maybe<Array<Maybe<Users_Mutation_Response>>>;
 };
 
 
@@ -1528,6 +1593,48 @@ export type Mutation_RootUpdateUsersArgs = {
   _prepend?: InputMaybe<Users_Prepend_Input>;
   _set?: InputMaybe<Users_Set_Input>;
   where: Users_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_AuthProviderRequests_ManyArgs = {
+  updates: Array<AuthProviderRequests_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_AuthProviders_ManyArgs = {
+  updates: Array<AuthProviders_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_AuthRefreshTokens_ManyArgs = {
+  updates: Array<AuthRefreshTokens_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_AuthRoles_ManyArgs = {
+  updates: Array<AuthRoles_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_AuthUserProviders_ManyArgs = {
+  updates: Array<AuthUserProviders_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_AuthUserRoles_ManyArgs = {
+  updates: Array<AuthUserRoles_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Users_ManyArgs = {
+  updates: Array<Users_Updates>;
 };
 
 /** column ordering options */
@@ -1978,6 +2085,7 @@ export type Users = {
   __typename?: 'users';
   activeMfaType?: Maybe<Scalars['String']>;
   avatarUrl: Scalars['String'];
+  bank_branch_id?: Maybe<Scalars['String']>;
   createdAt: Scalars['timestamptz'];
   defaultRole: Scalars['String'];
   /** An object relationship */
@@ -2130,6 +2238,7 @@ export type Users_Bool_Exp = {
   _or?: InputMaybe<Array<Users_Bool_Exp>>;
   activeMfaType?: InputMaybe<String_Comparison_Exp>;
   avatarUrl?: InputMaybe<String_Comparison_Exp>;
+  bank_branch_id?: InputMaybe<String_Comparison_Exp>;
   createdAt?: InputMaybe<Timestamptz_Comparison_Exp>;
   defaultRole?: InputMaybe<String_Comparison_Exp>;
   defaultRoleByRole?: InputMaybe<AuthRoles_Bool_Exp>;
@@ -2160,11 +2269,11 @@ export type Users_Bool_Exp = {
 
 /** unique or primary key constraints on table "auth.users" */
 export enum Users_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "email" */
   UsersEmailKey = 'users_email_key',
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "phone_number" */
   UsersPhoneNumberKey = 'users_phone_number_key',
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   UsersPkey = 'users_pkey'
 }
 
@@ -2187,6 +2296,7 @@ export type Users_Delete_Key_Input = {
 export type Users_Insert_Input = {
   activeMfaType?: InputMaybe<Scalars['String']>;
   avatarUrl?: InputMaybe<Scalars['String']>;
+  bank_branch_id?: InputMaybe<Scalars['String']>;
   createdAt?: InputMaybe<Scalars['timestamptz']>;
   defaultRole?: InputMaybe<Scalars['String']>;
   defaultRoleByRole?: InputMaybe<AuthRoles_Obj_Rel_Insert_Input>;
@@ -2220,6 +2330,7 @@ export type Users_Max_Fields = {
   __typename?: 'users_max_fields';
   activeMfaType?: Maybe<Scalars['String']>;
   avatarUrl?: Maybe<Scalars['String']>;
+  bank_branch_id?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['timestamptz']>;
   defaultRole?: Maybe<Scalars['String']>;
   displayName?: Maybe<Scalars['String']>;
@@ -2243,6 +2354,7 @@ export type Users_Max_Fields = {
 export type Users_Max_Order_By = {
   activeMfaType?: InputMaybe<Order_By>;
   avatarUrl?: InputMaybe<Order_By>;
+  bank_branch_id?: InputMaybe<Order_By>;
   createdAt?: InputMaybe<Order_By>;
   defaultRole?: InputMaybe<Order_By>;
   displayName?: InputMaybe<Order_By>;
@@ -2267,6 +2379,7 @@ export type Users_Min_Fields = {
   __typename?: 'users_min_fields';
   activeMfaType?: Maybe<Scalars['String']>;
   avatarUrl?: Maybe<Scalars['String']>;
+  bank_branch_id?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['timestamptz']>;
   defaultRole?: Maybe<Scalars['String']>;
   displayName?: Maybe<Scalars['String']>;
@@ -2290,6 +2403,7 @@ export type Users_Min_Fields = {
 export type Users_Min_Order_By = {
   activeMfaType?: InputMaybe<Order_By>;
   avatarUrl?: InputMaybe<Order_By>;
+  bank_branch_id?: InputMaybe<Order_By>;
   createdAt?: InputMaybe<Order_By>;
   defaultRole?: InputMaybe<Order_By>;
   displayName?: InputMaybe<Order_By>;
@@ -2336,6 +2450,7 @@ export type Users_On_Conflict = {
 export type Users_Order_By = {
   activeMfaType?: InputMaybe<Order_By>;
   avatarUrl?: InputMaybe<Order_By>;
+  bank_branch_id?: InputMaybe<Order_By>;
   createdAt?: InputMaybe<Order_By>;
   defaultRole?: InputMaybe<Order_By>;
   defaultRoleByRole?: InputMaybe<AuthRoles_Order_By>;
@@ -2380,6 +2495,8 @@ export enum Users_Select_Column {
   ActiveMfaType = 'activeMfaType',
   /** column name */
   AvatarUrl = 'avatarUrl',
+  /** column name */
+  BankBranchId = 'bank_branch_id',
   /** column name */
   CreatedAt = 'createdAt',
   /** column name */
@@ -2430,6 +2547,7 @@ export enum Users_Select_Column {
 export type Users_Set_Input = {
   activeMfaType?: InputMaybe<Scalars['String']>;
   avatarUrl?: InputMaybe<Scalars['String']>;
+  bank_branch_id?: InputMaybe<Scalars['String']>;
   createdAt?: InputMaybe<Scalars['timestamptz']>;
   defaultRole?: InputMaybe<Scalars['String']>;
   disabled?: InputMaybe<Scalars['Boolean']>;
@@ -2460,6 +2578,8 @@ export enum Users_Update_Column {
   ActiveMfaType = 'activeMfaType',
   /** column name */
   AvatarUrl = 'avatarUrl',
+  /** column name */
+  BankBranchId = 'bank_branch_id',
   /** column name */
   CreatedAt = 'createdAt',
   /** column name */
@@ -2505,6 +2625,22 @@ export enum Users_Update_Column {
   /** column name */
   UpdatedAt = 'updatedAt'
 }
+
+export type Users_Updates = {
+  /** append existing jsonb value of filtered columns with new jsonb value */
+  _append?: InputMaybe<Users_Append_Input>;
+  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+  _delete_at_path?: InputMaybe<Users_Delete_At_Path_Input>;
+  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+  _delete_elem?: InputMaybe<Users_Delete_Elem_Input>;
+  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
+  _delete_key?: InputMaybe<Users_Delete_Key_Input>;
+  /** prepend existing jsonb value of filtered columns with new jsonb value */
+  _prepend?: InputMaybe<Users_Prepend_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Users_Set_Input>;
+  where: Users_Bool_Exp;
+};
 
 /** Boolean expression to compare columns of type "uuid". All fields are combined with logical 'AND'. */
 export type Uuid_Comparison_Exp = {

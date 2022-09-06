@@ -10,11 +10,19 @@ import { authMiddleware } from './middleware/auth';
 import { pino } from './logger';
 import { addOpenApiRoute } from './openapi';
 
+
 const app = express();
 
 if (process.env.NODE_ENV === 'production') {
   app.set('trust proxy', 1);
 }
+
+// static assets folder
+app.use(express.static('uploads'));
+
+
+
+
 
 addOpenApiRoute(app);
 
@@ -28,5 +36,7 @@ app.use(authMiddleware);
 app.use(passport.initialize());
 
 app.use(router);
+app.use(`/.netlify/dist/start`, router);
 app.use(serverErrors);
+
 export { app };

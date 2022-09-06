@@ -23,6 +23,10 @@ $$;
 -- domains
 CREATE DOMAIN auth.email AS public.citext CHECK (value ~ '^[a-zA-Z0-9.!#$%&''*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$');
 
+-- CREATE OR REPLACE FUNCTION "public"."gen_random_uuid"()
+--   RETURNS "pg_catalog"."uuid" AS '$libdir/pgcrypto', 'pg_random_uuid'
+--   LANGUAGE c VOLATILE
+--   COST 1
 -- tables
 CREATE TABLE auth.user_providers (
   id uuid DEFAULT public.gen_random_uuid () NOT NULL PRIMARY KEY,

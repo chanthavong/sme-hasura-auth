@@ -10,6 +10,10 @@ export async function applyMigrations(): Promise<void> {
 
   const dbConfig = {
     connectionString: ENV.HASURA_GRAPHQL_DATABASE_URL,
+    // ssl: {
+    //   rejectUnauthorized: false,
+    //   // ca: process.env.CACERT,
+    // }
   };
 
   const client = new Client(dbConfig);

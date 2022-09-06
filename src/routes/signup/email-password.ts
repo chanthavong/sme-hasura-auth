@@ -20,6 +20,7 @@ export const signUpEmailPasswordSchema = Joi.object({
   email: email.required(),
   password: passwordInsert.required(),
   options: registrationOptions,
+  branchId: Joi.string(),
 }).meta({ className: 'SignUpEmailPasswordSchema' });
 
 export const signUpEmailPasswordHandler: RequestHandler<
@@ -28,6 +29,7 @@ export const signUpEmailPasswordHandler: RequestHandler<
   {
     email: string;
     password: string;
+    branchId: string;
     options: UserRegistrationOptions & {
       redirectTo: string;
     };
@@ -37,6 +39,7 @@ export const signUpEmailPasswordHandler: RequestHandler<
   const {
     email,
     password,
+    branchId,
     options: {
       redirectTo,
       locale,
@@ -71,6 +74,7 @@ export const signUpEmailPasswordHandler: RequestHandler<
     emailVerified: false,
     locale,
     defaultRole,
+    bank_branch_id: branchId,
     roles: {
       // restructure user roles to be inserted in GraphQL mutation
       data: allowedRoles.map((role: string) => ({ role })),

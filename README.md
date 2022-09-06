@@ -1,3 +1,15 @@
+# auth hasura sme fund
+
+## doc
+
+[Miro Board planning](https://miro.com/app/board/uXjVO3ApFBs=/)
+
+[Project Task](https://project.mtsvte.com/index.php/projects/view/13)
+
+[hasura dev](https://smedev.mtsapi.com/console)
+
+[hasura production](https://smepublic.mtsapi.com/)
+
 <h1 align="center">Hasura Auth</h1>
 <h2 align="center">The Open Source Authentication Service for Hasura.</h2>
 
@@ -81,3 +93,33 @@ Give a ⭐️ if this project helped you!
 ## 📝 License
 
 This project is MIT licensed.
+
+
+## stop migrate
+```bash 
+    server.ts
+```
+## resize image
+
+https://usefulangle.com/post/97/nodejs-resize-image
+
+
+## local migrade
+
+```base
+# remove from pg url connection
+?sslmode=require
+
+# set pg connect
+
+```ts
+
+const dbConfig = {
+    connectionString: ENV.HASURA_GRAPHQL_DATABASE_URL,
+    // ssl: {
+    //   rejectUnauthorized: false,
+    //   // ca: process.env.CACERT,
+    // }
+  };
+  
+  ```

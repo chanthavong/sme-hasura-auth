@@ -190,10 +190,10 @@ export const ENV = {
     return this.AUTH_USER_SESSION_VARIABLE_FIELDS;
   },
   // * See ../server.ts
-  // get AUTH_SKIP_INIT() {
-  //   return castBooleanEnv('AUTH_SKIP_INIT', false);
-  // },
-  // get AUTH_SKIP_SERVE() {
-  //   return castBooleanEnv('AUTH_SKIP_SERVE', false);
-  // },
+  get AUTH_SKIP_INIT() {
+    return castBooleanEnv('AUTH_SKIP_INIT', false);
+  },
+  get AUTH_SKIP_SERVE() {
+    return castBooleanEnv('AUTH_SKIP_SERVE', false);
+  },
 };

@@ -9,3 +9,8 @@ package-lock.json
 
 docker/data
 .env
+.env.development
+
+uploads/
+
+.DS_Store
