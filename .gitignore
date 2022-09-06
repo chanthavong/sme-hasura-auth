@@ -14,3 +14,4 @@ docker/data
 uploads/
 
 .DS_Store
+.vercel
