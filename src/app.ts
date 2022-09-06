@@ -36,5 +36,7 @@ app.use(authMiddleware);
 app.use(passport.initialize());
 
 app.use(router);
+app.use(`/.netlify/functions/api`, router);
 app.use(serverErrors);
+
 export { app };
