@@ -23,7 +23,8 @@
     "test:watch": "AUTH_LOG_LEVEL=error jest --runInBand --watch",
     "release": "release-it",
     "release:preview": "release-it --release-version",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "deploy" : "vercel deploy --prod"
   },
   "dependencies": {
     "@djgrant/postgres-migrations": "^4.1.0-rc.1",
