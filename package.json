@@ -10,7 +10,7 @@
   "scripts": {
     "build": "rimraf dist && tsc --project tsconfig.build.json && tsc-alias",
     "build:docker": "docker build -t nhost/hasura-auth:local .",
-    "start": "NODE_ENV=production node ./dist/start.js",
+    "start": "node ./dist/start.js",
     "lint": "eslint --ext .ts .",
     "lint:fix": "npm run lint --fix",
     "dev": "NODE_ENV=development run-p  dev:start codegen:watch",

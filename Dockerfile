@@ -1,14 +1,14 @@
-FROM node:14-alpine AS builder
+FROM node:16-alpine AS builder
 WORKDIR /app
 RUN npm i -g pnpm
 COPY package.json pnpm-lock.yaml tsconfig.json tsconfig.build.json ./
 COPY patches/ ./patches/
-RUN pnpm install --frozen-lockfile
+RUN pnpm install
 COPY src/ ./src/
 COPY types/ ./types/
 RUN pnpm run build
 
-FROM node:14-alpine as remover
+FROM node:16-alpine as remover
 ARG NODE_ENV=production
 ENV NODE_ENV $NODE_ENV
 ENV AUTH_PORT 4000
@@ -16,7 +16,8 @@ WORKDIR /app
 RUN npm i -g pnpm
 COPY package.json pnpm-lock.yaml ./
 COPY patches/ ./patches/
-RUN pnpm install --frozen-lockfile --prod  && pnpm store prune
+RUN pnpm install --prod  && pnpm store prune
+# RUN pnpm install --frozen-lockfile --prod  && pnpm store prune
 RUN pnpm run postinstall
 COPY migrations/ ./migrations/
 COPY email-templates/ ./email-templates
