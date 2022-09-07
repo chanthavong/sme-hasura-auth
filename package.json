@@ -24,7 +24,8 @@
     "release": "release-it",
     "release:preview": "release-it --release-version",
     "postinstall": "patch-package",
-    "deploy" : "vercel deploy --prod"
+    "deploy" : "vercel deploy --prod",
+    "start:vercel": "vercel dev"
   },
   "dependencies": {
     "@djgrant/postgres-migrations": "^4.1.0-rc.1",

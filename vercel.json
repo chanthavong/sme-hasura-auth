@@ -1,5 +1,5 @@
 {
   "version": 2,
   "builds": [{ "src": "./dist/start.js", "use": "@vercel/node" }],
-  "routes": [{ "src": "/(.*)", "dest": "/" }]
+  "routes": [{ "src": ".dist/routes/(.*)", "dest": "./dist/routes" }]
 }
