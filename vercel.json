@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "builds": [{ "src": "dist/start.js", "use": "@vercel/node" }],
+  "builds": [{ "src": "dist/start.js", "use": "@now/node" }],
   "routes": [
     {
       "src": "/(.*)",
