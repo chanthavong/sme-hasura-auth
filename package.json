@@ -24,7 +24,7 @@
     "release": "release-it",
     "release:preview": "release-it --release-version",
     "postinstall": "patch-package",
-    "deploy" : "vercel deploy --prod",
+    "deploy": "vercel deploy --prod",
     "start:vercel": "vercel dev"
   },
   "dependencies": {
@@ -129,6 +129,7 @@
     "@types/uuid": "7.0.2",
     "@typescript-eslint/eslint-plugin": "2.28.0",
     "@typescript-eslint/parser": "2.28.0",
+    "@vercel/node": "^2.5.13",
     "@vuepress/plugin-back-to-top": "1.4.1",
     "codecov": "^3.7.1",
     "commitizen": "^4.2.4",
